@@ -1,5 +1,3 @@
-//import ...
-
 import aima.search.framework.GraphSearch;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
@@ -23,7 +21,7 @@ public class Main {
         //ProbIA5Board board = new ProbIA5Board(prob, sol );
 
         // Create the Problem object
-        Problem p = ; 
+        Problem p = new Problem(null,null,null);
 
         // Instantiate the search algorithm
 	// AStarSearch(new GraphSearch()) or IterativeDeepeningAStarSearch()
