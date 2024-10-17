@@ -15,11 +15,10 @@ public class AzamonSuccessorFunctionSA implements SuccessorFunction {
         i=rand.nextInt(board.getN_packets());
         j=rand.nextInt(board.getN_offers());
 
-
         AzamonBoard newBoard = new AzamonBoard(board.getN_packets(), board.getN_offers(), board.getAssigment());
         newBoard.move(i,j);
 
-        double v; // = APHF.getHeuristicValue(newBoard);
+        double v = 0.0; // = APHF.getHeuristicValue(newBoard);
         String S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard.toString();
 
         retVal.add(new Successor(S, newBoard));
