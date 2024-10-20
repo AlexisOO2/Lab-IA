@@ -21,7 +21,7 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
 
         for (int i = 0; i < assignment.size(); i += 2) {
             Paquete p = (Paquete) assignment.get(i);     // Paquete
-            Oferta o = (Oferta) assignment.get(i + 1);   // Oferta
+            Oferta o = (Oferta) assignment.get(i);   // Oferta
 
             totalCost += o.getPrecio() * p.getPeso();
 
