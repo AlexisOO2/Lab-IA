@@ -7,10 +7,10 @@ public class AzamonBoard {
   private Paquetes pakgs;
   int n_pckgs;
   int n_offers;
-  ArrayList <int> assigment;
+  ArrayList <Integer> assignment;
 
-  public AzamonBoard(ArrayList <int> prev_assigment, Transporte t, Paquetes p){
-    assigment = new ArrayList<Object> (prev_assigment);
+  public AzamonBoard(ArrayList <Integer> prev_assigment, Transporte t, Paquetes p){
+    assignment = new ArrayList<> (prev_assigment);
     trans = t;
     pakgs = p;
     n_pckgs = pakgs.size();
@@ -26,8 +26,8 @@ public class AzamonBoard {
     return n_offers;
   }
 
-  public ArrayList <int> getAssigment(){
-    return assigment;
+  public ArrayList <Integer> getAssignment(){
+    return assignment;
   }
 
   public Transporte getTrans() {
@@ -40,32 +40,34 @@ public class AzamonBoard {
 
 // Operators//
   public void move(int id_packet, int id_offer){
-    assigment.set(id_packet,id_offer);
+    assignment.set(id_packet,id_offer);
   }
 
   public void swap(int id_pckg1, int id_pckg2){
-    int id_offer1 = assigment.get(id_pckg1);
-    int id_offer2 = assigment.get(id_pckg2);
+    int id_offer1 = assignment.get(id_pckg1);
+    int id_offer2 = assignment.get(id_pckg2);
 
-    assigment.set(id_pckg1,id_offer2);
-    assigment.set(id_pckg2,id_offer1);
+    assignment.set(id_pckg1,id_offer2);
+    assignment.set(id_pckg2,id_offer1);
   }
   
   public void pour(int id_offer){
-    while (assigment.contains(id_offer)){
-      int i = assigment.indexOf(id_offer);
-      assigment.set(i, null);
+    while (assignment.contains(id_offer)){
+      int i = assignment.indexOf(id_offer);
+      assignment.set(i, null);
     }
   }
 
-  //        //
   public String toString(){
-    String s;
-    for (int i = 0; i < assigment.size(); i++ ){
-      s += i + " -> " + assigment.get(i) + "; " ;
+    StringBuilder s = new StringBuilder();
+    for (int i = 0; i < assignment.size(); i++ ) {
+      s.append(i);
+      s.append(" -> ");
+      s.append(assignment.get(i));
+      s.append("; ");
     }
-    s += "\n";
-    return s;
+    s.append("\n");
+    return s.toString();
   }
 }
 
