@@ -58,6 +58,7 @@ public class AzamonBoard {
     }
   }
 
+  @Override
   public String toString(){
     StringBuilder s = new StringBuilder();
     for (int i = 0; i < assignment.size(); i++ ) {

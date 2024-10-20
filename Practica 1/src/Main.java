@@ -65,7 +65,7 @@ public class Main {
 
     private static void printInstrumentation(Properties properties) {
         for (Object o : properties.keySet()) {
-            String key = (String) o;
+            String key = o.toString();
             String property = properties.getProperty(key);
             System.out.println(key + " : " + property);
         }
@@ -73,7 +73,7 @@ public class Main {
 
     private static void printActions(List actions) {
         for (Object o : actions) {
-            String action = (String) o;
+            String action = o.toString();
             System.out.println(action);
         }
     }
