@@ -19,7 +19,7 @@ public class AzamonSuccessorFunctionSA implements SuccessorFunction {
         newBoard.move(i,j);
 
         double v = AHF.getHeuristicValue(newBoard);
-        String S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+        String S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard.toString();
 
         retVal.add(new Successor(S, newBoard));
         return retVal;

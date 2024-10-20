@@ -3,7 +3,7 @@ import aima.search.framework.SuccessorFunction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AzamonSuccessorFunction implements SuccessorFunction {
+public class AzamonSuccessorFunctionHC implements SuccessorFunction {
     public List<Successor> getSuccessors(Object aState) {
         List<Successor> retVal = new ArrayList<>();
         AzamonBoard board  = (AzamonBoard) aState;

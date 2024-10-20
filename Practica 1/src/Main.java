@@ -1,60 +1,80 @@
-import aima.search.framework.GraphSearch;
+import IA.Azamon.Paquetes;
+import IA.Azamon.Transporte;
 import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
-import aima.search.informed.AStarSearch;
-import aima.search.informed.IterativeDeepeningAStarSearch;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
+import aima.search.informed.HillClimbingSearch;
+import aima.search.informed.SimulatedAnnealingSearch;
+
+import java.util.*;
 
 public class Main {
+    public static void main(String[] args) {
+        // TODO tomar npaq, proportion por consola
+        Random rand = new Random();
+        int npaq = 10;
+        int seedPaq = rand.nextInt(npaq);
+        Paquetes paq = new Paquetes(npaq, seedPaq);
 
-    public static void main(String[] args) throws Exception{
-        /**
-         *  For a problem to be solvable:
-         *    count(0,prob) % 2 == count(0,sol) %2
-         */
-        //int [] prob = new int []{0 ,1, 0, 1, 1};
-        //int [] sol = new int[]{1, 1, 1, 0, 0};
+        double proportion = 4;
+        int seedTransport = rand.nextInt((int) Math.round(proportion));
 
-        //ProbIA5Board board = new ProbIA5Board(prob, sol );
+        Transporte transport = new Transporte(paq, proportion, seedTransport);
 
-        // Create the Problem object
-        Problem p = new Problem(null,null,null);
+        AzamonInitialSolution initialSolution = new AzamonInitialSolution();
+        ArrayList<Integer> assignment = initialSolution.randomSolution(transport, paq);
 
-        // Instantiate the search algorithm
-	// AStarSearch(new GraphSearch()) or IterativeDeepeningAStarSearch()
-        Search alg = new IterativeDeepeningAStarSearch();
+        AzamonBoard AB = new AzamonBoard(assignment, transport, paq);
 
-        // Instantiate the SearchAgent object
-        SearchAgent agent = new SearchAgent(p, alg);
+        TSPHillClimbingSearch(AB);
+        TSPSimulatedAnnealingSearch(AB);
+    }
 
-	// We print the results of the search
-        System.out.println();
-        printActions(agent.getActions());
-        printInstrumentation(agent.getInstrumentation());
+    private static void TSPHillClimbingSearch(AzamonBoard AB) {
+        System.out.println("\nTSP HillClimbing  -->");
 
-        // You can access also to the goal state using the
-	// method getGoalState of class Search
+        try {
+            Problem problem = new Problem(AB, new AzamonSuccessorFunctionHC(), new AzamonGoalTest(), new AzamonHeuristicFunction());
+            Search search = new HillClimbingSearch();
+            SearchAgent agent = new SearchAgent(problem, search);
+            System.out.println();
+            printActions(agent.getActions());
+            printInstrumentation(agent.getInstrumentation());
+        } catch (Exception var4) {
+            Exception e = var4;
+            e.printStackTrace();
+        }
+    }
+
+    private static void TSPSimulatedAnnealingSearch(AzamonBoard AB) {
+        System.out.println("\nTSP Simulated Annealing  -->");
+
+        try {
+            Problem problem = new Problem(AB, new AzamonSuccessorFunctionSA(), new AzamonGoalTest(), new AzamonHeuristicFunction());
+            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(2000, 100, 5, 0.001);
+            SearchAgent agent = new SearchAgent(problem, search);
+            System.out.println();
+            printActions(agent.getActions());
+            printInstrumentation(agent.getInstrumentation());
+        } catch (Exception var4) {
+            Exception e = var4;
+            e.printStackTrace();
+        }
 
     }
 
-        private static void printInstrumentation(Properties properties) {
-        Iterator keys = properties.keySet().iterator();
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
+    private static void printInstrumentation(Properties properties) {
+        for (Object o : properties.keySet()) {
+            String key = (String) o;
             String property = properties.getProperty(key);
             System.out.println(key + " : " + property);
         }
-        
     }
-    
+
     private static void printActions(List actions) {
-        for (int i = 0; i < actions.size(); i++) {
-            String action = (String) actions.get(i);
+        for (Object o : actions) {
+            String action = (String) o;
             System.out.println(action);
         }
     }
-    
 }
