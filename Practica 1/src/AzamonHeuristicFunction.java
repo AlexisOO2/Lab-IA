@@ -17,10 +17,12 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
         AzamonBoard board = (AzamonBoard) state;
         double totalCost = 0;
         int totalHappiness = 0;
+        ArrayList<Object> packages = board.getPakgs();
         ArrayList<Object> assignment = board.getAssignment();
 
-        for (int i = 0; i < assignment.size(); i += 2) {
-            Paquete p = (Paquete) assignment.get(i);     // Paquete
+
+        for (int i = 0; i < assignment.size(); i++) {
+            Paquete p = (Paquete) packages.get(i);     // Paquete
             Oferta o = (Oferta) assignment.get(i);   // Oferta
 
             totalCost += o.getPrecio() * p.getPeso();
