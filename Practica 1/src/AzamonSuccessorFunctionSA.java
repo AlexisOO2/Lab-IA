@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.Random;
 
 public class AzamonSuccessorFunctionSA implements SuccessorFunction {
+    Operation operation;
+
+    public AzamonSuccessorFunctionSA(Operation operation) {
+        this.operation = operation;
+    }
+
     public List<Successor> getSuccessors(Object aState) {
         List<Successor> retVal = new ArrayList<>();
         AzamonBoard board  = (AzamonBoard) aState;
@@ -16,10 +22,30 @@ public class AzamonSuccessorFunctionSA implements SuccessorFunction {
         j=rand.nextInt(board.getN_offers());
 
         AzamonBoard newBoard = new AzamonBoard(board.getAssignment(), board.getTrans(), board.getPakgs());
-        newBoard.move(i,j);
-
-        double v = AHF.getHeuristicValue(newBoard);
-        String S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard.toString();
+        String S = "";
+        switch (operation) {
+            case MOVE: {
+                newBoard.move(i,j);
+                double v = AHF.getHeuristicValue(newBoard);
+                S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard.toString();
+                break;
+            }
+            case MOVE_AND_SWAP: {
+                break;
+            }
+            case MOVE_AND_POUR: {
+                break;
+            }
+            case MOVE_SWAP_AND_POUR: {
+                break;
+            }
+            default: {  // Move
+                newBoard.move(i,j);
+                double v = AHF.getHeuristicValue(newBoard);
+                S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard.toString();
+                break;
+            }
+        }
 
         retVal.add(new Successor(S, newBoard));
         return retVal;
