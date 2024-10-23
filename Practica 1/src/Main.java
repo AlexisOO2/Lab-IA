@@ -12,7 +12,7 @@ public class Main {
     static int k;
     static double lambda;
     static int nPackages;
-    static int heutistic;
+    static int heuristic;
     static int InitialStateGenerator;
     static double proportion;
     static Operation operation;
@@ -36,27 +36,7 @@ public class Main {
         int seedTransport = rand.nextInt((int) Math.round(proportion));
         Transporte transport = new Transporte(paq, proportion, seedTransport);
 
-        AzamonInitialSolution initialSolution = new AzamonInitialSolution();
-        
-        switch (InitialStateGenerator) {
-          case 1: {
-            ArrayList<Integer> assignment = initialSolution.capacityFirstSolution(transport,paq);
-            break;
-          }
-            case 2:{
-                ArrayList<Integer> assignment = initialSolution.priorityFirstSolution(transport,paq);
-                break;
-            }
-            case 3:{
-                ArrayList<Integer> assignment = initialSolution.randomSolution(transport,paq);
-                break;
-            }
-          default:{
-              ArrayList<Integer> assignment = initialSolution.randomSolution(transport,paq);
-          }
-            break;
-        }
-        ArrayList<Integer> assignment = initialSolution.randomSolution(transport, paq);
+        ArrayList<Integer> assignment = getInitialState(transport, paq);
 
         AzamonBoard AB = new AzamonBoard(assignment, transport, paq);
 
@@ -97,6 +77,30 @@ public class Main {
 
     }
 
+    private static ArrayList<Integer> getInitialState(Transporte transport, Paquetes paq) {
+        AzamonInitialSolution initialSolution = new AzamonInitialSolution();
+        ArrayList<Integer> assignment;
+        switch (InitialStateGenerator) {
+            case 1: {
+                assignment = initialSolution.capacityFirstSolution(transport, paq);
+                break;
+            }
+            case 2:{
+                assignment = initialSolution.priorityFirstSolution(transport, paq);
+                break;
+            }
+            case 3:{
+                assignment = initialSolution.randomSolution(transport, paq);
+                break;
+            }
+            default:{
+                assignment = initialSolution.randomSolution(transport, paq);
+            }
+            break;
+        }
+        return assignment;
+    }
+
     private static void printInstrumentation(Properties properties) {
         for (Object o : properties.keySet()) {
             String key = o.toString();
@@ -135,7 +139,7 @@ public class Main {
         InitialStateGenerator = scanner.nextInt();
 
         System.out.print("Please enter a value to choose the heuristic function:\n1.Transportation Cost Only\n2.Transportation Cost + Happyness Index\n");
-        o = scanner.nextInt();
+        heuristic = scanner.nextInt();
         // Output the values entered
         // System.out.println("You entered k = " + k + " and lambda = " + lambda + " and nPackages = " + nPackages + " and proportion = " + proportion + " and operation = " + o);
 
