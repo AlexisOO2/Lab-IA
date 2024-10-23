@@ -8,13 +8,16 @@ public class AzamonBoard {
   int n_pckgs;
   int n_offers;
   ArrayList <Integer> assignment;
+  Integer happiness;
 
-  public AzamonBoard(ArrayList <Integer> prev_assigment, Transporte t, Paquetes p){
+  public AzamonBoard(ArrayList <Integer> prev_assigment, Transporte t, Paquetes p, Integer h){
     assignment = new ArrayList<> (prev_assigment);
     trans = t;
     pakgs = p;
     n_pckgs = pakgs.size();
     n_offers = trans.size();
+    happiness = h;
+
   }
 
   // Get Functions//
@@ -36,6 +39,10 @@ public class AzamonBoard {
 
   public Paquetes getPakgs() {
     return pakgs;
+  }
+
+  public Integer getHappiness() {
+    return happiness;
   }
 
 // Operators//

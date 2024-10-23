@@ -25,19 +25,20 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
             Paquete p = packages.get(i);     // Paquete
             Oferta o = transports.get(assignment.get(i));   // Oferta
 
-            totalCost += o.getPrecio() * p.getPeso();
-
             int packageDays = getMaxDaysForPriority(p.getPrioridad());  // Prioridad del paquete
             int offerDays = o.getDias();    // Prioridad de la oferta
-
-            if (offerDays < packageDays) {
+            
+            if (offerDays <= packageDays) {
+                totalCost += o.getPrecio() * p.getPeso();
                 totalHappiness += packageDays - offerDays;
+            } else {
+                totalCost += 9999;
             }
         }
 
         //Variables para regular la prioridad del dato en el calculo
         int a = 1;
-        int b = 1;
+        int b = board.getHappiness();
 
         return (a * totalCost) - (b * totalHappiness);
     }

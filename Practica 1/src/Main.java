@@ -30,7 +30,7 @@ public class Main {
         getVariablesFromCommandLine();
         Random rand = new Random();
 
-        int seedPaq = rand.nextInt(nPackages);
+        int seedPaq = 1234;
         Paquetes paq = new Paquetes(nPackages, seedPaq);
 
         int seedTransport = rand.nextInt((int) Math.round(proportion));
@@ -38,7 +38,7 @@ public class Main {
 
         ArrayList<Integer> assignment = getInitialState(transport, paq);
 
-        AzamonBoard AB = new AzamonBoard(assignment, transport, paq);
+        AzamonBoard AB = new AzamonBoard(assignment, transport, paq, heuristic);
 
         TSPHillClimbingSearch(AB);
         TSPSimulatedAnnealingSearch(AB, k, lambda);
@@ -140,6 +140,7 @@ public class Main {
 
         System.out.print("Please enter a value to choose the heuristic function:\n1.Transportation Cost Only\n2.Transportation Cost + Happyness Index\n");
         heuristic = scanner.nextInt();
+        heuristic -= 1;
         // Output the values entered
         // System.out.println("You entered k = " + k + " and lambda = " + lambda + " and nPackages = " + nPackages + " and proportion = " + proportion + " and operation = " + o);
 

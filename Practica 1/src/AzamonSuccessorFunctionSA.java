@@ -20,7 +20,7 @@ public class AzamonSuccessorFunctionSA implements SuccessorFunction {
 
 
 
-        AzamonBoard newBoard = new AzamonBoard(board.getAssignment(), board.getTrans(), board.getPakgs());
+        AzamonBoard newBoard = new AzamonBoard(board.getAssignment(), board.getTrans(), board.getPakgs(), board.getHappiness());
         String S = "";
         switch (operation) {
             case MOVE: {
