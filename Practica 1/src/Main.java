@@ -120,7 +120,7 @@ public class Main {
     private static void getVariablesFromCommandLine() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Please enter a value for algorithm: \n1.Hill Climbing\n2.Simulated Annealing");
+        System.out.print("Please enter a value for algorithm: \n1.Hill Climbing\n2.Simulated Annealing\n");
         algorithm = scanner.nextInt();
 
         if(algorithm == 2) {
