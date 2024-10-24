@@ -30,10 +30,10 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
                 int offerDays = o.getDias();    // Prioridad de la oferta
 
                 if (offerDays <= packageDays) {
-                    totalCost += o.getPrecio() * p.getPeso();
+                    totalCost += o.getPrecio() * p.getPeso() + p.getPrioridad() * 0.25; // coste envio + coste almacen
                     totalHappiness += packageDays - offerDays;
                 } else {
-                    totalCost += 9999;
+                    totalCost += 9999;1
                 }
             } else {
                 totalCost += 9999;
