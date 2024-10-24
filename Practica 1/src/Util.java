@@ -65,6 +65,43 @@ public class Util {
                 }
                 break;
             }
+            case MOVE_SWAP_OFFERS: {
+                int op = rand.nextInt(3);
+                if (op == 0) {
+                    S = move(board, rand, AHF, newBoard);
+                    break;
+                }
+                else if (op == 1) {
+                    i = rand.nextInt(board.getN_offers());
+                    j = rand.nextInt(board.getN_offers());
+                    newBoard.swap_offers(i, j);
+                    double v = AHF.getHeuristicValue(newBoard);
+                    S = "Swap offer(" + i + ") with offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                }
+                break;
+            }
+            case MOVE_SWAP_SWAP_OFFERS: {
+                int op = rand.nextInt(4);
+                if (op == 0) {
+                    S = move(board, rand, AHF, newBoard);
+                    break;
+                }
+                else if (op == 1) {
+                    i = rand.nextInt(board.getN_packets());
+                    j = rand.nextInt(board.getN_packets());
+                    newBoard.swap(i, j);
+                    double v = AHF.getHeuristicValue(newBoard);
+                    S = "Swap packet(" + i + ") with packet (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                }
+                else if (op == 2) {
+                    i = rand.nextInt(board.getN_offers());
+                    j = rand.nextInt(board.getN_offers());
+                    newBoard.swap_offers(i, j);
+                    double v = AHF.getHeuristicValue(newBoard);
+                    S = "Swap offer(" + i + ") with offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                }
+                break;
+            }
             default: {  // Move
                 S = move(board, rand, AHF, newBoard);
                 break;

@@ -137,7 +137,7 @@ public class Main {
         System.out.print("Please enter a value for proportion: ");
         proportion = scanner.nextDouble();
 
-        System.out.print("Please enter a value for operation: \n1.Move\n2.Move and swap\n3.Move and pour\n4.Move, swap and pour\n");
+        System.out.print("Please enter a value for operation: \n1.Move\n2.Move and swap\n3.Move and pour\n4.Move, swap and pour\n5.Move and swap offers\n6.Move, swap and swap offers\n");
         int o = scanner.nextInt();
         operation = Operation.fromInt(o);
 

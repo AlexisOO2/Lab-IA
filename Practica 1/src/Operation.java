@@ -2,7 +2,9 @@ public enum Operation {
     MOVE(1),
     MOVE_AND_SWAP(2),
     MOVE_AND_POUR(3),
-    MOVE_SWAP_AND_POUR(4);
+    MOVE_SWAP_AND_POUR(4),
+    MOVE_SWAP_OFFERS(5),
+    MOVE_SWAP_SWAP_OFFERS(6);
 
     private final int value;
 

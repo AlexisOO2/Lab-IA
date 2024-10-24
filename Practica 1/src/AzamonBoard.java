@@ -65,6 +65,14 @@ public class AzamonBoard {
     }
   }
 
+  public void swap_offers(int id_offer1,int id_offer2){
+    for (int i = 0; i < n_pckgs; i++){
+      int id = assignment.get(i);
+      if (id == id_offer1) assignment.set(i,id_offer2);
+      else if (id == id_offer2) assignment.set(i,id_offer1);
+    }
+  }
+
   @Override
   public String toString(){
     StringBuilder s = new StringBuilder();
