@@ -19,7 +19,7 @@ public class AzamonSuccessorFunctionHC implements SuccessorFunction {
         Random rand = new Random();
         for (int i = 0; i <  board.getN_packets(); i++) {
             for (int j = 0; j < board.getN_offers(); j++) {
-                Util.executeOperator(board, operation, i, j, rand, AHF, retVal);
+                Util.executeOperator(board, operation, rand, AHF, retVal);
             }
         }
         return retVal;

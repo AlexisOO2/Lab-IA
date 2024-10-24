@@ -15,9 +15,8 @@ public class AzamonSuccessorFunctionSA implements SuccessorFunction {
         List<Successor> retVal = new ArrayList<>();
         AzamonBoard board  = (AzamonBoard) aState;
         AzamonHeuristicFunction AHF = new AzamonHeuristicFunction();
-        int i=0,j=0;
         Random rand = new Random();
-        Util.executeOperator(board, operation, i, j, rand, AHF, retVal);
+        Util.executeOperator(board, operation, rand, AHF, retVal);
         return retVal;
     }
 }
