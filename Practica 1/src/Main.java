@@ -41,8 +41,12 @@ public class Main {
 
         AzamonBoard AB = new AzamonBoard(assignment, transport, paq, heuristic);
 
+        long startTime = System.currentTimeMillis();
         if(algorithm == 1) TSPHillClimbingSearch(AB);
         else TSPSimulatedAnnealingSearch(AB, k, lambda);
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;        // Calculate the duration in milliseconds
+        System.out.println("Algorithm " + algorithm + " took " + duration + " milliseconds to run.");
     }
 
     private static void TSPHillClimbingSearch(AzamonBoard AB) {
