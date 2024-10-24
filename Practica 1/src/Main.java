@@ -9,6 +9,7 @@ import aima.search.informed.SimulatedAnnealingSearch;
 import java.util.*;
 
 public class Main {
+    static int algorithm;
     static int k;
     static double lambda;
     static int nPackages;
@@ -40,8 +41,8 @@ public class Main {
 
         AzamonBoard AB = new AzamonBoard(assignment, transport, paq, heuristic);
 
-        TSPHillClimbingSearch(AB);
-        TSPSimulatedAnnealingSearch(AB, k, lambda);
+        if(algorithm == 1) TSPHillClimbingSearch(AB);
+        else TSPSimulatedAnnealingSearch(AB, k, lambda);
     }
 
     private static void TSPHillClimbingSearch(AzamonBoard AB) {
@@ -119,11 +120,16 @@ public class Main {
     private static void getVariablesFromCommandLine() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Please enter a value for k: ");
-        k = scanner.nextInt();
+        System.out.print("Please enter a value for algorithm: \n1.Hill Climbing\n2.Simulated Annealing");
+        algorithm = scanner.nextInt();
 
-        System.out.print("Please enter a value for lambda: ");
-        lambda = scanner.nextDouble();
+        if(algorithm == 2) {
+            System.out.print("Please enter a value for k: ");
+            k = scanner.nextInt();
+
+            System.out.print("Please enter a value for lambda: ");
+            lambda = scanner.nextDouble();
+        }
 
         System.out.print("Please enter a value for number of packages: ");
         nPackages = scanner.nextInt();
