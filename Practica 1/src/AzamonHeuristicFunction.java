@@ -52,7 +52,7 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
 
         //Variables para regular la prioridad del dato en el calculo
         double a = 1;
-        double b = board.getHappiness();;
+        double b = 1;
         int c = board.getHappiness();
 
         //System.out.println("Total cost = " + totalCost + "€ \nHappiness points = " + totalHappiness + "\n");
