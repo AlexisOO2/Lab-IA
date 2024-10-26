@@ -47,6 +47,7 @@ public class Main {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;        // Calculate the duration in milliseconds
         System.out.println("Algorithm " + algorithm + " took " + duration + " milliseconds to run.");
+        AB.printCostsAndHappiness();
     }
 
     private static void TSPHillClimbingSearch(AzamonBoard AB) {

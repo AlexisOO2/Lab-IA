@@ -41,10 +41,13 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
         }
 
         //Variables para regular la prioridad del dato en el calculo
-        int a = 1;
-        int b = board.getHappiness();
+        double a = 1;
+        double b = 1;
+        int c = board.getHappiness();
 
-        return (a * totalCost) - (b * totalHappiness);
+        //System.out.println("Total cost = " + totalCost + "€ \nHappiness points = " + totalHappiness + "\n");
+
+        return (a * totalCost) - (b * c * totalHappiness);
     }
 
     // Método auxiliar para obtener el número máximo de días que corresponde a una prioridad de paquete

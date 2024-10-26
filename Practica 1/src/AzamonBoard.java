@@ -1,3 +1,5 @@
+import IA.Azamon.Oferta;
+import IA.Azamon.Paquete;
 import IA.Azamon.Transporte;
 import IA.Azamon.Paquetes;
 import java.util.ArrayList;
@@ -85,6 +87,44 @@ public class AzamonBoard {
     s.append("\n");
     return s.toString();
   }
+
+  public void printCostsAndHappiness() {
+    double totalCost = 0;
+    int totalHappiness = 0;
+
+    for (int i = 0; i < assignment.size(); i++) {
+      Paquete p = pakgs.get(i); // Paquete
+      if (assignment.get(i) != null) {
+        Oferta o = trans.get(assignment.get(i)); // Oferta
+
+        int packageDays = getMaxDaysForPriority(p.getPrioridad()); // Prioridad del paquete
+        int offerDays = o.getDias(); // Días de la oferta
+
+        if (offerDays <= packageDays) {
+          totalCost += p.getPeso() * (o.getPrecio() + p.getPrioridad() * 0.25); // peso * ( euro / kilo + dia * euro / dia * kilo)
+          totalHappiness += packageDays - offerDays;
+        } else {
+          totalCost += 9999; // Penalización
+        }
+      } else {
+        totalCost += 1000; // Penalización por no asignar
+      }
+    }
+
+    // Imprimir costes y felicidad
+    System.out.println("Total cost = " + totalCost + "€");
+    System.out.println("Happiness points = " + totalHappiness);
+  }
+
+  private int getMaxDaysForPriority(int priority) {
+    switch(priority) {
+      case 0: return 1;  // Prioridad 0: Entrega al día siguiente
+      case 1: return 3;  // Prioridad 1: Entrega en 2 o 3 días
+      case 2: return 5;  // Prioridad 2: Entrega en 4 o 5 días
+      default: return -1;  // Cualquier otro caso se considerara negativo
+    }
+  }
+
 }
 
 
