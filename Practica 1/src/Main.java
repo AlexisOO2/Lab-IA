@@ -31,11 +31,10 @@ public class Main {
         getVariablesFromCommandLine();
         Random rand = new Random();
 
-        int seedPaq = 1234;
-        Paquetes paq = new Paquetes(nPackages, seedPaq);
+        int seed = 1234;
+        Paquetes paq = new Paquetes(nPackages, seed);
 
-        int seedTransport = rand.nextInt((int) Math.round(proportion));
-        Transporte transport = new Transporte(paq, proportion, seedTransport);
+        Transporte transport = new Transporte(paq, proportion, seed);
 
         ArrayList<Integer> assignment = getInitialState(transport, paq);
 
