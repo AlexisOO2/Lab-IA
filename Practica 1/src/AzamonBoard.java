@@ -1,5 +1,3 @@
-import IA.Azamon.Oferta;
-import IA.Azamon.Paquete;
 import IA.Azamon.Transporte;
 import IA.Azamon.Paquetes;
 import java.util.ArrayList;
@@ -53,8 +51,8 @@ public class AzamonBoard {
   }
 
   public void swap(int id_pckg1, int id_pckg2){
-    int id_offer1 = assignment.get(id_pckg1);
-    int id_offer2 = assignment.get(id_pckg2);
+    Integer id_offer1 = assignment.get(id_pckg1);
+    Integer id_offer2 = assignment.get(id_pckg2);
 
     assignment.set(id_pckg1,id_offer2);
     assignment.set(id_pckg2,id_offer1);
@@ -87,16 +85,6 @@ public class AzamonBoard {
     s.append("\n");
     return s.toString();
   }
-
-  private int getMaxDaysForPriority(int priority) {
-    switch(priority) {
-      case 0: return 1;  // Prioridad 0: Entrega al día siguiente
-      case 1: return 3;  // Prioridad 1: Entrega en 2 o 3 días
-      case 2: return 5;  // Prioridad 2: Entrega en 4 o 5 días
-      default: return -1;  // Cualquier otro caso se considerara negativo
-    }
-  }
-
 }
 
 
