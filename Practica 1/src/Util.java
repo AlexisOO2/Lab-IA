@@ -13,8 +13,7 @@ public class Util {
                 i=rand.nextInt(board.getN_packets());
                 j=rand.nextInt(board.getN_offers());
                 newBoard.move(i,j);
-                double v = AHF.getHeuristicValue(newBoard);
-                S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                S = move(board,rand,AHF,newBoard);
                 break;
             }
             case MOVE_AND_SWAP: {
@@ -27,7 +26,9 @@ public class Util {
                     j = rand.nextInt(board.getN_packets());
                     newBoard.swap(i, j);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Swap packet(" + i + ") with packet (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Swap packet(" + i + ") with packet (" + j + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 break;
             }
@@ -40,7 +41,9 @@ public class Util {
                     i = rand.nextInt(board.getN_offers());
                     newBoard.pour(i);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Pour offer(" + i + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Pour offer(" + i + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 break;
             }
@@ -55,13 +58,17 @@ public class Util {
                     j = rand.nextInt(board.getN_packets());
                     newBoard.swap(i, j);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Swap packet(" + i + ") with packet (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Swap packet(" + i + ") with packet (" + j + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 else if (op == 2) {
                     i = rand.nextInt(board.getN_offers());
                     newBoard.pour(i);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Pour offer(" + i + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Pour offer(" + i + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 break;
             }
@@ -76,7 +83,9 @@ public class Util {
                     j = rand.nextInt(board.getN_offers());
                     newBoard.swap_offers(i, j);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Swap offer(" + i + ") with offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Swap offer(" + i + ") with offer (" + j + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 break;
             }
@@ -91,14 +100,18 @@ public class Util {
                     j = rand.nextInt(board.getN_packets());
                     newBoard.swap(i, j);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Swap packet(" + i + ") with packet (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Swap packet(" + i + ") with packet (" + j + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 else if (op == 2) {
                     i = rand.nextInt(board.getN_offers());
                     j = rand.nextInt(board.getN_offers());
                     newBoard.swap_offers(i, j);
                     double v = AHF.getHeuristicValue(newBoard);
-                    S = "Swap offer(" + i + ") with offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+                    double t_cost = AHF.getTotalCost();
+                    int happiness = AHF.getHappiness();
+                    S = "Swap offer(" + i + ") with offer (" + j + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
                 }
                 break;
             }
@@ -117,8 +130,11 @@ public class Util {
         i = rand.nextInt(board.getN_packets());
         j = rand.nextInt(board.getN_offers());
         newBoard.move(i,j);
+
         double v = AHF.getHeuristicValue(newBoard);
-        S = "Move packet(" + i + ") to offer (" + j + ") Cost =" + v + ") ---> " + newBoard;
+        double t_cost = AHF.getTotalCost();
+        int happiness = AHF.getHappiness();
+        S = "Move packet(" + i + ") to offer (" + j + ") h(n) =" + v + ", t_cost = " + t_cost + ", Happiness = " + happiness + ") ---> " + newBoard;
         return S;
     }
 }

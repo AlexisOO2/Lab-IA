@@ -88,34 +88,6 @@ public class AzamonBoard {
     return s.toString();
   }
 
-  public void printCostsAndHappiness() {
-    double totalCost = 0;
-    int totalHappiness = 0;
-
-    for (int i = 0; i < assignment.size(); i++) {
-      Paquete p = pakgs.get(i); // Paquete
-      if (assignment.get(i) != null) {
-        Oferta o = trans.get(assignment.get(i)); // Oferta
-
-        int packageDays = getMaxDaysForPriority(p.getPrioridad()); // Prioridad del paquete
-        int offerDays = o.getDias(); // Días de la oferta
-
-        if (offerDays <= packageDays) {
-          totalCost += p.getPeso() * (o.getPrecio() + p.getPrioridad() * 0.25); // peso * ( euro / kilo + dia * euro / dia * kilo)
-          totalHappiness += packageDays - offerDays;
-        } else {
-          totalCost += 9999; // Penalización
-        }
-      } else {
-        totalCost += 1000; // Penalización por no asignar
-      }
-    }
-
-    // Imprimir costes y felicidad
-    System.out.println("Total cost = " + totalCost + "€");
-    System.out.println("Happiness points = " + totalHappiness);
-  }
-
   private int getMaxDaysForPriority(int priority) {
     switch(priority) {
       case 0: return 1;  // Prioridad 0: Entrega al día siguiente

@@ -5,7 +5,9 @@ import aima.search.framework.HeuristicFunction;
 import java.util.ArrayList;
 
 public class AzamonHeuristicFunction implements HeuristicFunction {
-
+    double totalCost;
+    int penalization;
+    int totalHappiness;
     public boolean equals(Object obj) {
         boolean retValue;
 
@@ -14,13 +16,13 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
     }
 
     public double getHeuristicValue(Object state) {
+         totalCost = 0;
+         penalization = 0;
+         totalHappiness = 0;
         AzamonBoard board = (AzamonBoard) state;
-        double totalCost = 0;
-        int totalHappiness = 0;
         ArrayList<Paquete> packages = board.getPakgs();
         ArrayList<Oferta> transports = board.getTrans();
         ArrayList<Integer> assignment = board.getAssignment();
-
         for (int i = 0; i < assignment.size(); i++) {
             Paquete p = packages.get(i);     // Paquete
             if (assignment.get(i) != null) {
@@ -30,13 +32,21 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
                 int offerDays = o.getDias();    // Prioridad de la oferta
 
                 if (offerDays <= packageDays) {
-                    totalCost += p.getPeso() * (o.getPrecio() + p.getPrioridad() * 0.25); // peso * ( euro / kilo + dia * euro / dia * kilo)
+                    totalCost += (p.getPeso() * o.getPrecio());
+                    if (offerDays == 3 || offerDays == 4){
+                        totalCost += (p.getPeso() * 0.25);
+                    }
+                    else if (offerDays == 5){
+                        totalCost += (p.getPeso() * 2 * 0.25);
+                    }
+                    // peso * ( euro / kilo + dia * euro / dia * kilo)
                     totalHappiness += packageDays - offerDays;
-                } else {
-                    totalCost += 9999;
+                }
+                 else {
+                    penalization += 9999;
                 }
             } else {
-                totalCost += 1000;
+                penalization += 1000;
             }
         }
 
@@ -47,7 +57,15 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
 
         //System.out.println("Total cost = " + totalCost + "€ \nHappiness points = " + totalHappiness + "\n");
 
-        return (a * totalCost) - (b * c * totalHappiness);
+        return (a * totalCost) + penalization - (b * c * totalHappiness);
+    }
+
+    public double getTotalCost(){
+        return totalCost;
+    }
+
+    public int getHappiness(){
+        return totalHappiness;
     }
 
     // Método auxiliar para obtener el número máximo de días que corresponde a una prioridad de paquete
