@@ -34,10 +34,10 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
                 if (offerDays <= packageDays) {
                     totalCost += (p.getPeso() * o.getPrecio());
                     if (offerDays == 3 || offerDays == 4){
-                        totalCost += (p.getPeso() * 0.25);
+                        totalCost += (p.getPeso() * 2.25);
                     }
                     else if (offerDays == 5){
-                        totalCost += (p.getPeso() * 2 * 0.25);
+                        totalCost += (p.getPeso() * 2 * 2.25);
                     }
                     // peso * ( euro / kilo + dia * euro / dia * kilo)
                     totalHappiness += packageDays - offerDays;
@@ -55,9 +55,11 @@ public class AzamonHeuristicFunction implements HeuristicFunction {
         double b = 1;
         int c = board.getHappiness();
 
-        //System.out.println("Total cost = " + totalCost + "€ \nHappiness points = " + totalHappiness + "\n");
+        double h = (a * totalCost) + penalization - (b * c * totalHappiness);
 
-        return (a * totalCost) + penalization - (b * c * totalHappiness);
+        //System.out.println("Total cost = " + totalCost + "€ \nHappiness points = " + totalHappiness + "\nh(n) = " + h + "\n");
+
+        return h;
     }
 
     public double getTotalCost(){
