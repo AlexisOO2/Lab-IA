@@ -13,16 +13,56 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#pinta
-:pinta rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdf:type owl:FunctionalProperty ;
-       rdfs:domain :Pintor ;
-       rdfs:range :ObraDeArte ;
-       rdfs:comment "Un pintor pinta obras de arte" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#autor_de
+:autor_de rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Pintor ;
+          rdfs:range :ObraDeArte ;
+          rdfs:comment "Un Pintor es el autor de una Obra de Arte" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#realiza
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#contemplan
+:contemplan rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Visita ;
+            rdfs:range :ObraDeArte ;
+            rdfs:comment "En una Visita se contemplan Obras de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#contiene
+:contiene rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Sala ;
+          rdfs:range :ObraDeArte ;
+          rdfs:comment "Una Sale contiene una serie de Obras de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#contiguas
+:contiguas rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Sala ;
+           rdfs:range :Sala ;
+           rdfs:comment "Dos salas son contiguas" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#formado_por
+:formado_por rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Museo ;
+             rdfs:range :Sala ;
+             rdfs:comment "Un Museo está formado por Salas" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#prefiere
+:prefiere rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Visitante ;
+          rdfs:range :ObraDeArte ,
+                     :Pintor ;
+          rdfs:comment "Un usuario tiene preferencia por un Autor u Obras de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/realiza
 :realiza rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
          rdf:type owl:FunctionalProperty ;
@@ -31,31 +71,19 @@
          rdfs:comment "Un visitante realiza una visita" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#recorre
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/recorre
 :recorre rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
-         rdf:type owl:FunctionalProperty ;
          rdfs:domain :Visita ;
          rdfs:range :Sala ;
          rdfs:comment "En una visita se recorren varias salas" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#tiene
-:tiene rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdf:type owl:FunctionalProperty ;
-       rdfs:domain :Museo ,
-                   :Sala ;
-       rdfs:range :ObraDeArte ,
-                  :Sala ;
-       rdfs:comment "Un museo tiene salas y una sala tiene obras de arte" .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#año_de_creacion
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/año_de_creacion
 :año_de_creacion rdf:type owl:DatatypeProperty ;
                  rdfs:subPropertyOf owl:topDataProperty ;
                  rdf:type owl:FunctionalProperty ;
@@ -63,7 +91,7 @@
                  rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#complejidad
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/complejidad
 :complejidad rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdf:type owl:FunctionalProperty ;
@@ -71,7 +99,7 @@
              rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#conocimiento_de_arte
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/conocimiento_de_arte
 :conocimiento_de_arte rdf:type owl:DatatypeProperty ;
                       rdfs:subPropertyOf owl:topDataProperty ;
                       rdf:type owl:FunctionalProperty ;
@@ -79,7 +107,7 @@
                       rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#dimensiones
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/dimensiones
 :dimensiones rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty ;
              rdf:type owl:FunctionalProperty ;
@@ -87,7 +115,7 @@
              rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#duracion_dias
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/duracion_dias
 :duracion_dias rdf:type owl:DatatypeProperty ;
                rdfs:subPropertyOf owl:topDataProperty ;
                rdf:type owl:FunctionalProperty ;
@@ -95,7 +123,7 @@
                rdfs:range xsd:int .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#duracion_horas
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/duracion_horas
 :duracion_horas rdf:type owl:DatatypeProperty ;
                 rdfs:subPropertyOf owl:topDataProperty ;
                 rdf:type owl:FunctionalProperty ;
@@ -103,7 +131,7 @@
                 rdfs:range xsd:double .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#epoca
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/epoca
 :epoca rdf:type owl:DatatypeProperty ;
        rdfs:subPropertyOf owl:topDataProperty ;
        rdf:type owl:FunctionalProperty ;
@@ -112,7 +140,7 @@
        rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#estilo
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/estilo
 :estilo rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdf:type owl:FunctionalProperty ;
@@ -121,7 +149,7 @@
         rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#nacionalidad
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/nacionalidad
 :nacionalidad rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdf:type owl:FunctionalProperty ;
@@ -129,7 +157,7 @@
               rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#nombre
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/nombre
 :nombre rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdf:type owl:FunctionalProperty ;
@@ -141,14 +169,14 @@
         rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#preferencias
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/preferencias
 :preferencias rdf:type owl:DatatypeProperty ;
               rdfs:subPropertyOf owl:topDataProperty ;
               rdfs:domain :Visitante ;
               rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#relevancia
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/relevancia
 :relevancia rdf:type owl:DatatypeProperty ;
             rdfs:subPropertyOf owl:topDataProperty ;
             rdf:type owl:FunctionalProperty ;
@@ -156,7 +184,7 @@
             rdfs:range xsd:double .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#ruta
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/ruta
 :ruta rdf:type owl:DatatypeProperty ;
       rdfs:subPropertyOf owl:topDataProperty ;
       rdf:type owl:FunctionalProperty ;
@@ -164,7 +192,7 @@
       rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#tematica
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tematica
 :tematica rdf:type owl:DatatypeProperty ;
           rdfs:subPropertyOf owl:topDataProperty ;
           rdf:type owl:FunctionalProperty ;
@@ -172,7 +200,7 @@
           rdfs:range xsd:string .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#tipo
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tipo
 :tipo rdf:type owl:DatatypeProperty ;
       rdfs:subPropertyOf owl:topDataProperty ;
       rdf:type owl:FunctionalProperty ;
@@ -184,33 +212,33 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Museo
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Museo
 :Museo rdf:type owl:Class ;
        rdfs:comment "Esta clase respresenta un museo" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#ObraDeArte
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/ObraDeArte
 :ObraDeArte rdf:type owl:Class ;
             rdfs:comment "Esta clase respresenta una obra de arte" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Pintor
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Pintor
 :Pintor rdf:type owl:Class ;
         rdfs:comment "Esta clase respresenta un pintor" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Sala
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala
 :Sala rdf:type owl:Class ;
       rdfs:subClassOf :Museo ;
       rdfs:comment "Esta clase respresenta una sala" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Visita
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Visita
 :Visita rdf:type owl:Class ;
         rdfs:comment "Esta clase respresenta una visita" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Visitante
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Visitante
 :Visitante rdf:type owl:Class ;
            rdfs:comment "Esta clase respresenta un visitante" .
 
@@ -219,26 +247,22 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Claude_Monet
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Claude_Monet
 :Claude_Monet rdf:type owl:NamedIndividual ,
                        :Pintor ;
-              :pinta :Impresión_Sol_Naciente ,
-                     :Los_Nenúfares ;
               :epoca "Impresionismo" ;
               :estilo "Impresionismo" ;
               :nacionalidad "Francesa" ;
               :nombre "Claude Monet" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Impresionismo
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Impresionismo
 :Impresionismo rdf:type owl:NamedIndividual ,
                         :Sala ;
-               :tiene :Impresión_Sol_Naciente ,
-                      :Los_Nenúfares ;
                :nombre "Sala de Impresionismo" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Impresión_Sol_Naciente
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Impresión_Sol_Naciente
 :Impresión_Sol_Naciente rdf:type owl:NamedIndividual ,
                                  :ObraDeArte ;
                         :año_de_creacion 1872 ;
@@ -251,7 +275,7 @@
                         :tematica "Paisaje" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Juan
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Juan
 :Juan rdf:type owl:NamedIndividual ,
                :Visitante ;
       :conocimiento_de_arte "medio-alto" ;
@@ -261,7 +285,7 @@ Leonardo Da Vinci""" ;
       :tipo "persona" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#La_Última_Cena
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_Última_Cena
 :La_Última_Cena rdf:type owl:NamedIndividual ,
                          :ObraDeArte ;
                 :año_de_creacion 1495 ;
@@ -274,18 +298,16 @@ Leonardo Da Vinci""" ;
                 :tematica "Religiosa" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Leonardo_da_Vinci
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Leonardo_da_Vinci
 :Leonardo_da_Vinci rdf:type owl:NamedIndividual ,
                             :Pintor ;
-                   :pinta :La_Última_Cena ,
-                          :Mona_Lisa ;
                    :epoca "Renacimiento" ;
                    :estilo "Renacimiento" ;
                    :nacionalidad "Italiana" ;
                    :nombre "Leonardo Da Vinci" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Los_Nenúfares
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Los_Nenúfares
 :Los_Nenúfares rdf:type owl:NamedIndividual ,
                         :ObraDeArte ;
                :año_de_creacion 1899 ;
@@ -298,7 +320,7 @@ Leonardo Da Vinci""" ;
                :tematica "Naturaleza" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Mona_Lisa
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mona_Lisa
 :Mona_Lisa rdf:type owl:NamedIndividual ,
                     :ObraDeArte ;
            :año_de_creacion 1503 ;
@@ -311,19 +333,15 @@ Leonardo Da Vinci""" ;
            :tematica "Retrato" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Museo_de_Arte_Universal
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Museo_de_Arte_Universal
 :Museo_de_Arte_Universal rdf:type owl:NamedIndividual ,
                                   :Museo ;
-                         :tiene :Impresionismo ,
-                                :Renacimiento ;
                          :nombre "Museo de Arte Universal" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Renacimiento
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Renacimiento
 :Renacimiento rdf:type owl:NamedIndividual ,
                        :Sala ;
-              :tiene :La_Última_Cena ,
-                     :Mona_Lisa ;
               :nombre "Sala de Renacimiento" .
 
 

@@ -2,14 +2,14 @@
 ;;; protege1.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology protege1.ttl
-;;; :Date 27/11/2024 10:31:29
+;;; :Date 30/11/2024 22:40:22
 
 (defclass Museo "Esta clase respresenta un museo"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    ;;; Un museo tiene salas y una sala tiene obras de arte
-    (slot tiene
+    ;;; Un Museo está formado por Salas
+    (multislot formado_por
         (type INSTANCE)
         (create-accessor read-write))
     (slot nombre
@@ -21,8 +21,12 @@
     (is-a Museo)
     (role concrete)
     (pattern-match reactive)
-    ;;; Un museo tiene salas y una sala tiene obras de arte
-    (slot tiene
+    ;;; Una Sale contiene una serie de Obras de Arte
+    (multislot contiene
+        (type INSTANCE)
+        (create-accessor read-write))
+    ;;; Dos salas son contiguas
+    (multislot contiguas
         (type INSTANCE)
         (create-accessor read-write))
     (slot nombre
@@ -64,8 +68,8 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    ;;; Un pintor pinta obras de arte
-    (slot pinta
+    ;;; Un Pintor es el autor de una Obra de Arte
+    (multislot autor_de
         (type INSTANCE)
         (create-accessor read-write))
     (slot epoca
@@ -86,8 +90,12 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    ;;; En una Visita se contemplan Obras de Arte
+    (multislot contemplan
+        (type INSTANCE)
+        (create-accessor read-write))
     ;;; En una visita se recorren varias salas
-    (slot recorre
+    (multislot recorre
         (type INSTANCE)
         (create-accessor read-write))
     (slot duracion_dias
@@ -105,6 +113,10 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    ;;; Un usuario tiene preferencia por un Autor u Obras de Arte
+    (multislot prefiere
+        (type INSTANCE)
+        (create-accessor read-write))
     ;;; Un visitante realiza una visita
     (slot realiza
         (type INSTANCE)
@@ -125,7 +137,6 @@
 
 (definstances instances
     ([Claude_Monet] of Pintor
-         (pinta  [Impresión_Sol_Naciente] [Los_Nenúfares])
          (epoca  "Impresionismo")
          (estilo  "Impresionismo")
          (nacionalidad  "Francesa")
@@ -133,7 +144,6 @@
     )
 
     ([Impresionismo] of Sala
-         (tiene  [Impresión_Sol_Naciente] [Los_Nenúfares])
          (nombre  "Sala de Impresionismo")
     )
 
@@ -168,7 +178,6 @@ Leonardo Da Vinci")
     )
 
     ([Leonardo_da_Vinci] of Pintor
-         (pinta  [La_Última_Cena] [Mona_Lisa])
          (epoca  "Renacimiento")
          (estilo  "Renacimiento")
          (nacionalidad  "Italiana")
@@ -198,12 +207,10 @@ Leonardo Da Vinci")
     )
 
     ([Museo_de_Arte_Universal] of Museo
-         (tiene  [Impresionismo] [Renacimiento])
          (nombre  "Museo de Arte Universal")
     )
 
     ([Renacimiento] of Sala
-         (tiene  [La_Última_Cena] [Mona_Lisa])
          (nombre  "Sala de Renacimiento")
     )
 
