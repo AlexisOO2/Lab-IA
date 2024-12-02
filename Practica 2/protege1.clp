@@ -235,11 +235,20 @@ Leonardo Da Vinci")
 	(export ?ALL)
 )
 
-;;; Modulo de recopilacion del conocimiento del usuario
-(defmodule recopilacion-conocimiento
+(defmodule procesado-datos
 	(import MAIN ?ALL)
-    (import recopilacion-usuario deftemplate ?ALL)
+	(import recopilacion-usuario deftemplate ?ALL)
 	(import recopilacion-prefs deftemplate ?ALL)
+	(export ?ALL)
+)
+
+(defmodule generacion_soluciones
+	(import MAIN ?ALL)
+	(export ?ALL)
+)
+
+(defmodule resultados_al_grupo
+	(import MAIN ?ALL)
 	(export ?ALL)
 )
 ;;; ---------------------------------------------------------
@@ -258,10 +267,8 @@ Leonardo Da Vinci")
 
 ;;; Template para las preferencias del usuario o grupo
 (deftemplate MAIN::preferencias_grupo
-	(multislot autores_favoritos (type INSTANCE))
-	(multislot tematicas_obras_fav (type INSTANCE))
-	(multislot estilos_favoritos (type INSTANCE))
-	(multislot epocas_favoritas (type INSTANCE))
+	(slot autor_favorito (type INSTANCE))
+    (slot obra_favorita (type INSTANCE))
 )
 
 ;;; Template para una lista de las obras que se van a visitar
@@ -305,6 +312,30 @@ Leonardo Da Vinci")
 	?respuesta
 )
 
+; Funcion para hacer una pregunta multi-respuesta con indices
+(deffunction MAIN::pregunta-multirespuesta (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles) 
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (format t "%s" "Indica los numeros referentes a los pintores separados por un espacio: ")
+    (bind ?resp (readline))
+    (bind ?numeros (explode$ ?resp))
+    (bind $?lista (create$ ))
+    (progn$ (?var ?numeros) 
+        (if (and (integerp ?var) (and (>= ?var 0) (<= ?var (length$ ?valores-posibles))))
+            then 
+                (if (not (member$ ?var ?lista))
+                    then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?var))
+                )
+        ) 
+    )
+    (if (member$ 0 ?lista) then (bind ?lista (create$ 0)))    
+    ?lista
+)
+
 (defrule MAIN::initialRule "Regla inicial"
 	(declare (salience 10))
 	=>
@@ -339,17 +370,84 @@ Leonardo Da Vinci")
 	(modify ?g (menores ?menores))
 )
 
-;; (defrule recopilacion-usuario::establecer-tiempo-visita
-;;     ()
-;;     =>
-;;     ()
-;; )
+(defrule recopilacion-usuario::establecer-horas-visita
+	?g <- (datos_grupo (horasdia ?horasdia))
+	(test (< ?horasdia 0))
+	=>
+	(bind ?horasdia (pregunta-numerica "Cuantas horas quieres que dure cada visita? (h)" 1 8)) 
+	(modify ?g (horasdia ?horasdia))
+)
 
-;; (defrule recopilacion-prefs::establecer-autor-preferido
-;;     ()
-;;     =>
-;;     ()
-;; )
+(defrule recopilacion-usuario::establecer-dias-visita
+    ?g <- (datos_grupo (dias ?dias))
+    (test (< ?dias 0))
+    =>
+    (bind ?dias (pregunta-numerica "Cuantos dias dispones para visitar el museo" 1 5))
+    (modify ?g (dias ?dias))
+)
+
+(defrule recopilacion-usuario::establecer-tiempo-total
+    ?g <- (datos_grupo(tiempo ?tiempo))
+    (datos_grupo (dias ?dias) (horasdia ?horasdia))
+    (test (< 0 ?dias)) (test (< 0 ?horasdia)) 
+    =>
+    (bind ?tiempo (* ?dias ?horasdia))
+    (modify ?g (tiempo ?tiempo))
+)
+
+(defrule recopilacion-usuario::establecer-nivel-conocimiento
+    ?g <- (datos_grupo (nivel ?nivel))
+    (test (< ?nivel 0))
+    =>
+    (bind ?nivel (pregunta-numerica "Cual dirias que es tu nivel de conocimiento sobre el arte?" 0 10))
+    (modify ?g (nivel ?nivel))
+)
+
+(defrule recopilacion-usuario::pasar-prefs
+    (declare (salience 10))	
+	?g <- (datos_grupo (tamanyo ?t)(menores ?m) (dias ?d) (horasdia ?horasdia) (nivel ?nivel) (tiempo ?tiempo))
+    (test (> ?t -1))
+    (test (> ?m -1))
+    (test (> ?d -1))
+    (test (> ?nivel -1))
+    (test (> ?tiempo -1))
+    (test (> ?horasdia -1))
+	=>
+    (printout t "Datos recopilados correctamente" crlf)
+	(focus recopilacion-prefs)
+)
+
+
+(deffacts recopilacion-prefs::hechos-iniciales
+    (autor_fav ask)
+    (obra_fav  ask)
+)
+
+(defrule recopilacion-prefs::establecer-autor-preferido
+    (not (preferencias_grupo))
+    ?hecho <- (autor_fav ask)
+	?pref <- (preferencias_grupo)
+	=>
+	(bind $?obj-pintores (find-all-instances ((?inst Pintor)) TRUE))
+	(bind $?nom-pintores (create$ ))
+    (loop-for-count (?i 1 (length$ $?obj-pintores)) do
+		(bind ?curr-obj (nth$ ?i ?obj-pintores))
+		(bind ?curr-nom (send ?curr-obj get-Nombre))
+		(bind $?nom-pintores(insert$ $?nom-pintores (+ (length$ $?nom-pintores) 1) ?curr-nom))
+        (bind ?escogido (pregunta-multirespuesta "Escoja sus pintores favoritos (o 0 en el caso contrario):"  $?nom-pintores))
+    )
+    (assert (autor_fav TRUE))
+    (bind $?respuesta (create$ ))
+	(loop-for-count (?i 1 (length$ ?escogido)) do
+		(bind ?curr-index (nth$ ?i ?escogido))
+        (if (= ?curr-index 0) then (assert (autores_fav FALSE)))
+		(bind ?curr-autor (nth$ ?curr-index ?obj-pintores))
+		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-autor))
+	)
+    (retract ?hecho)
+    (modify ?pref (autor_favorito $?respuesta))
+)
+
 
 ;; (defrule recopilacion-prefs::establecer-obra-preferida
 ;;     ()
@@ -357,11 +455,7 @@ Leonardo Da Vinci")
 ;;     ()
 ;; )
 
-;; (defrule recopilacion-conocimiento::establecer-nivel-conocimiento
-;;     ()
-;;     =>
-;;     ()
-;; )
+
 
 
 
