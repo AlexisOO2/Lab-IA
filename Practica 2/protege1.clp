@@ -411,7 +411,6 @@ Leonardo Da Vinci")
 )
 
 (defrule recopilacion-prefs::establecer-autor-preferido
-    (declare (salience -1))
     ?g <- (preferencias_grupo (autor_favorito ?autor))
     ?hecho <- (autor_favorito nil)
     =>
@@ -430,7 +429,6 @@ Leonardo Da Vinci")
 
 
 (defrule recopilacion-prefs::establecer-obra-preferida
-    (declare (salience -2))
     ?g <- (preferencias_grupo (obra_favorita ?obra))
     ?hecho <- (obra_favorita nil)
     =>
@@ -445,16 +443,33 @@ Leonardo Da Vinci")
     (bind ?respuesta (nth$ ?indice ?obj-obras))
     (modify ?g (obra_favorita ?respuesta))
     (retract ?hecho)
+    (printout t "Procesando datos..." crlf)
     (focus procesado-datos)
 )
 
 ;;; MODULO DE SELECCIÓN
 
-(defrule procesado-datos::inicio_modulo
-    (declare (salience 10))
-    =>
-    (printout t "Procesando datos..." crlf)
+(deffacts procesado-datos::hechos-iniciales
+    (obras_seleccionadas nil)
+    (lista-obras-visita)
 )
+
+;;; ejemplo para mostrar los cuadros
+(defrule procesado-datos::añadir_cuadros
+    ?g <- (preferencias_grupo (obra_favorita ?obra))
+    ?hecho <- (obra_favorita nil)
+    =>
+	(bind $?lista (find-all-instances ((?inst ObraDeArte)) TRUE))
+    (modify ?g (lista-obras-visita (recomendaciones $?lista)))
+    (loop-for-count (?i 1 (length$ $?lista)) do
+        (bind ?curr-obj (nth$ ?i $?lista))
+        (printout t "Cuadro: " (send ?curr-obj get-nombre) crlf)
+    )
+    (retract ?hecho)
+)
+
+;; (defrule procesado-datos::valorar-obras
+;; )
 
 ;;; MODULO DE CONSTRUCCIÓN
 
