@@ -401,67 +401,60 @@ Leonardo Da Vinci")
     =>
     (bind ?nivel (pregunta-numerica "Cual dirias que es tu nivel de conocimiento sobre el arte?" 0 10))
     (modify ?g (nivel ?nivel))
+    (focus recopilacion-prefs)
 )
-
-(defrule recopilacion-usuario::pasar-prefs
-    (declare (salience 10))	
-	?g <- (datos_grupo (tamanyo ?t)(menores ?m) (dias ?d) (horasdia ?horasdia) (nivel ?nivel) (tiempo ?tiempo))
-    (test (> ?t -1))
-    (test (> ?m -1))
-    (test (> ?d -1))
-    (test (> ?nivel -1))
-    (test (> ?tiempo -1))
-    (test (> ?horasdia -1))
-	=>
-    (printout t "Datos recopilados correctamente" crlf)
-	(focus recopilacion-prefs)
-)
-
 
 (deffacts recopilacion-prefs::hechos-iniciales
-    (autor_fav ask)
-    (obra_fav  ask)
+    (autor_favorito nil)
+    (obra_favorita nil)
+    (preferencias_grupo)
 )
 
 (defrule recopilacion-prefs::establecer-autor-preferido
-    (not (preferencias_grupo))
-    ?hecho <- (autor_fav ask)
-	?pref <- (preferencias_grupo)
-	=>
-	(bind $?obj-pintores (find-all-instances ((?inst Pintor)) TRUE))
+    (declare (salience -1))
+    ?g <- (preferencias_grupo (autor_favorito ?autor))
+    ?hecho <- (autor_favorito nil)
+    =>
+    (bind $?obj-pintores (find-all-instances ((?inst Pintor)) TRUE))
 	(bind $?nom-pintores (create$ ))
-    (loop-for-count (?i 1 (length$ $?obj-pintores)) do
+	(loop-for-count (?i 1 (length$ $?obj-pintores)) do
 		(bind ?curr-obj (nth$ ?i ?obj-pintores))
-		(bind ?curr-nom (send ?curr-obj get-Nombre))
+		(bind ?curr-nom (send ?curr-obj get-nombre))
 		(bind $?nom-pintores(insert$ $?nom-pintores (+ (length$ $?nom-pintores) 1) ?curr-nom))
-        (bind ?escogido (pregunta-multirespuesta "Escoja sus pintores favoritos (o 0 en el caso contrario):"  $?nom-pintores))
-    )
-    (assert (autor_fav TRUE))
-    (bind $?respuesta (create$ ))
-	(loop-for-count (?i 1 (length$ ?escogido)) do
-		(bind ?curr-index (nth$ ?i ?escogido))
-        (if (= ?curr-index 0) then (assert (autores_fav FALSE)))
-		(bind ?curr-autor (nth$ ?curr-index ?obj-pintores))
-		(bind $?respuesta(insert$ $?respuesta (+ (length$ $?respuesta) 1) ?curr-autor))
 	)
+    (bind ?indice (pregunta-opciones "Escoja sus pintores favoritos(o 0 en el caso contrario): " $?nom-pintores))
+    (bind ?respuesta (nth$ ?indice ?obj-pintores))
+    (modify ?g (autor_favorito ?respuesta))
     (retract ?hecho)
-    (modify ?pref (autor_favorito $?respuesta))
 )
 
 
-;; (defrule recopilacion-prefs::establecer-obra-preferida
-;;     ()
-;;     =>
-;;     ()
-;; )
-
-
-
-
-
+(defrule recopilacion-prefs::establecer-obra-preferida
+    (declare (salience -2))
+    ?g <- (preferencias_grupo (obra_favorita ?obra))
+    ?hecho <- (obra_favorita nil)
+    =>
+    (bind $?obj-obras (find-all-instances ((?inst ObraDeArte)) TRUE))
+	(bind $?nom-obras (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-obras)) do
+		(bind ?curr-obj (nth$ ?i ?obj-obras))
+		(bind ?curr-nom (send ?curr-obj get-nombre))
+		(bind $?nom-obras(insert$ $?nom-obras (+ (length$ $?nom-obras) 1) ?curr-nom))
+	)
+    (bind ?indice (pregunta-opciones "Escoja sus obras favoritas(o 0 en el caso contrario): " $?nom-obras))
+    (bind ?respuesta (nth$ ?indice ?obj-obras))
+    (modify ?g (obra_favorita ?respuesta))
+    (retract ?hecho)
+    (focus procesado-datos)
+)
 
 ;;; MODULO DE SELECCIÓN
 
+(defrule procesado-datos::inicio_modulo
+    (declare (salience 10))
+    =>
+    (printout t "Procesando datos..." crlf)
+)
 
 ;;; MODULO DE CONSTRUCCIÓN
 
