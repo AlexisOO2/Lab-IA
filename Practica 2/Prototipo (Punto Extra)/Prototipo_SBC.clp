@@ -295,11 +295,6 @@
 	(export ?ALL)
 )
 
-(defmodule generacion_soluciones
-	(import MAIN ?ALL)
-	(export ?ALL)
-)
-
 (defmodule resultados_al_grupo
 	(import MAIN ?ALL)
 	(export ?ALL)
@@ -450,7 +445,7 @@
     ?g <- (datos_grupo (nivel ?nivel))
     (test (< ?nivel 0))
     =>
-    (bind ?nivel (pregunta-numerica "Cual dirias que es tu nivel de conocimiento sobre el arte?" 0 10))
+    (bind ?nivel (pregunta-numerica "Cual dirias que es vuestro nivel de conocimiento sobre el arte?" 0 10))
     (modify ?g (nivel ?nivel))
     (focus recopilacion-prefs)
 )
@@ -586,7 +581,9 @@
             then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?curr-obj))
         )
     )
-    (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?obra))
+    (if (not (member$ ?obra ?lista))
+        then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?obra))
+    )
     (retract ?hecho)
     (modify ?g (recomendaciones $?lista))
     (focus resultados_al_grupo)

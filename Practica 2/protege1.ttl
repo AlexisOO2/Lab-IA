@@ -92,7 +92,8 @@
        rdfs:domain :ObraDeArte ,
                    :Pintor ;
        rdfs:range :Epoca ,
-                  :Estilo .
+                  :Estilo ,
+                  :Tematica .
 
 
 ###  http://www.w3.org/2002/07/owl#topObjectProperty

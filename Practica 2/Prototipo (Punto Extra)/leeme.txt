@@ -1,0 +1,17 @@
+En este .zip se adjunta la el prototipo de SBC de la práctica 2 de IA, este mismo leeme.txt y una captura de pantalla de un ejemplo de ejecución del programa.
+
+Este prototipo ha sido realizado por Alexis Monroy, Macarena Prado y Brian Arias
+
+En el estado actual, es capaz de hacerle una serie de preguntas al usuario para definir las caracteristicas del grupo de visita
+
+Estas caracteristicas son: 
+    - El tamaño del Grupo (1 a 100 integrantes)
+    - Si el grupo contiene algun integrante que sea menor de edad (0 = No, 1 = Si)
+    - Cuantas horas quiere que dure cada visita cada dia (De 1h hasta 8h por visita)
+    - Cuantos dias va a visitar el museo (De 1 hasta 5 dias)
+    - Cual es el nivel de conocimiento del grupo (De 0 a 10)
+    - Preferencias de Autor, Obra, Epoca, Estilo y Tematica (Muestra en pantalla los valores posibles)
+
+Una vez se introducen los valores anteriores el prototipo selecciona la obra favorita seleccionada y las obras de arte del pintor/autor favorito seleccionado que coincidan con estilo y temática.
+
+Finalmente se muestra por pantalla las obras seleccionadas anteriormente.
