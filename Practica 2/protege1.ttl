@@ -13,20 +13,6 @@
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#tema
-:tema rdf:type owl:ObjectProperty ;
-      rdfs:subPropertyOf owl:topObjectProperty .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#tiene
-:tiene rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdfs:domain :ObraDeArte ,
-                   :Pintor ;
-       rdfs:range :Epoca ,
-                  :Estilo .
-
-
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/autor_de
 :autor_de rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
@@ -73,8 +59,8 @@
           rdfs:domain :Visitante ;
           rdfs:range :Epoca ,
                      :Estilo ,
-                     :Tematica ,
-                     :Pintor ;
+                     :Pintor ,
+                     :Tematica ;
           rdfs:comment "Un usuario tiene preferencia por un Pintor u Obras de Arte" .
 
 
@@ -93,6 +79,20 @@
          rdfs:domain :Visita ;
          rdfs:range :Sala ;
          rdfs:comment "En una visita se recorren varias salas" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tema
+:tema rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene
+:tiene rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf owl:topObjectProperty ;
+       rdfs:domain :ObraDeArte ,
+                   :Pintor ;
+       rdfs:range :Epoca ,
+                  :Estilo .
 
 
 ###  http://www.w3.org/2002/07/owl#topObjectProperty
@@ -164,10 +164,13 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :nombre rdf:type owl:DatatypeProperty ;
         rdfs:subPropertyOf owl:topDataProperty ;
         rdf:type owl:FunctionalProperty ;
-        rdfs:domain :Museo ,
+        rdfs:domain :Epoca ,
+                    :Estilo ,
+                    :Museo ,
                     :ObraDeArte ,
                     :Pintor ,
                     :Sala ,
+                    :Tematica ,
                     :Visitante ;
         rdfs:range xsd:string .
 
@@ -200,19 +203,14 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Epoca
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca
 :Epoca rdf:type owl:Class ;
        rdfs:comment "Esta clase representa una época" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Estilo
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo
 :Estilo rdf:type owl:Class ;
         rdfs:comment "Esta clase representa un estilo" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Tematica
-:Tematica rdf:type owl:Class ;
-          rdfs:comment "Esta clase representa una temática" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Museo
@@ -235,6 +233,11 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
       rdfs:comment "Esta clase representa una sala" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Tematica
+:Tematica rdf:type owl:Class ;
+          rdfs:comment "Esta clase representa una temática" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Visita
 :Visita rdf:type owl:Class ;
         rdfs:comment "Esta clase representa una visita" .
@@ -249,88 +252,43 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Epoca_Impresionismo
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Claude_Monet
+:Claude_Monet rdf:type owl:NamedIndividual ,
+                       :Pintor ;
+              :autor_de :Impresión_Sol_Naciente ,
+                        :Los_Nenúfares ;
+              :tiene :Epoca_Impresionismo ,
+                     :Estilo_Impresionista ;
+              :nacionalidad "Francesa" ;
+              :nombre "Claude Monet" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Impresionismo
 :Epoca_Impresionismo rdf:type owl:NamedIndividual ,
                               :Epoca ;
                      :nombre "Impresionismo" ;
                      rdfs:comment "Epoca del Impresionismo" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Epoca_Renacimiento
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Renacimiento
 :Epoca_Renacimiento rdf:type owl:NamedIndividual ,
                              :Epoca ;
                     :nombre "Renacimiento" ;
                     rdfs:comment "Epoca del Renacimiento" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Estilo_Impresionista
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Impresionista
 :Estilo_Impresionista rdf:type owl:NamedIndividual ,
                                :Estilo ;
                       :nombre "Impresionista" ;
                       rdfs:comment "Estilo Impresionista" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Estilo_Renacentista
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Renacentista
 :Estilo_Renacentista rdf:type owl:NamedIndividual ,
                               :Estilo ;
                      :nombre "Renacentista" ;
                      rdfs:comment "Estilo Renacentista" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Naturaleza
-:Naturaleza rdf:type owl:NamedIndividual ,
-                     :Tematica ;
-            :nombre "Naturaleza" ;
-            rdfs:comment "Tema Naturaleza" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Paisaje
-:Paisaje rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Paisaje" ;
-         rdfs:comment "Tema paisaje" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Religión
-:Religión rdf:type owl:NamedIndividual ,
-                   :Tematica ;
-          :nombre "Religión" ;
-          rdfs:comment "Tema religión" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Retrato
-:Retrato rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Retrato" ;
-         rdfs:comment "Tema retrato" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Sala_Impresionismo
-:Sala_Impresionismo rdf:type owl:NamedIndividual ,
-                             :Sala ;
-                    :contiene :Impresión_Sol_Naciente ,
-                              :Los_Nenúfares ;
-                    :contiguas :Sala_Renacimiento ;
-                    :nombre "Sala de Impresionismo" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology#Sala_Renacimiento
-:Sala_Renacimiento rdf:type owl:NamedIndividual ,
-                            :Sala ;
-                   :contiene :La_Última_Cena ,
-                             :Mona_Lisa ;
-                   :nombre "Sala de Renacimiento" .
-
-
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Claude_Monet
-:Claude_Monet rdf:type owl:NamedIndividual ,
-                       :Pintor ;
-              :tiene :Epoca_Impresionismo ,
-                     :Estilo_Impresionista ;
-              :autor_de :Impresión_Sol_Naciente ,
-                        :Los_Nenúfares ;
-              :nacionalidad "Francesa" ;
-              :nombre "Claude Monet" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Impresión_Sol_Naciente
@@ -372,10 +330,10 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Leonardo_da_Vinci
 :Leonardo_da_Vinci rdf:type owl:NamedIndividual ,
                             :Pintor ;
-                   :tiene :Epoca_Renacimiento ,
-                          :Estilo_Renacentista ;
                    :autor_de :La_Última_Cena ,
                              :Mona_Lisa ;
+                   :tiene :Epoca_Renacimiento ,
+                          :Estilo_Renacentista ;
                    :nacionalidad "Italiana" ;
                    :nombre "Leonardo Da Vinci" .
 
@@ -414,6 +372,51 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :nombre "Museo de Arte Universal" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Naturaleza
+:Naturaleza rdf:type owl:NamedIndividual ,
+                     :Tematica ;
+            :nombre "Naturaleza" ;
+            rdfs:comment "Tema Naturaleza" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Paisaje
+:Paisaje rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Paisaje" ;
+         rdfs:comment "Tema paisaje" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Religión
+:Religión rdf:type owl:NamedIndividual ,
+                   :Tematica ;
+          :nombre "Religión" ;
+          rdfs:comment "Tema religión" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Retrato
+:Retrato rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Retrato" ;
+         rdfs:comment "Tema retrato" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Impresionismo
+:Sala_Impresionismo rdf:type owl:NamedIndividual ,
+                             :Sala ;
+                    :contiene :Impresión_Sol_Naciente ,
+                              :Los_Nenúfares ;
+                    :contiguas :Sala_Renacimiento ;
+                    :nombre "Sala de Impresionismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Renacimiento
+:Sala_Renacimiento rdf:type owl:NamedIndividual ,
+                            :Sala ;
+                   :contiene :La_Última_Cena ,
+                             :Mona_Lisa ;
+                   :nombre "Sala de Renacimiento" .
+
+
 #################################################################
 #    General axioms
 #################################################################
@@ -421,11 +424,11 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Epoca
                 :Estilo
-                :Tematica
                 :Museo
                 :ObraDeArte
                 :Pintor
                 :Sala
+                :Tematica
                 :Visita
                 :Visitante
               )

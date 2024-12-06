@@ -2,24 +2,24 @@
 ;;; protege1.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology protege1.ttl
-;;; :Date 03/12/2024 17:10:07
+;;; :Date 06/12/2024 18:26:40
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
 )
 
 (defclass Estilo "Esta clase representa un estilo"
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-)
-
-(defclass Tematica "Esta clase representa una temática"
-    (is-a USER)
-    (role concrete)
-    (pattern-match reactive)
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
 )
 
 (defclass Museo "Esta clase representa un museo"
@@ -66,11 +66,11 @@
     (is-a USER)
     (role concrete)
     (pattern-match reactive)
-    (multislot tiene
-        (type INSTANCE)
-        (create-accessor read-write))
     ;;; Un Pintor es el autor de una Obra de Arte
     (multislot autor_de
+        (type INSTANCE)
+        (create-accessor read-write))
+    (multislot tiene
         (type INSTANCE)
         (create-accessor read-write))
     (slot nacionalidad
@@ -93,6 +93,15 @@
     (multislot contiguas
         (type INSTANCE)
         (create-accessor read-write))
+    (slot nombre
+        (type STRING)
+        (create-accessor read-write))
+)
+
+(defclass Tematica "Esta clase representa una temática"
+    (is-a USER)
+    (role concrete)
+    (pattern-match reactive)
     (slot nombre
         (type STRING)
         (create-accessor read-write))
@@ -145,54 +154,31 @@
 )
 
 (definstances instances
+    ([Claude_Monet] of Pintor
+         (autor_de  [Impresión_Sol_Naciente] [Los_Nenúfares])
+         (tiene  [Epoca_Impresionismo] [Estilo_Impresionista])
+         (nacionalidad  "Francesa")
+         (nombre  "Claude Monet")
+    )
+
     ;;; Epoca del Impresionismo
     ([Epoca_Impresionismo] of Epoca
+         (nombre  "Impresionismo")
     )
 
     ;;; Epoca del Renacimiento
     ([Epoca_Renacimiento] of Epoca
+         (nombre  "Renacimiento")
     )
 
     ;;; Estilo Impresionista
     ([Estilo_Impresionista] of Estilo
+         (nombre  "Impresionista")
     )
 
     ;;; Estilo Renacentista
     ([Estilo_Renacentista] of Estilo
-    )
-
-    ;;; Tema Naturaleza
-    ([Naturaleza] of Tematica
-    )
-
-    ;;; Tema paisaje
-    ([Paisaje] of Tematica
-    )
-
-    ;;; Tema religión
-    ([Religión] of Tematica
-    )
-
-    ;;; Tema retrato
-    ([Retrato] of Tematica
-    )
-
-    ([Sala_Impresionismo] of Sala
-         (contiene  [Impresión_Sol_Naciente] [Los_Nenúfares])
-         (contiguas  [Sala_Renacimiento])
-         (nombre  "Sala de Impresionismo")
-    )
-
-    ([Sala_Renacimiento] of Sala
-         (contiene  [La_Última_Cena] [Mona_Lisa])
-         (nombre  "Sala de Renacimiento")
-    )
-
-    ([Claude_Monet] of Pintor
-         (tiene  [Epoca_Impresionismo] [Estilo_Impresionista])
-         (autor_de  [Impresión_Sol_Naciente] [Los_Nenúfares])
-         (nacionalidad  "Francesa")
-         (nombre  "Claude Monet")
+         (nombre  "Renacentista")
     )
 
     ([Impresión_Sol_Naciente] of ObraDeArte
@@ -221,8 +207,8 @@
     )
 
     ([Leonardo_da_Vinci] of Pintor
-         (tiene  [Epoca_Renacimiento] [Estilo_Renacentista])
          (autor_de  [La_Última_Cena] [Mona_Lisa])
+         (tiene  [Epoca_Renacimiento] [Estilo_Renacentista])
          (nacionalidad  "Italiana")
          (nombre  "Leonardo Da Vinci")
     )
@@ -250,8 +236,38 @@
          (nombre  "Museo de Arte Universal")
     )
 
-)
+    ;;; Tema Naturaleza
+    ([Naturaleza] of Tematica
+         (nombre  "Naturaleza")
+    )
 
+    ;;; Tema paisaje
+    ([Paisaje] of Tematica
+         (nombre  "Paisaje")
+    )
+
+    ;;; Tema religión
+    ([Religión] of Tematica
+         (nombre  "Religión")
+    )
+
+    ;;; Tema retrato
+    ([Retrato] of Tematica
+         (nombre  "Retrato")
+    )
+
+    ([Sala_Impresionismo] of Sala
+         (contiene  [Impresión_Sol_Naciente] [Los_Nenúfares])
+         (contiguas  [Sala_Renacimiento])
+         (nombre  "Sala de Impresionismo")
+    )
+
+    ([Sala_Renacimiento] of Sala
+         (contiene  [La_Última_Cena] [Mona_Lisa])
+         (nombre  "Sala de Renacimiento")
+    )
+
+)
 
 ;;; ---------------------------------------------------------
 ;;;                     MAIN
@@ -306,6 +322,9 @@
 (deftemplate MAIN::preferencias_grupo
 	(slot autor_favorito (type INSTANCE))
     (slot obra_favorita (type INSTANCE))
+    (slot tematica_favorita (type INSTANCE))
+    (slot epoca_favorita (type INSTANCE))
+    (slot estilo_favorito (type INSTANCE))
 )
 
 ;;; Template para una lista de las obras que se van a visitar
@@ -313,11 +332,6 @@
 	(multislot recomendaciones (type INSTANCE))
 )
 
-
-
-;;; ---------------------------------------------------------
-;;;                     MENSAJES
-;;; ---------------------------------------------------------
 
 ;;; ---------------------------------------------------------
 ;;;                     FUNCIONES
@@ -444,6 +458,9 @@
 (deffacts recopilacion-prefs::hechos-iniciales
     (autor_favorito nil)
     (obra_favorita nil)
+    (tematica_favorita nil)
+    (epoca_favorita nil)
+    (estilo_favorito nil)
     (preferencias_grupo)
 )
 
@@ -458,12 +475,11 @@
 		(bind ?curr-nom (send ?curr-obj get-nombre))
 		(bind $?nom-pintores(insert$ $?nom-pintores (+ (length$ $?nom-pintores) 1) ?curr-nom))
 	)
-    (bind ?indice (pregunta-opciones "Escoja sus pintores favoritos(o 0 en el caso contrario): " $?nom-pintores))
+    (bind ?indice (pregunta-opciones "Escoja su pintor favorito: " $?nom-pintores))
     (bind ?respuesta (nth$ ?indice ?obj-pintores))
     (modify ?g (autor_favorito ?respuesta))
     (retract ?hecho)
 )
-
 
 (defrule recopilacion-prefs::establecer-obra-preferida
     ?g <- (preferencias_grupo (obra_favorita ?obra))
@@ -476,13 +492,70 @@
 		(bind ?curr-nom (send ?curr-obj get-nombre))
 		(bind $?nom-obras(insert$ $?nom-obras (+ (length$ $?nom-obras) 1) ?curr-nom))
 	)
-    (bind ?indice (pregunta-opciones "Escoja sus obras favoritas(o 0 en el caso contrario): " $?nom-obras))
+    (bind ?indice (pregunta-opciones "Escoja sus obra favorita: " $?nom-obras))
     (bind ?respuesta (nth$ ?indice ?obj-obras))
     (modify ?g (obra_favorita ?respuesta))
+    (retract ?hecho)
+)
+
+
+
+(defrule recopilacion-prefs::establecer-tematica-preferida
+    ?g <- (preferencias_grupo (tematica_favorita ?obra))
+    ?hecho <- (tematica_favorita nil)
+    =>
+    (bind $?obj-tematica (find-all-instances ((?inst Tematica)) TRUE))
+	(bind $?nom-tematica (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-tematica)) do
+		(bind ?curr-obj (nth$ ?i ?obj-tematica))
+		(bind ?curr-nom (send ?curr-obj get-nombre))
+		(bind $?nom-tematica(insert$ $?nom-tematica (+ (length$ $?nom-tematica) 1) ?curr-nom))
+	)
+    (bind ?indice (pregunta-opciones "Escoja su tematica favorita: " $?nom-tematica))
+    (bind ?respuesta (nth$ ?indice ?obj-tematica))
+    (modify ?g (tematica_favorita ?respuesta))
+    (retract ?hecho)
+)
+
+
+(defrule recopilacion-prefs::establecer-epoca-preferida
+    ?g <- (preferencias_grupo (epoca_favorita ?obra))
+    ?hecho <- (epoca_favorita nil)
+    =>
+    (bind $?obj-epoca (find-all-instances ((?inst Epoca)) TRUE))
+	(bind $?nom-epoca (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-epoca)) do
+		(bind ?curr-obj (nth$ ?i ?obj-epoca))
+		(bind ?curr-nom (send ?curr-obj get-nombre))
+		(bind $?nom-epoca(insert$ $?nom-epoca (+ (length$ $?nom-epoca) 1) ?curr-nom))
+	)
+    (bind ?indice (pregunta-opciones "Escoja su epoca favorita: " $?nom-epoca))
+    (bind ?respuesta (nth$ ?indice ?obj-epoca))
+    (modify ?g (epoca_favorita ?respuesta))
+    (retract ?hecho)
+)
+
+
+(defrule recopilacion-prefs::establecer-estilo-preferido
+    ?g <- (preferencias_grupo (estilo_favorito ?obra))
+    ?hecho <- (estilo_favorito nil)
+    =>
+    (bind $?obj-estilo (find-all-instances ((?inst Estilo)) TRUE))
+	(bind $?nom-estilo (create$ ))
+	(loop-for-count (?i 1 (length$ $?obj-estilo)) do
+		(bind ?curr-obj (nth$ ?i ?obj-estilo))
+		(bind ?curr-nom (send ?curr-obj get-nombre))
+		(bind $?nom-estilo(insert$ $?nom-estilo (+ (length$ $?nom-estilo) 1) ?curr-nom))
+	)
+    (bind ?indice (pregunta-opciones "Escoja su estilo favorita: " $?nom-estilo))
+    (bind ?respuesta (nth$ ?indice ?obj-estilo))
+    (modify ?g (estilo_favorito ?respuesta))
     (retract ?hecho)
     (printout t "Procesando datos..." crlf)
     (focus procesado-datos)
 )
+
+
 
 ;;; MODULO DE SELECCIÓN
 
@@ -493,24 +566,34 @@
 
 ;;; ejemplo para mostrar los cuadros
 (defrule procesado-datos::añadir_cuadros
-    ?g <- (preferencias_grupo (obra_favorita ?obra))
-    ?hecho <- (obra_favorita nil)
+;;de momento solo haremos que añada el el cuadro preferido y aquel de su autor favorito que cumpla con sus preferencias
+    ?g <- (lista-obras-visita (recomendaciones $?l))
+    ?hecho <- (obras_seleccionadas nil)
     =>
 	(bind $?lista (find-all-instances ((?inst ObraDeArte)) TRUE))
-    (modify ?g (lista-obras-visita (recomendaciones $?lista)))
-    (loop-for-count (?i 1 (length$ $?lista)) do
-        (bind ?curr-obj (nth$ ?i $?lista))
-        (printout t "Cuadro: " (send ?curr-obj get-nombre) crlf)
-    )
     (retract ?hecho)
+    (modify ?g (recomendaciones $?lista))
+    (focus resultados_al_grupo)
+
 )
-
-;; (defrule procesado-datos::valorar-obras
-;; )
-
-;;; MODULO DE CONSTRUCCIÓN
-
 
 ;;; MODULO DE IMPRESION DE RESULTADOS
 
+(deffacts resultados_al_grupo::hechos-iniciales
+    (mostrar_resultados nil)
+    (lista-obras-visita)
+)
+
+
+(defrule resultados_al_grupo::imprimir-resultados
+    (lista-obras-visita (recomendaciones $?lista))
+    ?hecho <- (mostrar_resultados nil)
+    =>
+    (printout t "Las obras seleccionadas para su visita son: " crlf)
+    (loop-for-count (?i 1 (length$ $?lista)) do
+        (bind ?curr-obj (nth$ ?i $?lista))
+        (printout t "Cuadro " ?i ": "  (send ?curr-obj get-nombre) crlf)
+    )
+    (retract ?hecho)
+)
 
