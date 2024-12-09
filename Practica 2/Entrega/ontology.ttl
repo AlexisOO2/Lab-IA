@@ -1,0 +1,861 @@
+@prefix : <http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/> .
+
+<http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology> rdf:type owl:Ontology ;
+                                                                   rdfs:comment "Ontología de la práctica" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/autor_de
+:autor_de rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Pintor ;
+          rdfs:range :ObraDeArte ;
+          rdfs:comment "Un Pintor es el autor de una Obra de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/contemplan
+:contemplan rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Visita ;
+            rdfs:range :ObraDeArte ;
+            rdfs:comment "En una Visita se contemplan Obras de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/contiene
+:contiene rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Sala ;
+          rdfs:range :ObraDeArte ;
+          rdfs:comment "Una Sala contiene una serie de Obras de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/contiguas
+:contiguas rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain :Sala ;
+           rdfs:range :Sala ;
+           rdfs:comment "Dos salas son contiguas" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/formado_por
+:formado_por rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Museo ;
+             rdfs:range :Sala ;
+             rdfs:comment "Un Museo está formado por Salas" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/prefiere
+:prefiere rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Visitante ;
+          rdfs:range :Epoca ,
+                     :Estilo ,
+                     :Pintor ,
+                     :Tematica ;
+          rdfs:comment "Un usuario tiene preferencia por un Pintor u Obras de Arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/realiza
+:realiza rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain :Visitante ;
+         rdfs:range :Visita ;
+         rdfs:comment "Un visitante realiza una visita" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/recorre
+:recorre rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :Visita ;
+         rdfs:range :Sala ;
+         rdfs:comment "En una visita se recorren varias salas" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tema
+:tema rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:domain :ObraDeArte ;
+      rdfs:range :Tematica ;
+      rdfs:comment "El tema de una obra de arte está relacionada a una cierta temática" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene
+:tiene rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf owl:topObjectProperty ;
+       rdfs:domain :ObraDeArte ,
+                   :Pintor ;
+       rdfs:range :Epoca ,
+                  :Estilo ;
+       rdfs:comment "Una obra de arte o un pintor tienen una cierta época o estilo" .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdfs:domain :ObraDeArte ;
+                      rdfs:range :Tematica .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/año_de_creacion
+:año_de_creacion rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty ;
+                 rdf:type owl:FunctionalProperty ;
+                 rdfs:domain :ObraDeArte ;
+                 rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/complejidad
+:complejidad rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :ObraDeArte ;
+             rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/conocimiento_de_arte
+:conocimiento_de_arte rdf:type owl:DatatypeProperty ;
+                      rdfs:subPropertyOf owl:topDataProperty ;
+                      rdf:type owl:FunctionalProperty ;
+                      rdfs:domain :Visitante ;
+                      rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/dimensiones
+:dimensiones rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain :ObraDeArte ;
+             rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/duracion_dias
+:duracion_dias rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf owl:topDataProperty ;
+               rdf:type owl:FunctionalProperty ;
+               rdfs:domain :Visita ;
+               rdfs:range xsd:int .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/duracion_horas
+:duracion_horas rdf:type owl:DatatypeProperty ;
+                rdfs:subPropertyOf owl:topDataProperty ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :Visita ;
+                rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/nacionalidad
+:nacionalidad rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdf:type owl:FunctionalProperty ;
+              rdfs:domain :Pintor ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/nombre
+:nombre rdf:type owl:DatatypeProperty ;
+        rdfs:subPropertyOf owl:topDataProperty ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :Epoca ,
+                    :Estilo ,
+                    :Museo ,
+                    :ObraDeArte ,
+                    :Pintor ,
+                    :Sala ,
+                    :Tematica ,
+                    :Visitante ;
+        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/relevancia
+:relevancia rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf owl:topDataProperty ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain :ObraDeArte ;
+            rdfs:range xsd:double .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/ruta
+:ruta rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdf:type owl:FunctionalProperty ;
+      rdfs:domain :Visita ;
+      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tipo
+:tipo rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdf:type owl:FunctionalProperty ;
+      rdfs:domain :Visitante ;
+      rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca
+:Epoca rdf:type owl:Class ;
+       rdfs:comment "Esta clase representa una época" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo
+:Estilo rdf:type owl:Class ;
+        rdfs:comment "Esta clase representa un estilo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Museo
+:Museo rdf:type owl:Class ;
+       rdfs:comment "Esta clase representa un museo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/ObraDeArte
+:ObraDeArte rdf:type owl:Class ;
+            rdfs:comment "Esta clase representa una obra de arte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Pintor
+:Pintor rdf:type owl:Class ;
+        rdfs:comment "Esta clase representa un pintor" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala
+:Sala rdf:type owl:Class ;
+      rdfs:comment "Esta clase representa una sala" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Tematica
+:Tematica rdf:type owl:Class ;
+          rdfs:comment "Esta clase representa una temática" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Visita
+:Visita rdf:type owl:Class ;
+        rdfs:comment "Esta clase representa una visita" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Visitante
+:Visitante rdf:type owl:Class ;
+           rdfs:comment "Esta clase representa un visitante" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Chica_ante_el_espejo
+:Chica_ante_el_espejo rdf:type owl:NamedIndividual ,
+                               :ObraDeArte ;
+                      :tema :Sentimental ;
+                      :tiene :Epoca_Modernismo ,
+                             :Estilo_Surrealista ;
+                      :año_de_creacion 1932 ;
+                      :complejidad "Media-alta" ;
+                      :dimensiones "1.62x1.30" ;
+                      :nombre "Chica ante el espejo" ;
+                      :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Claude_Monet
+:Claude_Monet rdf:type owl:NamedIndividual ,
+                       :Pintor ;
+              :autor_de :Impresión_Sol_Naciente ,
+                        :Los_Nenúfares ;
+              :tiene :Epoca_Impresionismo ,
+                     :Estilo_Impresionista ;
+              :nacionalidad "Francesa" ;
+              :nombre "Claude Monet" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_sueño
+:El_sueño rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+          :tema :Sueño ;
+          :tiene :Epoca_Modernismo ,
+                 :Estilo_Surrealista ;
+          :año_de_creacion 1932 ;
+          :complejidad "Media" ;
+          :dimensiones "1.3x0.97" ;
+          :nombre "El sueño" ;
+          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_viejo_guitarrista
+:El_viejo_guitarrista rdf:type owl:NamedIndividual ,
+                               :ObraDeArte ;
+                      :tema :Música ;
+                      :tiene :Epoca_Modernismo ,
+                             :Estilo_Surrealista ;
+                      :año_de_creacion 1903 ;
+                      :complejidad "Media-alta" ;
+                      :dimensiones "1.2x0.8" ;
+                      :nombre "El viejo guitarrista" ;
+                      :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Impresionismo
+:Epoca_Impresionismo rdf:type owl:NamedIndividual ,
+                              :Epoca ;
+                     :nombre "Impresionismo" ;
+                     rdfs:comment "Epoca del Impresionismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Modernismo
+:Epoca_Modernismo rdf:type owl:NamedIndividual ,
+                           :Epoca ;
+                  :nombre "Modernismo" ;
+                  rdfs:comment "Epoca del Modernismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Renacimiento
+:Epoca_Renacimiento rdf:type owl:NamedIndividual ,
+                             :Epoca ;
+                    :nombre "Renacimiento" ;
+                    rdfs:comment "Epoca del Renacimiento" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Impresionista
+:Estilo_Impresionista rdf:type owl:NamedIndividual ,
+                               :Estilo ;
+                      :nombre "Impresionista" ;
+                      rdfs:comment "Estilo Impresionista" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Renacentista
+:Estilo_Renacentista rdf:type owl:NamedIndividual ,
+                              :Estilo ;
+                     :nombre "Renacentista" ;
+                     rdfs:comment "Estilo Renacentista" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Surrealista
+:Estilo_Surrealista rdf:type owl:NamedIndividual ,
+                             :Estilo ;
+                    :nombre "Surrealista" ;
+                    rdfs:comment "Estilo Surrealista" .
+
+:Estilo_Expresionismo_Abstracto rdf:type owl:NamedIndividual ,
+                             :Estilo ;
+                    :nombre "Expresionismo Abstracto" ;
+                    rdfs:comment "Estilo Expresionismo Abstracto" .
+
+:Estilo_Simbolismo rdf:type owl:NamedIndividual ,
+                           :Estilo ;
+                  :nombre "Simbolismo" ;
+                  rdfs:comment "Estilo Simbolismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Familia
+:Familia rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Familia" ;
+         rdfs:comment "Tema familia" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Guernica
+:Guernica rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+          :tema :Guerra ;
+          :tiene :Epoca_Modernismo ,
+                 :Estilo_Surrealista ;
+          :año_de_creacion 1937 ;
+          :complejidad "Alta" ;
+          :dimensiones "3.5x7.8" ;
+          :nombre "Guernica" ;
+          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Guerra
+:Guerra rdf:type owl:NamedIndividual ,
+                 :Tematica ;
+        :nombre "Guerra" ;
+        rdfs:comment "Tema guerra" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Impresión_Sol_Naciente
+:Impresión_Sol_Naciente rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                        :tema :Paisaje ;
+                        :tiene :Epoca_Impresionismo ,
+                               :Estilo_Impresionista ;
+                        :año_de_creacion 1872 ;
+                        :complejidad "media" ;
+                        :dimensiones "48x63" ;
+                        :nombre "Impresion Sol Naciente" ;
+                        :relevancia "alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Juan
+:Juan rdf:type owl:NamedIndividual ,
+               :Visitante ;
+      :prefiere :Epoca_Renacimiento ,
+                :Leonardo_da_Vinci ;
+      :conocimiento_de_arte "medio-alto" ;
+      :nombre "Juan" ;
+      :tipo "persona" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_familia_de_saltimbanquis
+:La_familia_de_saltimbanquis rdf:type owl:NamedIndividual ,
+                                      :ObraDeArte ;
+                             :tema :Familia ;
+                             :tiene :Epoca_Modernismo ,
+                                    :Estilo_Surrealista ;
+                             :año_de_creacion 1905 ;
+                             :complejidad "Media-alta" ;
+                             :dimensiones "2.13x2.3" ;
+                             :nombre "La familia de saltimbanquis" ;
+                             :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_mujer_que_llora
+:La_mujer_que_llora rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                    :tema :Sentimental ;
+                    :tiene :Epoca_Modernismo ,
+                           :Estilo_Surrealista ;
+                    :año_de_creacion 1937 ;
+                    :complejidad "Media-alta" ;
+                    :dimensiones "0.61x0.50" ;
+                    :nombre "La mujer que llora" ;
+                    :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_Última_Cena
+:La_Última_Cena rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+                :tema :Religión ;
+                :tiene :Epoca_Renacimiento ,
+                       :Estilo_Renacentista ;
+                :año_de_creacion 1495 ;
+                :complejidad "Muy alta" ;
+                :dimensiones "460x880" ;
+                :nombre "La Última Cena" ;
+                :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Las_señoritas_de_Avignon
+:Las_señoritas_de_Avignon rdf:type owl:NamedIndividual ,
+                                   :ObraDeArte ;
+                          :tema :Retrato ;
+                          :tiene :Epoca_Modernismo ,
+                                 :Estilo_Surrealista ;
+                          :año_de_creacion 1907 ;
+                          :complejidad "Alta" ;
+                          :dimensiones "2.4x2.3" ;
+                          :nombre "Las señoritas de Avignon" ;
+                          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Leonardo_da_Vinci
+:Leonardo_da_Vinci rdf:type owl:NamedIndividual ,
+                            :Pintor ;
+                   :autor_de :La_Última_Cena ,
+                             :Mona_Lisa ;
+                   :tiene :Epoca_Renacimiento ,
+                          :Estilo_Renacentista ;
+                   :nacionalidad "Italiana" ;
+                   :nombre "Leonardo Da Vinci" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Los_Nenúfares
+:Los_Nenúfares rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+               :tema :Paisaje ;
+               :tiene :Epoca_Impresionismo ,
+                      :Estilo_Impresionista ;
+               :año_de_creacion 1899 ;
+               :complejidad "Media" ;
+               :dimensiones "200x300" ;
+               :nombre "Los Nenúfares" ;
+               :relevancia "Media-Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Los_tres_músicos
+:Los_tres_músicos rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Música ;
+                  :tiene :Epoca_Modernismo ,
+                         :Estilo_Surrealista ;
+                  :año_de_creacion 1921 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "2x2.23" ;
+                  :nombre "Los tres músicos" ;
+                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Masacre_en_Corea
+:Masacre_en_Corea rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Guerra ;
+                  :tiene :Epoca_Modernismo ,
+                         :Estilo_Surrealista ;
+                  :año_de_creacion 1951 ;
+                  :complejidad "Media-alta" ;
+                  :dimensiones "1.1x2.1" ;
+                  :nombre "Masacre en Corea" ;
+                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mona_Lisa
+:Mona_Lisa rdf:type owl:NamedIndividual ,
+                    :ObraDeArte ;
+           :tema :Retrato ;
+           :tiene :Epoca_Renacimiento ,
+                  :Estilo_Renacentista ;
+           :año_de_creacion 1503 ;
+           :complejidad "Alta" ;
+           :dimensiones "77x53" ;
+           :nombre "Mona Lisa" ;
+           :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mujer_con_sombrero
+:Mujer_con_sombrero rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                    :tema :Retrato ;
+                    :tiene :Epoca_Modernismo ,
+                           :Estilo_Surrealista ;
+                    :año_de_creacion 1935 ;
+                    :complejidad "Media-alta" ;
+                    :dimensiones "0.61x0.5" ;
+                    :nombre "Mujer con sombrero" ;
+                    :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Museo_de_Arte_Universal
+:Museo_de_Arte_Universal rdf:type owl:NamedIndividual ,
+                                  :Museo ;
+                         :formado_por :Sala_Impresionismo ,
+                                      :Sala_Picasso ,
+                                      :Sala_Renacimiento ,
+                                      :Sala_Dalí ;
+                         :nombre "Museo de Arte Universal" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Música
+:Música rdf:type owl:NamedIndividual ,
+                 :Tematica ;
+        :nombre "Música" ;
+        rdfs:comment "Tema música" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Pablo_Picasso
+:Pablo_Picasso rdf:type owl:NamedIndividual ,
+                        :Pintor ;
+               :autor_de :Chica_ante_el_espejo ,
+                         :El_sueño ,
+                         :Guernica ,
+                         :La_familia_de_saltimbanquis ,
+                         :La_mujer_que_llora ,
+                         :Las_señoritas_de_Avignon ,
+                         :Los_tres_músicos ,
+                         :Masacre_en_Corea ,
+                         :Mujer_con_sombrero ;
+               :tiene :Epoca_Modernismo ,
+                      :Estilo_Surrealista ;
+               :nacionalidad "Español" ;
+               :nombre "Pablo Picasso" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Paisaje
+:Paisaje rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Paisaje" ;
+         rdfs:comment "Tema paisaje" .
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Religión
+:Religión rdf:type owl:NamedIndividual ,
+                   :Tematica ;
+          :nombre "Religión" ;
+          rdfs:comment "Tema religión" .
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Retrato
+:Retrato rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Retrato" ;
+         rdfs:comment "Tema retrato" .
+
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Impresionismo
+:Sala_Impresionismo rdf:type owl:NamedIndividual ,
+                             :Sala ;
+                    :contiene :Impresión_Sol_Naciente ,
+                              :Los_Nenúfares ;
+                    :contiguas :Sala_Renacimiento ;
+                    :nombre "Sala de Impresionismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Picasso
+:Sala_Picasso rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :Chica_ante_el_espejo ,
+                        :El_sueño ,
+                        :Guernica ,
+                        :La_familia_de_saltimbanquis ,
+                        :La_mujer_que_llora ,
+                        :Las_señoritas_de_Avignon ,
+                        :Los_tres_músicos ,
+                        :Masacre_en_Corea ,
+                        :Mujer_con_sombrero ;
+              :nombre "Sala Pablo Picasso" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Renacimiento
+:Sala_Renacimiento rdf:type owl:NamedIndividual ,
+                            :Sala ;
+                   :contiene :La_Última_Cena ,
+                             :Mona_Lisa ;
+                   :nombre "Sala de Renacimiento" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sentimental
+:Sentimental rdf:type owl:NamedIndividual ,
+                      :Tematica ;
+             :nombre "Sentimental" ;
+             rdfs:comment "Tema sentimental" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sueño
+:Sueño rdf:type owl:NamedIndividual ,
+                :Tematica ;
+       :nombre "Sueño" ;
+       rdfs:comment "Tema sueño" .
+
+:Salvador_Dalí rdf:type owl:NamedIndividual ,
+                        :Pintor ;
+               :autor_de :La_persistencia_de_la_memoria ,
+                         :Cristo_de_San_Juan_de_la_Cruz ,
+                         :Sueño_causado_por_el_vuelo_de_una_abeja ,
+                         :La_tentación_de_San_Antonio ,
+                         :El_gran_masturbador ,
+                         :Cisnes_que_se_reflejan_como_elefantes ,
+                         :Retrato_de_Mae_West ,
+                         :Galatea_de_las_esferas ,
+                         :El_descubrimiento_de_América_por_Cristóbal_Colón ,
+                         :El_rostro_de_la_guerra;
+               :tiene :Epoca_Modernismo ,
+                      :Estilo_Surrealista ;
+               :nacionalidad "Español" ;
+               :nombre "Salvador Dalí" .
+
+
+:La_persistencia_de_la_memoria rdf:type owl:NamedIndividual ,
+                                      :ObraDeArte ;
+                              :tema :Paisaje ;
+                              :tiene :Epoca_Modernismo ,
+                                     :Estilo_Surrealista ;
+                              :año_de_creacion 1931 ;
+                              :complejidad "Media" ;
+                              :dimensiones "0.24x0.33" ;
+                              :nombre "La persistencia de la memoria" ;
+                              :relevancia "Alta" .
+
+:Cristo_de_San_Juan_de_la_Cruz rdf:type owl:NamedIndividual ,
+                                      :ObraDeArte ;
+                              :tema :Religión ;
+                              :tiene :Epoca_Modernismo ,
+                                     :Estilo_Surrealista ;
+                              :año_de_creacion 1951 ;
+                              :complejidad "Alta" ;
+                              :dimensiones "2.05x1.16" ;
+                              :nombre "Cristo de San Juan de la Cruz" ;
+                              :relevancia "Alta" .
+
+:Sueño_causado_por_el_vuelo_de_una_abeja rdf:type owl:NamedIndividual ,
+                                     :ObraDeArte ;
+                             :tema :Onírico ;
+                             :tiene :Epoca_Modernismo ,
+                                    :Estilo_Surrealista ;
+                             :año_de_creacion 1944 ;
+                             :complejidad "Media-alta" ;
+                             :dimensiones "0.51x0.41" ;
+                             :nombre "Sueño causado por el vuelo de una abeja" ;
+                             :relevancia "Alta" .
+
+:La_tentación_de_San_Antonio rdf:type owl:NamedIndividual ,
+                                     :ObraDeArte ;
+                             :tema :Religión ;
+                             :tiene :Epoca_Modernismo ,
+                                    :Estilo_Surrealista ;
+                             :año_de_creacion 1946 ;
+                             :complejidad "Alta" ;
+                             :dimensiones "0.89x1.19" ;
+                             :nombre "La tentación de San Antonio" ;
+                             :relevancia "Media-alta" .
+
+:El_gran_masturbador rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                     :tema :Psicológico ;
+                     :tiene :Epoca_Modernismo ,
+                            :Estilo_Surrealista ;
+                     :año_de_creacion 1929 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "1.10x0.89" ;
+                     :nombre "El gran masturbador" ;
+                     :relevancia "Alta" .
+
+:Cisnes_que_se_reflejan_como_elefantes rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                   :tema :Metamorfosis ;
+                   :tiene :Epoca_Modernismo ,
+                          :Estilo_Surrealista ;
+                   :año_de_creacion 1937 ;
+                   :complejidad "Media-alta" ;
+                   :dimensiones "0.61x0.65" ;
+                   :nombre "Cisnes que se reflejan como elefantes" ;
+                   :relevancia "Alta" .
+
+:Retrato_de_Mae_West rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                      :tema :Retrato ;
+                      :tiene :Epoca_Modernismo ,
+                             :Estilo_Surrealista ;
+                      :año_de_creacion 1935 ;
+                      :complejidad "Alta" ;
+                      :dimensiones "0.60x0.60" ;
+                      :nombre "Retrato de Mae West" ;
+                      :relevancia "Media-alta" .
+
+:Galatea_de_las_esferas rdf:type owl:NamedIndividual ,
+                                  :ObraDeArte ;
+                          :tema :Ciencia ;
+                          :tiene :Epoca_Modernismo ,
+                                 :Estilo_Surrealista ;
+                          :año_de_creacion 1952 ;
+                          :complejidad "Alta" ;
+                          :dimensiones "0.65x0.54" ;
+                          :nombre "Galatea de las esferas" ;
+                          :relevancia "Alta" .
+
+:El_descubrimiento_de_América_por_Cristóbal_Colón rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                         :tema :Histórico ;
+                         :tiene :Epoca_Modernismo ,
+                                :Estilo_Surrealista ;
+                         :año_de_creacion 1959 ;
+                         :complejidad "Alta" ;
+                         :dimensiones "4.10x2.90" ;
+                         :nombre "El descubrimiento de América por Cristóbal Colón" ;
+                         :relevancia "Alta" .
+
+:El_rostro_de_la_guerra rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                         :tema :Psicológico ;
+                         :tiene :Epoca_Modernismo ,
+                                :Estilo_Surrealista ;
+                         :año_de_creacion 1940 ;
+                         :complejidad "Media-alta" ;
+                         :dimensiones "0.64x0.79" ;
+                         :nombre "El rostro de la guerra" ;
+                         :relevancia "Alta" .
+
+
+:Onírico rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Onírico" ;
+         rdfs:comment "Tema onírico" .
+
+:Psicológico rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Psicológico" ;
+         rdfs:comment "Tema psicológico" .
+
+:Metamorfosis rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Metamorfosis" ;
+         rdfs:comment "Tema metamorfosis" .
+
+:Ciencia rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Ciencia" ;
+         rdfs:comment "Tema ciencia" .
+
+:Histórico rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Histórico" ;
+         rdfs:comment "Tema histórico" .
+
+
+:Sala_Dalí rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :La_persistencia_de_la_memoria ,
+                         :Cristo_de_San_Juan_de_la_Cruz ,
+                         :Sueño_causado_por_el_vuelo_de_una_abeja ,
+                         :La_tentación_de_San_Antonio ,
+                         :El_gran_masturbador ,
+                         :Cisnes_que_se_reflejan_como_elefantes ,
+                         :Retrato_de_Mae_West ,
+                         :Galatea_de_las_esferas ,
+                         :El_descubrimiento_de_América_por_Cristóbal_Colón ,
+                         :El_rostro_de_la_guerra;
+              :nombre "Sala Salvador Dalí" .
+
+:Frida_Kahlo rdf:type owl:NamedIndividual ,
+                        :Pintor ;
+               :autor_de :Las_dos_Fridas ,
+                         :La_columna_rota ,
+                         :El_venado_herido ,
+                         :Viva_la_vida ,
+                         :Autorretrato_con_collar_de_espinas ;
+               :tiene :Epoca_Modernismo ,
+                      :Estilo_Simbolismo ;
+               :nacionalidad "Mexicana" ;
+               :nombre "Frida Kahlo" .
+
+:Jackson_Pollock rdf:type owl:NamedIndividual ,
+                        :Pintor ;
+               :autor_de :Convergencia ,
+                         :Número_5_1948 ,
+                         :Ritmo_de_otoño ,
+                         :Azul_Mural ,
+                         :Eco ;
+               :tiene :Epoca_Modernismo ,
+                      :Estilo_Expresionismo_Abstracto ;
+               :nacionalidad "Estadounidense" ;
+               :nombre "Jackson Pollock" .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Epoca
+                :Estilo
+                :Museo
+                :ObraDeArte
+                :Pintor
+                :Sala
+                :Tematica
+                :Visita
+                :Visitante
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Museo
+                :ObraDeArte
+                :Pintor
+                :Sala
+                :Visita
+                :Visitante
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
