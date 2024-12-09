@@ -543,7 +543,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                                       :Sala_Picasso ,
                                       :Sala_Renacimiento ,
                                       :Sala_Dalí ,
-                                      :Sala_Simbolismo ;
+                                      :Sala_Simbolismo ,
+                                      :Sala_Expresionismo ;
                          :nombre "Museo de Arte Universal" .
 
 
@@ -893,6 +894,15 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :Autorretrato_con_collar_de_espinas ;
               :nombre "Sala Simbolismo" .
 
+:Sala_Expresionismo rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :Convergencia ,
+                         :Número_5_1948 ,
+                         :Ritmo_de_otoño ,
+                         :Azul_Mural ,
+                         :Eco ;
+              :nombre "Sala Expresionismo" .
+
 :Jackson_Pollock rdf:type owl:NamedIndividual ,
                         :Pintor ;
                :autor_de :Convergencia ,
@@ -904,6 +914,66 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                       :Estilo_Expresionismo_Abstracto ;
                :nacionalidad "Estadounidense" ;
                :nombre "Jackson Pollock" .
+
+:Convergencia rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+              :tema :Abstracto ;
+              :tiene :Epoca_Modernismo ,
+                     :Estilo_Expresionismo_Abstracto ;
+              :año_de_creacion 1952 ;
+              :complejidad "Alta" ;
+              :dimensiones "2.40x3.93" ;
+              :nombre "Convergencia" ;
+              :relevancia "Alta" .
+
+:Número_5_1948 rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+               :tema :Abstracto ;
+               :tiene :Epoca_Modernismo ,
+                      :Estilo_Expresionismo_Abstracto ;
+               :año_de_creacion 1948 ;
+               :complejidad "Alta" ;
+               :dimensiones "2.40x1.22" ;
+               :nombre "Número 5, 1948" ;
+               :relevancia "Alta" .
+
+:Ritmo_de_otoño rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                :tema :Abstracto ;
+                :tiene :Epoca_Modernismo ,
+                       :Estilo_Expresionismo_Abstracto ;
+                :año_de_creacion 1950 ;
+                :complejidad "Alta" ;
+                :dimensiones "2.66x5.25" ;
+                :nombre "Ritmo de otoño" ;
+                :relevancia "Alta" .
+
+:Azul_Mural rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+            :tema :Abstracto ;
+            :tiene :Epoca_Modernismo ,
+                   :Estilo_Expresionismo_Abstracto ;
+            :año_de_creacion 1943 ;
+            :complejidad "Alta" ;
+            :dimensiones "2.43x6.08" ;
+            :nombre "Azul Mural" ;
+            :relevancia "Alta" .
+
+:Eco rdf:type owl:NamedIndividual ,
+              :ObraDeArte ;
+      :tema :Abstracto ;
+      :tiene :Epoca_Modernismo ,
+             :Estilo_Expresionismo_Abstracto ;
+      :año_de_creacion 1951 ;
+      :complejidad "Media-alta" ;
+      :dimensiones "1.90x1.42" ;
+      :nombre "Eco" ;
+      :relevancia "Media-alta" .
+
+:Abstracto rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Abstracto" ;
+         rdfs:comment "Tema abstracto" .
 
 #################################################################
 #    General axioms

@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 09/12/2024 16:54:20
+;;; :Date 09/12/2024 16:58:48
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -372,7 +372,7 @@
     )
 
     ([Museo_de_Arte_Universal] of Museo
-         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo])
+         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo])
          (nombre  "Museo de Arte Universal")
     )
 
@@ -638,11 +638,71 @@
          (nombre  "Sala Simbolismo")
     )
 
+    ([Sala_Expresionismo] of Sala
+         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco])
+         (nombre  "Sala Expresionismo")
+    )
+
     ([Jackson_Pollock] of Pintor
          (autor_de  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco])
          (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
          (nacionalidad  "Estadounidense")
          (nombre  "Jackson Pollock")
+    )
+
+    ([Convergencia] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1952)
+         (complejidad  "Alta")
+         (dimensiones  "2.40x3.93")
+         (nombre  "Convergencia")
+         (relevancia  "Alta")
+    )
+
+    ([Número_5_1948] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1948)
+         (complejidad  "Alta")
+         (dimensiones  "2.40x1.22")
+         (nombre  "Número 5, 1948")
+         (relevancia  "Alta")
+    )
+
+    ([Ritmo_de_otoño] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1950)
+         (complejidad  "Alta")
+         (dimensiones  "2.66x5.25")
+         (nombre  "Ritmo de otoño")
+         (relevancia  "Alta")
+    )
+
+    ([Azul_Mural] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1943)
+         (complejidad  "Alta")
+         (dimensiones  "2.43x6.08")
+         (nombre  "Azul Mural")
+         (relevancia  "Alta")
+    )
+
+    ([Eco] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1951)
+         (complejidad  "Media-alta")
+         (dimensiones  "1.90x1.42")
+         (nombre  "Eco")
+         (relevancia  "Media-alta")
+    )
+
+    ;;; Tema abstracto
+    ([Abstracto] of Tematica
+         (nombre  "Abstracto")
     )
 
 )
