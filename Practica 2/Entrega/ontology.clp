@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 09/12/2024 16:17:45
+;;; :Date 09/12/2024 16:54:20
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -227,6 +227,16 @@
          (nombre  "Surrealista")
     )
 
+    ;;; Estilo Expresionismo Abstracto
+    ([Estilo_Expresionismo_Abstracto] of Estilo
+         (nombre  "Expresionismo Abstracto")
+    )
+
+    ;;; Estilo Simbolismo
+    ([Estilo_Simbolismo] of Estilo
+         (nombre  "Simbolismo")
+    )
+
     ;;; Tema familia
     ([Familia] of Tematica
          (nombre  "Familia")
@@ -362,7 +372,7 @@
     )
 
     ([Museo_de_Arte_Universal] of Museo
-         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento])
+         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo])
          (nombre  "Museo de Arte Universal")
     )
 
@@ -417,6 +427,222 @@
     ;;; Tema sueño
     ([Sueño] of Tematica
          (nombre  "Sueño")
+    )
+
+    ([Salvador_Dalí] of Pintor
+         (autor_de  [La_persistencia_de_la_memoria] [Cristo_de_San_Juan_de_la_Cruz] [Sueño_causado_por_el_vuelo_de_una_abeja] [La_tentación_de_San_Antonio] [El_gran_masturbador] [Cisnes_que_se_reflejan_como_elefantes] [Retrato_de_Mae_West] [Galatea_de_las_esferas] [El_descubrimiento_de_América_por_Cristóbal_Colón] [El_rostro_de_la_guerra])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (nacionalidad  "Español")
+         (nombre  "Salvador Dalí")
+    )
+
+    ([La_persistencia_de_la_memoria] of ObraDeArte
+         (tema  [Paisaje])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1931)
+         (complejidad  "Media")
+         (dimensiones  "0.24x0.33")
+         (nombre  "La persistencia de la memoria")
+         (relevancia  "Alta")
+    )
+
+    ([Cristo_de_San_Juan_de_la_Cruz] of ObraDeArte
+         (tema  [Religión])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1951)
+         (complejidad  "Alta")
+         (dimensiones  "2.05x1.16")
+         (nombre  "Cristo de San Juan de la Cruz")
+         (relevancia  "Alta")
+    )
+
+    ([Sueño_causado_por_el_vuelo_de_una_abeja] of ObraDeArte
+         (tema  [Onírico])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1944)
+         (complejidad  "Media-alta")
+         (dimensiones  "0.51x0.41")
+         (nombre  "Sueño causado por el vuelo de una abeja")
+         (relevancia  "Alta")
+    )
+
+    ([La_tentación_de_San_Antonio] of ObraDeArte
+         (tema  [Religión])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1946)
+         (complejidad  "Alta")
+         (dimensiones  "0.89x1.19")
+         (nombre  "La tentación de San Antonio")
+         (relevancia  "Media-alta")
+    )
+
+    ([El_gran_masturbador] of ObraDeArte
+         (tema  [Psicológico])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1929)
+         (complejidad  "Alta")
+         (dimensiones  "1.10x0.89")
+         (nombre  "El gran masturbador")
+         (relevancia  "Alta")
+    )
+
+    ([Cisnes_que_se_reflejan_como_elefantes] of ObraDeArte
+         (tema  [Metamorfosis])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1937)
+         (complejidad  "Media-alta")
+         (dimensiones  "0.61x0.65")
+         (nombre  "Cisnes que se reflejan como elefantes")
+         (relevancia  "Alta")
+    )
+
+    ([Retrato_de_Mae_West] of ObraDeArte
+         (tema  [Retrato])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1935)
+         (complejidad  "Alta")
+         (dimensiones  "0.60x0.60")
+         (nombre  "Retrato de Mae West")
+         (relevancia  "Media-alta")
+    )
+
+    ([Galatea_de_las_esferas] of ObraDeArte
+         (tema  [Ciencia])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1952)
+         (complejidad  "Alta")
+         (dimensiones  "0.65x0.54")
+         (nombre  "Galatea de las esferas")
+         (relevancia  "Alta")
+    )
+
+    ([El_descubrimiento_de_América_por_Cristóbal_Colón] of ObraDeArte
+         (tema  [Histórico])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1959)
+         (complejidad  "Alta")
+         (dimensiones  "4.10x2.90")
+         (nombre  "El descubrimiento de América por Cristóbal Colón")
+         (relevancia  "Alta")
+    )
+
+    ([El_rostro_de_la_guerra] of ObraDeArte
+         (tema  [Psicológico])
+         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (año_de_creacion  1940)
+         (complejidad  "Media-alta")
+         (dimensiones  "0.64x0.79")
+         (nombre  "El rostro de la guerra")
+         (relevancia  "Alta")
+    )
+
+    ;;; Tema onírico
+    ([Onírico] of Tematica
+         (nombre  "Onírico")
+    )
+
+    ;;; Tema psicológico
+    ([Psicológico] of Tematica
+         (nombre  "Psicológico")
+    )
+
+    ;;; Tema metamorfosis
+    ([Metamorfosis] of Tematica
+         (nombre  "Metamorfosis")
+    )
+
+    ;;; Tema ciencia
+    ([Ciencia] of Tematica
+         (nombre  "Ciencia")
+    )
+
+    ;;; Tema histórico
+    ([Histórico] of Tematica
+         (nombre  "Histórico")
+    )
+
+    ([Sala_Dalí] of Sala
+         (contiene  [La_persistencia_de_la_memoria] [Cristo_de_San_Juan_de_la_Cruz] [Sueño_causado_por_el_vuelo_de_una_abeja] [La_tentación_de_San_Antonio] [El_gran_masturbador] [Cisnes_que_se_reflejan_como_elefantes] [Retrato_de_Mae_West] [Galatea_de_las_esferas] [El_descubrimiento_de_América_por_Cristóbal_Colón] [El_rostro_de_la_guerra])
+         (nombre  "Sala Salvador Dalí")
+    )
+
+    ([Frida_Kahlo] of Pintor
+         (autor_de  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas])
+         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (nacionalidad  "Mexicana")
+         (nombre  "Frida Kahlo")
+    )
+
+    ([Las_dos_Fridas] of ObraDeArte
+         (tema  [Retrato])
+         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (año_de_creacion  1939)
+         (complejidad  "Alta")
+         (dimensiones  "1.73x1.74")
+         (nombre  "Las dos Fridas")
+         (relevancia  "Alta")
+    )
+
+    ([La_columna_rota] of ObraDeArte
+         (tema  [Sentimental])
+         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (año_de_creacion  1944)
+         (complejidad  "Alta")
+         (dimensiones  "0.40x0.34")
+         (nombre  "La columna rota")
+         (relevancia  "Alta")
+    )
+
+    ([El_venado_herido] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (año_de_creacion  1946)
+         (complejidad  "Media")
+         (dimensiones  "0.30x0.22")
+         (nombre  "El venado herido")
+         (relevancia  "Media-alta")
+    )
+
+    ([Viva_la_vida] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (año_de_creacion  1954)
+         (complejidad  "Media")
+         (dimensiones  "0.78x0.64")
+         (nombre  "Viva la vida")
+         (relevancia  "Media-alta")
+    )
+
+    ([Autorretrato_con_collar_de_espinas] of ObraDeArte
+         (tema  [Retrato])
+         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (año_de_creacion  1940)
+         (complejidad  "Alta")
+         (dimensiones  "0.63x0.49")
+         (nombre  "Autorretrato con collar de espinas")
+         (relevancia  "Alta")
+    )
+
+    ;;; Tema naturaleza
+    ([Naturaleza] of Tematica
+         (nombre  "Naturaleza")
+    )
+
+    ;;; Tema simbolismo
+    ([Simbolismo] of Tematica
+         (nombre  "Simbolismo")
+    )
+
+    ([Sala_Simbolismo] of Sala
+         (contiene  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas])
+         (nombre  "Sala Simbolismo")
+    )
+
+    ([Jackson_Pollock] of Pintor
+         (autor_de  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco])
+         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (nacionalidad  "Estadounidense")
+         (nombre  "Jackson Pollock")
     )
 
 )

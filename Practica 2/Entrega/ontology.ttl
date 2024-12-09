@@ -542,7 +542,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :formado_por :Sala_Impresionismo ,
                                       :Sala_Picasso ,
                                       :Sala_Renacimiento ,
-                                      :Sala_Dalí ;
+                                      :Sala_Dalí ,
+                                      :Sala_Simbolismo ;
                          :nombre "Museo de Arte Universal" .
 
 
@@ -816,6 +817,81 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                       :Estilo_Simbolismo ;
                :nacionalidad "Mexicana" ;
                :nombre "Frida Kahlo" .
+
+:Las_dos_Fridas rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                  :tema :Retrato ;
+                  :tiene :Epoca_Modernismo ,
+                         :Estilo_Simbolismo ;
+                  :año_de_creacion 1939 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "1.73x1.74" ;
+                  :nombre "Las dos Fridas" ;
+                  :relevancia "Alta" .
+
+
+:La_columna_rota rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                  :tema :Sentimental ;
+                  :tiene :Epoca_Modernismo ,
+                         :Estilo_Simbolismo ;
+                  :año_de_creacion 1944 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "0.40x0.34" ;
+                  :nombre "La columna rota" ;
+                  :relevancia "Alta" .
+
+:El_venado_herido rdf:type owl:NamedIndividual ,
+                            :ObraDeArte ;
+                    :tema :Simbolismo ;
+                    :tiene :Epoca_Modernismo ,
+                           :Estilo_Simbolismo ;
+                    :año_de_creacion 1946 ;
+                    :complejidad "Media" ;
+                    :dimensiones "0.30x0.22" ;
+                    :nombre "El venado herido" ;
+                    :relevancia "Media-alta" .
+
+:Viva_la_vida rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+                :tema :Naturaleza ;
+                :tiene :Epoca_Modernismo ,
+                       :Estilo_Simbolismo ;
+                :año_de_creacion 1954 ;
+                :complejidad "Media" ;
+                :dimensiones "0.78x0.64" ;
+                :nombre "Viva la vida" ;
+                :relevancia "Media-alta" .
+
+:Autorretrato_con_collar_de_espinas rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                  :tema :Retrato ;
+                  :tiene :Epoca_Modernismo ,
+                         :Estilo_Simbolismo ;
+                  :año_de_creacion 1940 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "0.63x0.49" ;
+                  :nombre "Autorretrato con collar de espinas" ;
+                  :relevancia "Alta" .
+
+:Naturaleza rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Naturaleza" ;
+         rdfs:comment "Tema naturaleza" .
+
+:Simbolismo rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Simbolismo" ;
+         rdfs:comment "Tema simbolismo" .
+
+:Sala_Simbolismo rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :Las_dos_Fridas ,
+                         :La_columna_rota ,
+                         :El_venado_herido ,
+                         :Viva_la_vida ,
+                         :Autorretrato_con_collar_de_espinas ;
+              :nombre "Sala Simbolismo" .
 
 :Jackson_Pollock rdf:type owl:NamedIndividual ,
                         :Pintor ;
