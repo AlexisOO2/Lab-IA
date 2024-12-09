@@ -89,14 +89,21 @@
       rdfs:comment "El tema de una obra de arte está relacionada a una cierta temática" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene
-:tiene rdf:type owl:ObjectProperty ;
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene_epoca
+:tiene_epoca rdf:type owl:ObjectProperty ;
        rdfs:subPropertyOf owl:topObjectProperty ;
        rdfs:domain :ObraDeArte ,
                    :Pintor ;
-       rdfs:range :Epoca ,
-                  :Estilo ;
-       rdfs:comment "Una obra de arte o un pintor tienen una cierta época o estilo" .
+       rdfs:range :Epoca ;
+       rdfs:comment "Una obra de arte o un pintor tienen una cierta época" .
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene_estilo
+:tiene_estilo rdf:type owl:ObjectProperty ;
+       rdfs:subPropertyOf owl:topObjectProperty ;
+       rdfs:domain :ObraDeArte ,
+                   :Pintor ;
+       rdfs:range :Estilo ;
+       rdfs:comment "Una obra de arte o un pintor tienen una cierto estilo" .
 
 
 ###  http://www.w3.org/2002/07/owl#topObjectProperty
@@ -260,8 +267,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Chica_ante_el_espejo rdf:type owl:NamedIndividual ,
                                :ObraDeArte ;
                       :tema :Sentimental ;
-                      :tiene :Epoca_Modernismo ,
-                             :Estilo_Surrealista ;
+                      :tiene_epoca :Epoca_Modernismo ;
+                      :tiene_estilo :Estilo_Surrealista ;
                       :año_de_creacion 1932 ;
                       :complejidad "Media-alta" ;
                       :dimensiones "1.62x1.30" ;
@@ -274,8 +281,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                        :Pintor ;
               :autor_de :Impresión_Sol_Naciente ,
                         :Los_Nenúfares ;
-              :tiene :Epoca_Impresionismo ,
-                     :Estilo_Impresionista ;
+              :tiene_epoca :Epoca_Impresionismo ;
+              :tiene_estilo :Estilo_Impresionista ;
               :nacionalidad "Francesa" ;
               :nombre "Claude Monet" .
 
@@ -284,8 +291,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :El_sueño rdf:type owl:NamedIndividual ,
                    :ObraDeArte ;
           :tema :Sueño ;
-          :tiene :Epoca_Modernismo ,
-                 :Estilo_Surrealista ;
+          :tiene_epoca :Epoca_Modernismo ;
+          :tiene_estilo :Estilo_Surrealista ;
           :año_de_creacion 1932 ;
           :complejidad "Media" ;
           :dimensiones "1.3x0.97" ;
@@ -297,8 +304,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :El_viejo_guitarrista rdf:type owl:NamedIndividual ,
                                :ObraDeArte ;
                       :tema :Música ;
-                      :tiene :Epoca_Modernismo ,
-                             :Estilo_Surrealista ;
+                      :tiene_epoca :Epoca_Modernismo ;
+                      :tiene_estilo :Estilo_Surrealista ;
                       :año_de_creacion 1903 ;
                       :complejidad "Media-alta" ;
                       :dimensiones "1.2x0.8" ;
@@ -369,8 +376,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Guernica rdf:type owl:NamedIndividual ,
                    :ObraDeArte ;
           :tema :Guerra ;
-          :tiene :Epoca_Modernismo ,
-                 :Estilo_Surrealista ;
+          :tiene_epoca :Epoca_Modernismo ;
+          :tiene_estilo :Estilo_Surrealista ;
           :año_de_creacion 1937 ;
           :complejidad "Alta" ;
           :dimensiones "3.5x7.8" ;
@@ -389,8 +396,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Impresión_Sol_Naciente rdf:type owl:NamedIndividual ,
                                  :ObraDeArte ;
                         :tema :Paisaje ;
-                        :tiene :Epoca_Impresionismo ,
-                               :Estilo_Impresionista ;
+                        :tiene_epoca :Epoca_Impresionismo ;
+                        :tiene_estilo :Estilo_Impresionista ;
                         :año_de_creacion 1872 ;
                         :complejidad "media" ;
                         :dimensiones "48x63" ;
@@ -412,8 +419,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :La_familia_de_saltimbanquis rdf:type owl:NamedIndividual ,
                                       :ObraDeArte ;
                              :tema :Familia ;
-                             :tiene :Epoca_Modernismo ,
-                                    :Estilo_Surrealista ;
+                             :tiene_epoca :Epoca_Modernismo ;
+                             :tiene_estilo :Estilo_Surrealista ;
                              :año_de_creacion 1905 ;
                              :complejidad "Media-alta" ;
                              :dimensiones "2.13x2.3" ;
@@ -425,8 +432,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :La_mujer_que_llora rdf:type owl:NamedIndividual ,
                              :ObraDeArte ;
                     :tema :Sentimental ;
-                    :tiene :Epoca_Modernismo ,
-                           :Estilo_Surrealista ;
+                    :tiene_epoca :Epoca_Modernismo ;
+                    :tiene_estilo :Estilo_Surrealista ;
                     :año_de_creacion 1937 ;
                     :complejidad "Media-alta" ;
                     :dimensiones "0.61x0.50" ;
@@ -438,8 +445,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :La_Última_Cena rdf:type owl:NamedIndividual ,
                          :ObraDeArte ;
                 :tema :Religión ;
-                :tiene :Epoca_Renacimiento ,
-                       :Estilo_Renacentista ;
+                :tiene_epoca :Epoca_Renacimiento ;
+                :tiene_estilo :Estilo_Renacentista ;
                 :año_de_creacion 1495 ;
                 :complejidad "Muy alta" ;
                 :dimensiones "460x880" ;
@@ -451,8 +458,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Las_señoritas_de_Avignon rdf:type owl:NamedIndividual ,
                                    :ObraDeArte ;
                           :tema :Retrato ;
-                          :tiene :Epoca_Modernismo ,
-                                 :Estilo_Surrealista ;
+                          :tiene_epoca :Epoca_Modernismo ;
+                          :tiene_estilo :Estilo_Surrealista ;
                           :año_de_creacion 1907 ;
                           :complejidad "Alta" ;
                           :dimensiones "2.4x2.3" ;
@@ -465,8 +472,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                             :Pintor ;
                    :autor_de :La_Última_Cena ,
                              :Mona_Lisa ;
-                   :tiene :Epoca_Renacimiento ,
-                          :Estilo_Renacentista ;
+                   :tiene_epoca :Epoca_Renacimiento ;
+                   :tiene_estilo :Estilo_Renacentista ;
                    :nacionalidad "Italiana" ;
                    :nombre "Leonardo Da Vinci" .
 
@@ -475,8 +482,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Los_Nenúfares rdf:type owl:NamedIndividual ,
                         :ObraDeArte ;
                :tema :Paisaje ;
-               :tiene :Epoca_Impresionismo ,
-                      :Estilo_Impresionista ;
+               :tiene_epoca :Epoca_Impresionismo ;
+               :tiene_estilo :Estilo_Impresionista ;
                :año_de_creacion 1899 ;
                :complejidad "Media" ;
                :dimensiones "200x300" ;
@@ -488,8 +495,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Los_tres_músicos rdf:type owl:NamedIndividual ,
                            :ObraDeArte ;
                   :tema :Música ;
-                  :tiene :Epoca_Modernismo ,
-                         :Estilo_Surrealista ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Surrealista ;
                   :año_de_creacion 1921 ;
                   :complejidad "Alta" ;
                   :dimensiones "2x2.23" ;
@@ -501,8 +508,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Masacre_en_Corea rdf:type owl:NamedIndividual ,
                            :ObraDeArte ;
                   :tema :Guerra ;
-                  :tiene :Epoca_Modernismo ,
-                         :Estilo_Surrealista ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Surrealista ;
                   :año_de_creacion 1951 ;
                   :complejidad "Media-alta" ;
                   :dimensiones "1.1x2.1" ;
@@ -514,8 +521,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Mona_Lisa rdf:type owl:NamedIndividual ,
                     :ObraDeArte ;
            :tema :Retrato ;
-           :tiene :Epoca_Renacimiento ,
-                  :Estilo_Renacentista ;
+           :tiene_epoca :Epoca_Renacimiento ;
+           :tiene_estilo :Estilo_Renacentista ;
            :año_de_creacion 1503 ;
            :complejidad "Alta" ;
            :dimensiones "77x53" ;
@@ -527,8 +534,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Mujer_con_sombrero rdf:type owl:NamedIndividual ,
                              :ObraDeArte ;
                     :tema :Retrato ;
-                    :tiene :Epoca_Modernismo ,
-                           :Estilo_Surrealista ;
+                    :tiene_epoca :Epoca_Modernismo ;
+                    :tiene_estilo :Estilo_Surrealista ;
                     :año_de_creacion 1935 ;
                     :complejidad "Media-alta" ;
                     :dimensiones "0.61x0.5" ;
@@ -567,8 +574,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :Los_tres_músicos ,
                          :Masacre_en_Corea ,
                          :Mujer_con_sombrero ;
-               :tiene :Epoca_Modernismo ,
-                      :Estilo_Surrealista ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Surrealista ;
                :nacionalidad "Español" ;
                :nombre "Pablo Picasso" .
 
@@ -650,8 +657,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :Galatea_de_las_esferas ,
                          :El_descubrimiento_de_América_por_Cristóbal_Colón ,
                          :El_rostro_de_la_guerra;
-               :tiene :Epoca_Modernismo ,
-                      :Estilo_Surrealista ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Surrealista ;
                :nacionalidad "Español" ;
                :nombre "Salvador Dalí" .
 
@@ -659,8 +666,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :La_persistencia_de_la_memoria rdf:type owl:NamedIndividual ,
                                       :ObraDeArte ;
                               :tema :Paisaje ;
-                              :tiene :Epoca_Modernismo ,
-                                     :Estilo_Surrealista ;
+                              :tiene_epoca :Epoca_Modernismo ;
+                              :tiene_estilo :Estilo_Surrealista ;
                               :año_de_creacion 1931 ;
                               :complejidad "Media" ;
                               :dimensiones "0.24x0.33" ;
@@ -670,8 +677,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Cristo_de_San_Juan_de_la_Cruz rdf:type owl:NamedIndividual ,
                                       :ObraDeArte ;
                               :tema :Religión ;
-                              :tiene :Epoca_Modernismo ,
-                                     :Estilo_Surrealista ;
+                              :tiene_epoca :Epoca_Modernismo ;
+                              :tiene_estilo :Estilo_Surrealista ;
                               :año_de_creacion 1951 ;
                               :complejidad "Alta" ;
                               :dimensiones "2.05x1.16" ;
@@ -681,8 +688,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Sueño_causado_por_el_vuelo_de_una_abeja rdf:type owl:NamedIndividual ,
                                      :ObraDeArte ;
                              :tema :Onírico ;
-                             :tiene :Epoca_Modernismo ,
-                                    :Estilo_Surrealista ;
+                             :tiene_epoca :Epoca_Modernismo ;
+                             :tiene_estilo :Estilo_Surrealista ;
                              :año_de_creacion 1944 ;
                              :complejidad "Media-alta" ;
                              :dimensiones "0.51x0.41" ;
@@ -692,8 +699,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :La_tentación_de_San_Antonio rdf:type owl:NamedIndividual ,
                                      :ObraDeArte ;
                              :tema :Religión ;
-                             :tiene :Epoca_Modernismo ,
-                                    :Estilo_Surrealista ;
+                             :tiene_epoca :Epoca_Modernismo ;
+                             :tiene_estilo :Estilo_Surrealista ;
                              :año_de_creacion 1946 ;
                              :complejidad "Alta" ;
                              :dimensiones "0.89x1.19" ;
@@ -703,8 +710,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :El_gran_masturbador rdf:type owl:NamedIndividual ,
                              :ObraDeArte ;
                      :tema :Psicológico ;
-                     :tiene :Epoca_Modernismo ,
-                            :Estilo_Surrealista ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Surrealista ;
                      :año_de_creacion 1929 ;
                      :complejidad "Alta" ;
                      :dimensiones "1.10x0.89" ;
@@ -714,8 +721,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Cisnes_que_se_reflejan_como_elefantes rdf:type owl:NamedIndividual ,
                            :ObraDeArte ;
                    :tema :Metamorfosis ;
-                   :tiene :Epoca_Modernismo ,
-                          :Estilo_Surrealista ;
+                   :tiene_epoca :Epoca_Modernismo ;
+                   :tiene_estilo :Estilo_Surrealista ;
                    :año_de_creacion 1937 ;
                    :complejidad "Media-alta" ;
                    :dimensiones "0.61x0.65" ;
@@ -725,8 +732,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Retrato_de_Mae_West rdf:type owl:NamedIndividual ,
                               :ObraDeArte ;
                       :tema :Retrato ;
-                      :tiene :Epoca_Modernismo ,
-                             :Estilo_Surrealista ;
+                      :tiene_epoca :Epoca_Modernismo ;
+                      :tiene_estilo :Estilo_Surrealista ;
                       :año_de_creacion 1935 ;
                       :complejidad "Alta" ;
                       :dimensiones "0.60x0.60" ;
@@ -736,8 +743,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Galatea_de_las_esferas rdf:type owl:NamedIndividual ,
                                   :ObraDeArte ;
                           :tema :Ciencia ;
-                          :tiene :Epoca_Modernismo ,
-                                 :Estilo_Surrealista ;
+                          :tiene_epoca :Epoca_Modernismo ;
+                          :tiene_estilo :Estilo_Surrealista ;
                           :año_de_creacion 1952 ;
                           :complejidad "Alta" ;
                           :dimensiones "0.65x0.54" ;
@@ -747,8 +754,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :El_descubrimiento_de_América_por_Cristóbal_Colón rdf:type owl:NamedIndividual ,
                                  :ObraDeArte ;
                          :tema :Histórico ;
-                         :tiene :Epoca_Modernismo ,
-                                :Estilo_Surrealista ;
+                         :tiene_epoca :Epoca_Modernismo ;
+                         :tiene_estilo :Estilo_Surrealista ;
                          :año_de_creacion 1959 ;
                          :complejidad "Alta" ;
                          :dimensiones "4.10x2.90" ;
@@ -758,8 +765,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :El_rostro_de_la_guerra rdf:type owl:NamedIndividual ,
                                  :ObraDeArte ;
                          :tema :Psicológico ;
-                         :tiene :Epoca_Modernismo ,
-                                :Estilo_Surrealista ;
+                         :tiene_epoca :Epoca_Modernismo ;
+                         :tiene_estilo :Estilo_Surrealista ;
                          :año_de_creacion 1940 ;
                          :complejidad "Media-alta" ;
                          :dimensiones "0.64x0.79" ;
@@ -814,16 +821,16 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :El_venado_herido ,
                          :Viva_la_vida ,
                          :Autorretrato_con_collar_de_espinas ;
-               :tiene :Epoca_Modernismo ,
-                      :Estilo_Simbolismo ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Simbolismo ;
                :nacionalidad "Mexicana" ;
                :nombre "Frida Kahlo" .
 
 :Las_dos_Fridas rdf:type owl:NamedIndividual ,
                           :ObraDeArte ;
                   :tema :Retrato ;
-                  :tiene :Epoca_Modernismo ,
-                         :Estilo_Simbolismo ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Simbolismo ;
                   :año_de_creacion 1939 ;
                   :complejidad "Alta" ;
                   :dimensiones "1.73x1.74" ;
@@ -834,8 +841,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :La_columna_rota rdf:type owl:NamedIndividual ,
                           :ObraDeArte ;
                   :tema :Sentimental ;
-                  :tiene :Epoca_Modernismo ,
-                         :Estilo_Simbolismo ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Simbolismo ;
                   :año_de_creacion 1944 ;
                   :complejidad "Alta" ;
                   :dimensiones "0.40x0.34" ;
@@ -845,8 +852,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :El_venado_herido rdf:type owl:NamedIndividual ,
                             :ObraDeArte ;
                     :tema :Simbolismo ;
-                    :tiene :Epoca_Modernismo ,
-                           :Estilo_Simbolismo ;
+                    :tiene_epoca :Epoca_Modernismo ;
+                    :tiene_estilo :Estilo_Simbolismo ;
                     :año_de_creacion 1946 ;
                     :complejidad "Media" ;
                     :dimensiones "0.30x0.22" ;
@@ -856,8 +863,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Viva_la_vida rdf:type owl:NamedIndividual ,
                         :ObraDeArte ;
                 :tema :Naturaleza ;
-                :tiene :Epoca_Modernismo ,
-                       :Estilo_Simbolismo ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Simbolismo ;
                 :año_de_creacion 1954 ;
                 :complejidad "Media" ;
                 :dimensiones "0.78x0.64" ;
@@ -867,8 +874,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Autorretrato_con_collar_de_espinas rdf:type owl:NamedIndividual ,
                           :ObraDeArte ;
                   :tema :Retrato ;
-                  :tiene :Epoca_Modernismo ,
-                         :Estilo_Simbolismo ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Simbolismo ;
                   :año_de_creacion 1940 ;
                   :complejidad "Alta" ;
                   :dimensiones "0.63x0.49" ;
@@ -910,16 +917,16 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :Ritmo_de_otoño ,
                          :Azul_Mural ,
                          :Eco ;
-               :tiene :Epoca_Modernismo ,
-                      :Estilo_Expresionismo_Abstracto ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
                :nacionalidad "Estadounidense" ;
                :nombre "Jackson Pollock" .
 
 :Convergencia rdf:type owl:NamedIndividual ,
                         :ObraDeArte ;
               :tema :Abstracto ;
-              :tiene :Epoca_Modernismo ,
-                     :Estilo_Expresionismo_Abstracto ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Expresionismo_Abstracto ;
               :año_de_creacion 1952 ;
               :complejidad "Alta" ;
               :dimensiones "2.40x3.93" ;
@@ -929,8 +936,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Número_5_1948 rdf:type owl:NamedIndividual ,
                          :ObraDeArte ;
                :tema :Abstracto ;
-               :tiene :Epoca_Modernismo ,
-                      :Estilo_Expresionismo_Abstracto ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
                :año_de_creacion 1948 ;
                :complejidad "Alta" ;
                :dimensiones "2.40x1.22" ;
@@ -940,8 +947,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Ritmo_de_otoño rdf:type owl:NamedIndividual ,
                           :ObraDeArte ;
                 :tema :Abstracto ;
-                :tiene :Epoca_Modernismo ,
-                       :Estilo_Expresionismo_Abstracto ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Expresionismo_Abstracto ;
                 :año_de_creacion 1950 ;
                 :complejidad "Alta" ;
                 :dimensiones "2.66x5.25" ;
@@ -951,8 +958,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Azul_Mural rdf:type owl:NamedIndividual ,
                       :ObraDeArte ;
             :tema :Abstracto ;
-            :tiene :Epoca_Modernismo ,
-                   :Estilo_Expresionismo_Abstracto ;
+            :tiene_epoca :Epoca_Modernismo ;
+            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
             :año_de_creacion 1943 ;
             :complejidad "Alta" ;
             :dimensiones "2.43x6.08" ;
@@ -962,8 +969,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Eco rdf:type owl:NamedIndividual ,
               :ObraDeArte ;
       :tema :Abstracto ;
-      :tiene :Epoca_Modernismo ,
-             :Estilo_Expresionismo_Abstracto ;
+      :tiene_epoca :Epoca_Modernismo ;
+      :tiene_estilo :Estilo_Expresionismo_Abstracto ;
       :año_de_creacion 1951 ;
       :complejidad "Media-alta" ;
       :dimensiones "1.90x1.42" ;

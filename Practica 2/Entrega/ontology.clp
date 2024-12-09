@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 09/12/2024 16:58:48
+;;; :Date 09/12/2024 19:28:28
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -43,8 +43,12 @@
     (multislot tema
         (type INSTANCE)
         (create-accessor read-write))
-    ;;; Una obra de arte o un pintor tienen una cierta época o estilo
-    (multislot tiene
+    ;;; Una obra de arte o un pintor tienen una cierta época
+    (multislot tiene_epoca
+        (type INSTANCE)
+        (create-accessor read-write))
+    ;;; Una obra de arte o un pintor tienen una cierto estilo
+    (multislot tiene_estilo
         (type INSTANCE)
         (create-accessor read-write))
     (multislot topObjectProperty
@@ -75,8 +79,12 @@
     (multislot autor_de
         (type INSTANCE)
         (create-accessor read-write))
-    ;;; Una obra de arte o un pintor tienen una cierta época o estilo
-    (multislot tiene
+    ;;; Una obra de arte o un pintor tienen una cierta época
+    (multislot tiene_epoca
+        (type INSTANCE)
+        (create-accessor read-write))
+    ;;; Una obra de arte o un pintor tienen una cierto estilo
+    (multislot tiene_estilo
         (type INSTANCE)
         (create-accessor read-write))
     (slot nacionalidad
@@ -162,7 +170,8 @@
 (definstances instances
     ([Chica_ante_el_espejo] of ObraDeArte
          (tema  [Sentimental])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1932)
          (complejidad  "Media-alta")
          (dimensiones  "1.62x1.30")
@@ -172,14 +181,16 @@
 
     ([Claude_Monet] of Pintor
          (autor_de  [Impresión_Sol_Naciente] [Los_Nenúfares])
-         (tiene  [Epoca_Impresionismo] [Estilo_Impresionista])
+         (tiene_epoca  [Epoca_Impresionismo])
+         (tiene_estilo  [Estilo_Impresionista])
          (nacionalidad  "Francesa")
          (nombre  "Claude Monet")
     )
 
     ([El_sueño] of ObraDeArte
          (tema  [Sueño])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1932)
          (complejidad  "Media")
          (dimensiones  "1.3x0.97")
@@ -189,7 +200,8 @@
 
     ([El_viejo_guitarrista] of ObraDeArte
          (tema  [Música])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1903)
          (complejidad  "Media-alta")
          (dimensiones  "1.2x0.8")
@@ -244,7 +256,8 @@
 
     ([Guernica] of ObraDeArte
          (tema  [Guerra])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1937)
          (complejidad  "Alta")
          (dimensiones  "3.5x7.8")
@@ -259,7 +272,8 @@
 
     ([Impresión_Sol_Naciente] of ObraDeArte
          (tema  [Paisaje])
-         (tiene  [Epoca_Impresionismo] [Estilo_Impresionista])
+         (tiene_epoca  [Epoca_Impresionismo])
+         (tiene_estilo  [Estilo_Impresionista])
          (año_de_creacion  1872)
          (complejidad  "media")
          (dimensiones  "48x63")
@@ -276,7 +290,8 @@
 
     ([La_familia_de_saltimbanquis] of ObraDeArte
          (tema  [Familia])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1905)
          (complejidad  "Media-alta")
          (dimensiones  "2.13x2.3")
@@ -286,7 +301,8 @@
 
     ([La_mujer_que_llora] of ObraDeArte
          (tema  [Sentimental])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1937)
          (complejidad  "Media-alta")
          (dimensiones  "0.61x0.50")
@@ -296,7 +312,8 @@
 
     ([La_Última_Cena] of ObraDeArte
          (tema  [Religión])
-         (tiene  [Epoca_Renacimiento] [Estilo_Renacentista])
+         (tiene_epoca  [Epoca_Renacimiento])
+         (tiene_estilo  [Estilo_Renacentista])
          (año_de_creacion  1495)
          (complejidad  "Muy alta")
          (dimensiones  "460x880")
@@ -306,7 +323,8 @@
 
     ([Las_señoritas_de_Avignon] of ObraDeArte
          (tema  [Retrato])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1907)
          (complejidad  "Alta")
          (dimensiones  "2.4x2.3")
@@ -316,14 +334,16 @@
 
     ([Leonardo_da_Vinci] of Pintor
          (autor_de  [La_Última_Cena] [Mona_Lisa])
-         (tiene  [Epoca_Renacimiento] [Estilo_Renacentista])
+         (tiene_epoca  [Epoca_Renacimiento])
+         (tiene_estilo  [Estilo_Renacentista])
          (nacionalidad  "Italiana")
          (nombre  "Leonardo Da Vinci")
     )
 
     ([Los_Nenúfares] of ObraDeArte
          (tema  [Paisaje])
-         (tiene  [Epoca_Impresionismo] [Estilo_Impresionista])
+         (tiene_epoca  [Epoca_Impresionismo])
+         (tiene_estilo  [Estilo_Impresionista])
          (año_de_creacion  1899)
          (complejidad  "Media")
          (dimensiones  "200x300")
@@ -333,7 +353,8 @@
 
     ([Los_tres_músicos] of ObraDeArte
          (tema  [Música])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1921)
          (complejidad  "Alta")
          (dimensiones  "2x2.23")
@@ -343,7 +364,8 @@
 
     ([Masacre_en_Corea] of ObraDeArte
          (tema  [Guerra])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1951)
          (complejidad  "Media-alta")
          (dimensiones  "1.1x2.1")
@@ -353,7 +375,8 @@
 
     ([Mona_Lisa] of ObraDeArte
          (tema  [Retrato])
-         (tiene  [Epoca_Renacimiento] [Estilo_Renacentista])
+         (tiene_epoca  [Epoca_Renacimiento])
+         (tiene_estilo  [Estilo_Renacentista])
          (año_de_creacion  1503)
          (complejidad  "Alta")
          (dimensiones  "77x53")
@@ -363,7 +386,8 @@
 
     ([Mujer_con_sombrero] of ObraDeArte
          (tema  [Retrato])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1935)
          (complejidad  "Media-alta")
          (dimensiones  "0.61x0.5")
@@ -383,7 +407,8 @@
 
     ([Pablo_Picasso] of Pintor
          (autor_de  [Chica_ante_el_espejo] [El_sueño] [Guernica] [La_familia_de_saltimbanquis] [La_mujer_que_llora] [Las_señoritas_de_Avignon] [Los_tres_músicos] [Masacre_en_Corea] [Mujer_con_sombrero])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (nacionalidad  "Español")
          (nombre  "Pablo Picasso")
     )
@@ -431,14 +456,16 @@
 
     ([Salvador_Dalí] of Pintor
          (autor_de  [La_persistencia_de_la_memoria] [Cristo_de_San_Juan_de_la_Cruz] [Sueño_causado_por_el_vuelo_de_una_abeja] [La_tentación_de_San_Antonio] [El_gran_masturbador] [Cisnes_que_se_reflejan_como_elefantes] [Retrato_de_Mae_West] [Galatea_de_las_esferas] [El_descubrimiento_de_América_por_Cristóbal_Colón] [El_rostro_de_la_guerra])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (nacionalidad  "Español")
          (nombre  "Salvador Dalí")
     )
 
     ([La_persistencia_de_la_memoria] of ObraDeArte
          (tema  [Paisaje])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1931)
          (complejidad  "Media")
          (dimensiones  "0.24x0.33")
@@ -448,7 +475,8 @@
 
     ([Cristo_de_San_Juan_de_la_Cruz] of ObraDeArte
          (tema  [Religión])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1951)
          (complejidad  "Alta")
          (dimensiones  "2.05x1.16")
@@ -458,7 +486,8 @@
 
     ([Sueño_causado_por_el_vuelo_de_una_abeja] of ObraDeArte
          (tema  [Onírico])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1944)
          (complejidad  "Media-alta")
          (dimensiones  "0.51x0.41")
@@ -468,7 +497,8 @@
 
     ([La_tentación_de_San_Antonio] of ObraDeArte
          (tema  [Religión])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1946)
          (complejidad  "Alta")
          (dimensiones  "0.89x1.19")
@@ -478,7 +508,8 @@
 
     ([El_gran_masturbador] of ObraDeArte
          (tema  [Psicológico])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1929)
          (complejidad  "Alta")
          (dimensiones  "1.10x0.89")
@@ -488,7 +519,8 @@
 
     ([Cisnes_que_se_reflejan_como_elefantes] of ObraDeArte
          (tema  [Metamorfosis])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1937)
          (complejidad  "Media-alta")
          (dimensiones  "0.61x0.65")
@@ -498,7 +530,8 @@
 
     ([Retrato_de_Mae_West] of ObraDeArte
          (tema  [Retrato])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1935)
          (complejidad  "Alta")
          (dimensiones  "0.60x0.60")
@@ -508,7 +541,8 @@
 
     ([Galatea_de_las_esferas] of ObraDeArte
          (tema  [Ciencia])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1952)
          (complejidad  "Alta")
          (dimensiones  "0.65x0.54")
@@ -518,7 +552,8 @@
 
     ([El_descubrimiento_de_América_por_Cristóbal_Colón] of ObraDeArte
          (tema  [Histórico])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1959)
          (complejidad  "Alta")
          (dimensiones  "4.10x2.90")
@@ -528,7 +563,8 @@
 
     ([El_rostro_de_la_guerra] of ObraDeArte
          (tema  [Psicológico])
-         (tiene  [Epoca_Modernismo] [Estilo_Surrealista])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
          (año_de_creacion  1940)
          (complejidad  "Media-alta")
          (dimensiones  "0.64x0.79")
@@ -568,14 +604,16 @@
 
     ([Frida_Kahlo] of Pintor
          (autor_de  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas])
-         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
          (nacionalidad  "Mexicana")
          (nombre  "Frida Kahlo")
     )
 
     ([Las_dos_Fridas] of ObraDeArte
          (tema  [Retrato])
-         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
          (año_de_creacion  1939)
          (complejidad  "Alta")
          (dimensiones  "1.73x1.74")
@@ -585,7 +623,8 @@
 
     ([La_columna_rota] of ObraDeArte
          (tema  [Sentimental])
-         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
          (año_de_creacion  1944)
          (complejidad  "Alta")
          (dimensiones  "0.40x0.34")
@@ -595,7 +634,8 @@
 
     ([El_venado_herido] of ObraDeArte
          (tema  [Simbolismo])
-         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
          (año_de_creacion  1946)
          (complejidad  "Media")
          (dimensiones  "0.30x0.22")
@@ -605,7 +645,8 @@
 
     ([Viva_la_vida] of ObraDeArte
          (tema  [Naturaleza])
-         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
          (año_de_creacion  1954)
          (complejidad  "Media")
          (dimensiones  "0.78x0.64")
@@ -615,7 +656,8 @@
 
     ([Autorretrato_con_collar_de_espinas] of ObraDeArte
          (tema  [Retrato])
-         (tiene  [Epoca_Modernismo] [Estilo_Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
          (año_de_creacion  1940)
          (complejidad  "Alta")
          (dimensiones  "0.63x0.49")
@@ -645,14 +687,16 @@
 
     ([Jackson_Pollock] of Pintor
          (autor_de  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco])
-         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (nacionalidad  "Estadounidense")
          (nombre  "Jackson Pollock")
     )
 
     ([Convergencia] of ObraDeArte
          (tema  [Abstracto])
-         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (año_de_creacion  1952)
          (complejidad  "Alta")
          (dimensiones  "2.40x3.93")
@@ -662,7 +706,8 @@
 
     ([Número_5_1948] of ObraDeArte
          (tema  [Abstracto])
-         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (año_de_creacion  1948)
          (complejidad  "Alta")
          (dimensiones  "2.40x1.22")
@@ -672,7 +717,8 @@
 
     ([Ritmo_de_otoño] of ObraDeArte
          (tema  [Abstracto])
-         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (año_de_creacion  1950)
          (complejidad  "Alta")
          (dimensiones  "2.66x5.25")
@@ -682,7 +728,8 @@
 
     ([Azul_Mural] of ObraDeArte
          (tema  [Abstracto])
-         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (año_de_creacion  1943)
          (complejidad  "Alta")
          (dimensiones  "2.43x6.08")
@@ -692,7 +739,8 @@
 
     ([Eco] of ObraDeArte
          (tema  [Abstracto])
-         (tiene  [Epoca_Modernismo] [Estilo_Expresionismo_Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (año_de_creacion  1951)
          (complejidad  "Media-alta")
          (dimensiones  "1.90x1.42")
