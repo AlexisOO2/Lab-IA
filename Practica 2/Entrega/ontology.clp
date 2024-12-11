@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 11/12/2024 11:45:04
+;;; :Date 11/12/2024 11:59:27
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -396,7 +396,7 @@
     )
 
     ([Museo_de_Arte_Universal] of Museo
-         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo] [Sala_Warhol] [Sala_O_Keefe])
+         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo] [Sala_Warhol] [Sala_O_Keefe] [Sala_Arte_Urbano])
          (nombre  "Museo de Arte Universal")
     )
 
@@ -736,7 +736,7 @@
     )
 
     ([Sala_Expresionismo] of Sala
-         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco] [Pasiphae] [La_Llama_Azul] [Lucifer] [One_Number_31_1950] [Lavanda_Mist] [Naranja_Rojo_Amarillo] [Blanco_y_Violeta] [Sin_Título_1953] [Rojos_1956] [Verde_y_Morado] [N_14] [Negro_Sobre_Rojo] [Azul_y_Gris] [Blanco_Sobre_Amarillo] [Multiforme])
+         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco] [Pasiphae] [La_Llama_Azul] [Lucifer] [One_Number_31_1950] [Lavanda_Mist] [Naranja_Rojo_Amarillo] [Blanco_y_Violeta] [Sin_Título_1953] [Rojos_1956] [Verde_y_Morado] [N_14] [Negro_Sobre_Rojo] [Azul_y_Gris] [Blanco_Sobre_Amarillo] [Multiforme] [Estudio_del_autorretrato] [Tres_estudios_para_figuras_al_pie_de_una_crucifixión] [Cabeza_I] [Figura_en_un_paisaje] [Pintura_1946] [Figura_tumbada] [Estudio_para_un_retrato_de_Van_Gogh] [Estudio_para_el_retrato_de_Papa_Inocencio_X] [Crucifixión_1965] [Tríptico_Mayo_1973])
          (nombre  "Sala Expresionismo")
     )
 
@@ -1271,6 +1271,282 @@
     ;;; Estilo Abstraccionismo
     ([Estilo_Abstraccionismo] of Estilo
          (nombre  "Abstraccionismo")
+    )
+
+    ([Francis_Bacon] of Pintor
+         (autor_de  [Estudio_del_autorretrato] [Tres_estudios_para_figuras_al_pie_de_una_crucifixión] [Cabeza_I] [Figura_en_un_paisaje] [Pintura_1946] [Figura_tumbada] [Estudio_para_un_retrato_de_Van_Gogh] [Estudio_para_el_retrato_de_Papa_Inocencio_X] [Crucifixión_1965] [Tríptico_Mayo_1973])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (nacionalidad  "Británico")
+         (nombre  "Francis Bacon")
+    )
+
+    ([Estudio_del_autorretrato] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1971)
+         (complejidad  "Alta")
+         (dimensiones  "0.81x0.71")
+         (nombre  "Estudio del autorretrato")
+         (relevancia  "Alta")
+    )
+
+    ([Tres_estudios_para_figuras_al_pie_de_una_crucifixión] of ObraDeArte
+         (tema  [Crucifixión])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1944)
+         (complejidad  "Alta")
+         (dimensiones  "1.75x2.13")
+         (nombre  "Tres estudios para figuras al pie de una crucifixión")
+         (relevancia  "Alta")
+    )
+
+    ([Cabeza_I] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1949)
+         (complejidad  "Alta")
+         (dimensiones  "0.51x0.43")
+         (nombre  "Cabeza I")
+         (relevancia  "Alta")
+    )
+
+    ([Figura_en_un_paisaje] of ObraDeArte
+         (tema  [Figura])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1945)
+         (complejidad  "Alta")
+         (dimensiones  "1.20x1.53")
+         (nombre  "Figura en un paisaje")
+         (relevancia  "Alta")
+    )
+
+    ([Pintura_1946] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1946)
+         (complejidad  "Alta")
+         (dimensiones  "1.27x1.52")
+         (nombre  "Pintura 1946")
+         (relevancia  "Alta")
+    )
+
+    ([Figura_tumbada] of ObraDeArte
+         (tema  [Figura])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1969)
+         (complejidad  "Alta")
+         (dimensiones  "1.55x1.95")
+         (nombre  "Figura tumbada")
+         (relevancia  "Alta")
+    )
+
+    ([Estudio_para_un_retrato_de_Van_Gogh] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1957)
+         (complejidad  "Alta")
+         (dimensiones  "0.76x0.66")
+         (nombre  "Estudio para un retrato de Van Gogh")
+         (relevancia  "Alta")
+    )
+
+    ([Estudio_para_el_retrato_de_Papa_Inocencio_X] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1953)
+         (complejidad  "Alta")
+         (dimensiones  "1.43x1.22")
+         (nombre  "Estudio para el retrato de Papa Inocencio X")
+         (relevancia  "Alta")
+    )
+
+    ([Crucifixión_1965] of ObraDeArte
+         (tema  [Crucifixión])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1965)
+         (complejidad  "Alta")
+         (dimensiones  "1.70x2.00")
+         (nombre  "Crucifixión 1965")
+         (relevancia  "Alta")
+    )
+
+    ([Tríptico_Mayo_1973] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (año_de_creacion  1973)
+         (complejidad  "Alta")
+         (dimensiones  "1.85x3.10")
+         (nombre  "Tríptico Mayo 1973")
+         (relevancia  "Alta")
+    )
+
+    ;;; Estilo Expresionismo
+    ([Estilo_Expresionismo] of Estilo
+         (nombre  "Expresionismo")
+    )
+
+    ;;; Tema crucifixión
+    ([Crucifixión] of Tematica
+         (nombre  "Crucifixión")
+    )
+
+    ;;; Tema figura
+    ([Figura] of Tematica
+         (nombre  "Figura")
+    )
+
+    ([Jean_Michel_Basquiat] of Pintor
+         (autor_de  [Sin_título_1981] [Hollywood_Africans] [Flexible] [Horn_Players] [Boy_and_Dog_in_a_Johnnypump] [Untitled_Boxer] [Crown] [Dustheads] [Profit_I] [Riding_with_Death])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Expresionismo])
+         (nacionalidad  "Estadounidense")
+         (nombre  "Jean-Michel Basquiat")
+    )
+
+    ([Sin_título_1981] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1981)
+         (complejidad  "Alta")
+         (dimensiones  "1.83x1.40")
+         (nombre  "Sin título 1981")
+         (relevancia  "Alta")
+    )
+
+    ([Hollywood_Africans] of ObraDeArte
+         (tema  [Cultura_Afrolatina])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1983)
+         (complejidad  "Alta")
+         (dimensiones  "1.50x1.20")
+         (nombre  "Hollywood Africans")
+         (relevancia  "Alta")
+    )
+
+    ([Flexible] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1984)
+         (complejidad  "Alta")
+         (dimensiones  "2.10x1.60")
+         (nombre  "Flexible")
+         (relevancia  "Alta")
+    )
+
+    ([Horn_Players] of ObraDeArte
+         (tema  [Música])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1983)
+         (complejidad  "Alta")
+         (dimensiones  "1.50x1.80")
+         (nombre  "Horn Players")
+         (relevancia  "Alta")
+    )
+
+    ([Boy_and_Dog_in_a_Johnnypump] of ObraDeArte
+         (tema  [Familia])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1982)
+         (complejidad  "Alta")
+         (dimensiones  "1.60x1.80")
+         (nombre  "Boy and Dog in a Johnnypump")
+         (relevancia  "Alta")
+    )
+
+    ([Untitled_Boxer] of ObraDeArte
+         (tema  [Deporte])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1982)
+         (complejidad  "Alta")
+         (dimensiones  "1.90x1.50")
+         (nombre  "Untitled Boxer")
+         (relevancia  "Alta")
+    )
+
+    ([Crown] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1981)
+         (complejidad  "Alta")
+         (dimensiones  "1.20x1.50")
+         (nombre  "Crown")
+         (relevancia  "Alta")
+    )
+
+    ([Dustheads] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1982)
+         (complejidad  "Alta")
+         (dimensiones  "1.60x1.20")
+         (nombre  "Dustheads")
+         (relevancia  "Alta")
+    )
+
+    ([Profit_I] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1983)
+         (complejidad  "Alta")
+         (dimensiones  "2.00x1.50")
+         (nombre  "Profit I")
+         (relevancia  "Alta")
+    )
+
+    ([Riding_with_Death] of ObraDeArte
+         (tema  [Muerte])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Arte_Urbano])
+         (año_de_creacion  1988)
+         (complejidad  "Alta")
+         (dimensiones  "1.50x1.70")
+         (nombre  "Riding with Death")
+         (relevancia  "Alta")
+    )
+
+    ;;; Estilo Arte Urbano
+    ([Estilo_Arte_Urbano] of Estilo
+         (nombre  "Arte Urbano")
+    )
+
+    ;;; Tema cultura afrolatina
+    ([Cultura_Afrolatina] of Tematica
+         (nombre  "Cultura Afrolatina")
+    )
+
+    ;;; Tema deporte
+    ([Deporte] of Tematica
+         (nombre  "Deporte")
+    )
+
+    ;;; Tema muerte
+    ([Muerte] of Tematica
+         (nombre  "Muerte")
+    )
+
+    ([Sala_Arte_Urbano] of Sala
+         (contiene  [Sin_título_1981] [Hollywood_Africans] [Flexible] [Horn_Players] [Boy_and_Dog_in_a_Johnnypump] [Untitled_Boxer] [Crown] [Dustheads] [Profit_I] [Riding_with_Death])
+         (nombre  "Sala Arte Urbano")
     )
 
 )
