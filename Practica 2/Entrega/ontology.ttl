@@ -569,6 +569,7 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                         :Pintor ;
                :autor_de :Chica_ante_el_espejo ,
                          :El_sueño ,
+                         :El_viejo_guitarrista ,
                          :Guernica ,
                          :La_familia_de_saltimbanquis ,
                          :La_mujer_que_llora ,
@@ -616,6 +617,7 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                        :Sala ;
               :contiene :Chica_ante_el_espejo ,
                         :El_sueño ,
+                        :El_viejo_guitarrista ,
                         :Guernica ,
                         :La_familia_de_saltimbanquis ,
                         :La_mujer_que_llora ,
@@ -822,7 +824,12 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :La_columna_rota ,
                          :El_venado_herido ,
                          :Viva_la_vida ,
-                         :Autorretrato_con_collar_de_espinas ;
+                         :Autorretrato_con_collar_de_espinas ,
+                         :Henry_Ford_Hospital ,
+                         :Lo_Que_el_Agua_Me_Dio ,
+                         :El_Abrazo_de_Amor_de_El_Universo ,
+                         :Mi_Vestido_Cuelga_Allí ,
+                         :Unos_Cuantos_Piquetitos ;
                :tiene_epoca :Epoca_Modernismo ;
                :tiene_estilo :Estilo_Simbolismo ;
                :nacionalidad "Mexicana" ;
@@ -884,6 +891,61 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                   :nombre "Autorretrato con collar de espinas" ;
                   :relevancia "Alta" .
 
+:Henry_Ford_Hospital rdf:type owl:NamedIndividual ,
+                               :ObraDeArte ;
+                    :tema :Simbolismo ;
+                    :tiene_epoca :Epoca_Modernismo ;
+                    :tiene_estilo :Estilo_Surrealista ;
+                    :año_de_creacion 1932 ;
+                    :complejidad "Alta" ;
+                    :dimensiones "0.31x0.38" ;
+                    :nombre "Henry Ford Hospital" ;
+                    :relevancia "Alta" .
+
+:Lo_Que_el_Agua_Me_Dio rdf:type owl:NamedIndividual ,
+                                  :ObraDeArte ;
+                     :tema :Simbolismo ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Surrealista ;
+                     :año_de_creacion 1938 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "0.91x0.70" ;
+                     :nombre "Lo Que el Agua Me Dio" ;
+                     :relevancia "Media-alta" .
+
+:El_Abrazo_de_Amor_de_El_Universo rdf:type owl:NamedIndividual ,
+                                               :ObraDeArte ;
+                      :tema :Simbolismo ;
+                      :tiene_epoca :Epoca_Modernismo ;
+                      :tiene_estilo :Estilo_Surrealista ;
+                      :año_de_creacion 1949 ;
+                      :complejidad "Alta" ;
+                      :dimensiones "1.18x0.90" ;
+                      :nombre "El Abrazo de Amor de El Universo" ;
+                      :relevancia "Alta" .
+
+:Mi_Vestido_Cuelga_Allí rdf:type owl:NamedIndividual ,
+                                    :ObraDeArte ;
+                        :tema :Simbolismo ;
+                        :tiene_epoca :Epoca_Modernismo ;
+                        :tiene_estilo :Estilo_Surrealista ;
+                        :año_de_creacion 1933 ;
+                        :complejidad "Media" ;
+                        :dimensiones "0.39x0.47" ;
+                        :nombre "Mi Vestido Cuelga Allí" ;
+                        :relevancia "Media" .
+
+:Unos_Cuantos_Piquetitos rdf:type owl:NamedIndividual ,
+                                      :ObraDeArte ;
+                          :tema :Simbolismo ;
+                          :tiene_epoca :Epoca_Modernismo ;
+                          :tiene_estilo :Estilo_Surrealista ;
+                          :año_de_creacion 1935 ;
+                          :complejidad "Media" ;
+                          :dimensiones "0.60x0.50" ;
+                          :nombre "Unos Cuantos Piquetitos" ;
+                          :relevancia "Media-alta" .
+
 :Naturaleza rdf:type owl:NamedIndividual ,
                   :Tematica ;
          :nombre "Naturaleza" ;
@@ -900,7 +962,12 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :La_columna_rota ,
                          :El_venado_herido ,
                          :Viva_la_vida ,
-                         :Autorretrato_con_collar_de_espinas ;
+                         :Autorretrato_con_collar_de_espinas ,
+                         :Henry_Ford_Hospital ,
+                         :Lo_Que_el_Agua_Me_Dio ,
+                         :El_Abrazo_de_Amor_de_El_Universo ,
+                         :Mi_Vestido_Cuelga_Allí ,
+                         :Unos_Cuantos_Piquetitos ;
               :nombre "Sala Simbolismo" .
 
 :Sala_Expresionismo rdf:type owl:NamedIndividual ,

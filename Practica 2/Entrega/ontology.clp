@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 11/12/2024 11:29:31
+;;; :Date 11/12/2024 11:37:39
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -406,7 +406,7 @@
     )
 
     ([Pablo_Picasso] of Pintor
-         (autor_de  [Chica_ante_el_espejo] [El_sueño] [Guernica] [La_familia_de_saltimbanquis] [La_mujer_que_llora] [Las_señoritas_de_Avignon] [Los_tres_músicos] [Masacre_en_Corea] [Mujer_con_sombrero])
+         (autor_de  [Chica_ante_el_espejo] [El_sueño] [El_viejo_guitarrista] [Guernica] [La_familia_de_saltimbanquis] [La_mujer_que_llora] [Las_señoritas_de_Avignon] [Los_tres_músicos] [Masacre_en_Corea] [Mujer_con_sombrero])
          (tiene_epoca  [Epoca_Modernismo])
          (tiene_estilo  [Estilo_Surrealista])
          (nacionalidad  "Español")
@@ -435,7 +435,7 @@
     )
 
     ([Sala_Picasso] of Sala
-         (contiene  [Chica_ante_el_espejo] [El_sueño] [Guernica] [La_familia_de_saltimbanquis] [La_mujer_que_llora] [Las_señoritas_de_Avignon] [Los_tres_músicos] [Masacre_en_Corea] [Mujer_con_sombrero])
+         (contiene  [Chica_ante_el_espejo] [El_sueño] [El_viejo_guitarrista] [Guernica] [La_familia_de_saltimbanquis] [La_mujer_que_llora] [Las_señoritas_de_Avignon] [Los_tres_músicos] [Masacre_en_Corea] [Mujer_con_sombrero])
          (nombre  "Sala Pablo Picasso")
     )
 
@@ -603,7 +603,7 @@
     )
 
     ([Frida_Kahlo] of Pintor
-         (autor_de  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas])
+         (autor_de  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas] [Henry_Ford_Hospital] [Lo_Que_el_Agua_Me_Dio] [El_Abrazo_de_Amor_de_El_Universo] [Mi_Vestido_Cuelga_Allí] [Unos_Cuantos_Piquetitos])
          (tiene_epoca  [Epoca_Modernismo])
          (tiene_estilo  [Estilo_Simbolismo])
          (nacionalidad  "Mexicana")
@@ -665,6 +665,61 @@
          (relevancia  "Alta")
     )
 
+    ([Henry_Ford_Hospital] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
+         (año_de_creacion  1932)
+         (complejidad  "Alta")
+         (dimensiones  "0.31x0.38")
+         (nombre  "Henry Ford Hospital")
+         (relevancia  "Alta")
+    )
+
+    ([Lo_Que_el_Agua_Me_Dio] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
+         (año_de_creacion  1938)
+         (complejidad  "Alta")
+         (dimensiones  "0.91x0.70")
+         (nombre  "Lo Que el Agua Me Dio")
+         (relevancia  "Media-alta")
+    )
+
+    ([El_Abrazo_de_Amor_de_El_Universo] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
+         (año_de_creacion  1949)
+         (complejidad  "Alta")
+         (dimensiones  "1.18x0.90")
+         (nombre  "El Abrazo de Amor de El Universo")
+         (relevancia  "Alta")
+    )
+
+    ([Mi_Vestido_Cuelga_Allí] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
+         (año_de_creacion  1933)
+         (complejidad  "Media")
+         (dimensiones  "0.39x0.47")
+         (nombre  "Mi Vestido Cuelga Allí")
+         (relevancia  "Media")
+    )
+
+    ([Unos_Cuantos_Piquetitos] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Surrealista])
+         (año_de_creacion  1935)
+         (complejidad  "Media")
+         (dimensiones  "0.60x0.50")
+         (nombre  "Unos Cuantos Piquetitos")
+         (relevancia  "Media-alta")
+    )
+
     ;;; Tema naturaleza
     ([Naturaleza] of Tematica
          (nombre  "Naturaleza")
@@ -676,7 +731,7 @@
     )
 
     ([Sala_Simbolismo] of Sala
-         (contiene  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas])
+         (contiene  [Las_dos_Fridas] [La_columna_rota] [El_venado_herido] [Viva_la_vida] [Autorretrato_con_collar_de_espinas] [Henry_Ford_Hospital] [Lo_Que_el_Agua_Me_Dio] [El_Abrazo_de_Amor_de_El_Universo] [Mi_Vestido_Cuelga_Allí] [Unos_Cuantos_Piquetitos])
          (nombre  "Sala Simbolismo")
     )
 
