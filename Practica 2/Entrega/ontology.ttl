@@ -977,6 +977,11 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                         :Ritmo_de_otoño ,
                         :Azul_Mural ,
                         :Eco ,
+                        :Pasiphae ,
+                        :La_Llama_Azul ,
+                        :Lucifer ,
+                        :One_Number_31_1950 ,
+                        :Lavanda_Mist ,
                         :Naranja_Rojo_Amarillo ,
                         :Blanco_y_Violeta ,
                         :Sin_Título_1953 ,
@@ -995,7 +1000,12 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                          :Número_5_1948 ,
                          :Ritmo_de_otoño ,
                          :Azul_Mural ,
-                         :Eco ;
+                         :Eco ,
+                         :Pasiphae ,
+                         :La_Llama_Azul ,
+                         :Lucifer ,
+                         :One_Number_31_1950 ,
+                         :Lavanda_Mist ;
                :tiene_epoca :Epoca_Modernismo ;
                :tiene_estilo :Estilo_Expresionismo_Abstracto ;
                :nacionalidad "Estadounidense" ;
@@ -1055,6 +1065,71 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
       :dimensiones "1.90x1.42" ;
       :nombre "Eco" ;
       :relevancia "Media-alta" .
+
+:Pasiphae rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+           :tema :Abstracto ;
+           :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+           :tiene_estilo :Estilo_Drip_Painting ;
+           :año_de_creacion 1943 ;
+           :complejidad "Alta" ;
+           :dimensiones "1.29x2.40" ;
+           :nombre "Pasiphaë" ;
+           :relevancia "Alta" .
+
+:La_Llama_Azul rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                :tema :Abstracto ;
+                :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+                :tiene_estilo :Estilo_Drip_Painting ;
+                :año_de_creacion 1953 ;
+                :complejidad "Media" ;
+                :dimensiones "0.90x1.20" ;
+                :nombre "La Llama Azul" ;
+                :relevancia "Media" .
+
+:Lucifer rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+           :tema :Abstracto ;
+           :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+           :tiene_estilo :Estilo_Drip_Painting ;
+           :año_de_creacion 1947 ;
+           :complejidad "Alta" ;
+           :dimensiones "1.44x2.24" ;
+           :nombre "Lucifer" ;
+           :relevancia "Alta" .
+
+:One_Number_31_1950 rdf:type owl:NamedIndividual ,
+                                  :ObraDeArte ;
+                   :tema :Abstracto ;
+                   :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+                   :tiene_estilo :Estilo_Drip_Painting ;
+                   :año_de_creacion 1950 ;
+                   :complejidad "Muy alta" ;
+                   :dimensiones "2.69x5.30" ;
+                   :nombre "One: Number 31, 1950" ;
+                   :relevancia "Muy alta" .
+
+:Lavanda_Mist rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                :tema :Abstracto ;
+                :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+                :tiene_estilo :Estilo_Drip_Painting ;
+                :año_de_creacion 1950 ;
+                :complejidad "Alta" ;
+                :dimensiones "2.21x2.97" ;
+                :nombre "Lavanda Mist" ;
+                :relevancia "Alta" .
+
+:Epoca_Expresionismo_Abstracto rdf:type owl:NamedIndividual ,
+                             :Epoca ;
+                    :nombre "Expresionismo_Abstracto" ;
+                    rdfs:comment "Epoca del Expresionismo_Abstracto" .
+
+:Estilo_Drip_Painting rdf:type owl:NamedIndividual ,
+                             :Estilo ;
+                    :nombre "Drip Painting" ;
+                    rdfs:comment "Estilo Drip Painting" .
 
 :Abstracto rdf:type owl:NamedIndividual ,
                   :Tematica ;

@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 11/12/2024 11:37:39
+;;; :Date 11/12/2024 11:45:04
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -736,12 +736,12 @@
     )
 
     ([Sala_Expresionismo] of Sala
-         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco] [Naranja_Rojo_Amarillo] [Blanco_y_Violeta] [Sin_Título_1953] [Rojos_1956] [Verde_y_Morado] [N_14] [Negro_Sobre_Rojo] [Azul_y_Gris] [Blanco_Sobre_Amarillo] [Multiforme])
+         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco] [Pasiphae] [La_Llama_Azul] [Lucifer] [One_Number_31_1950] [Lavanda_Mist] [Naranja_Rojo_Amarillo] [Blanco_y_Violeta] [Sin_Título_1953] [Rojos_1956] [Verde_y_Morado] [N_14] [Negro_Sobre_Rojo] [Azul_y_Gris] [Blanco_Sobre_Amarillo] [Multiforme])
          (nombre  "Sala Expresionismo")
     )
 
     ([Jackson_Pollock] of Pintor
-         (autor_de  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco])
+         (autor_de  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco] [Pasiphae] [La_Llama_Azul] [Lucifer] [One_Number_31_1950] [Lavanda_Mist])
          (tiene_epoca  [Epoca_Modernismo])
          (tiene_estilo  [Estilo_Expresionismo_Abstracto])
          (nacionalidad  "Estadounidense")
@@ -801,6 +801,71 @@
          (dimensiones  "1.90x1.42")
          (nombre  "Eco")
          (relevancia  "Media-alta")
+    )
+
+    ([Pasiphae] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Expresionismo_Abstracto])
+         (tiene_estilo  [Estilo_Drip_Painting])
+         (año_de_creacion  1943)
+         (complejidad  "Alta")
+         (dimensiones  "1.29x2.40")
+         (nombre  "Pasiphaë")
+         (relevancia  "Alta")
+    )
+
+    ([La_Llama_Azul] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Expresionismo_Abstracto])
+         (tiene_estilo  [Estilo_Drip_Painting])
+         (año_de_creacion  1953)
+         (complejidad  "Media")
+         (dimensiones  "0.90x1.20")
+         (nombre  "La Llama Azul")
+         (relevancia  "Media")
+    )
+
+    ([Lucifer] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Expresionismo_Abstracto])
+         (tiene_estilo  [Estilo_Drip_Painting])
+         (año_de_creacion  1947)
+         (complejidad  "Alta")
+         (dimensiones  "1.44x2.24")
+         (nombre  "Lucifer")
+         (relevancia  "Alta")
+    )
+
+    ([One_Number_31_1950] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Expresionismo_Abstracto])
+         (tiene_estilo  [Estilo_Drip_Painting])
+         (año_de_creacion  1950)
+         (complejidad  "Muy alta")
+         (dimensiones  "2.69x5.30")
+         (nombre  "One: Number 31, 1950")
+         (relevancia  "Muy alta")
+    )
+
+    ([Lavanda_Mist] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Expresionismo_Abstracto])
+         (tiene_estilo  [Estilo_Drip_Painting])
+         (año_de_creacion  1950)
+         (complejidad  "Alta")
+         (dimensiones  "2.21x2.97")
+         (nombre  "Lavanda Mist")
+         (relevancia  "Alta")
+    )
+
+    ;;; Epoca del Expresionismo_Abstracto
+    ([Epoca_Expresionismo_Abstracto] of Epoca
+         (nombre  "Expresionismo_Abstracto")
+    )
+
+    ;;; Estilo Drip Painting
+    ([Estilo_Drip_Painting] of Estilo
+         (nombre  "Drip Painting")
     )
 
     ;;; Tema abstracto
