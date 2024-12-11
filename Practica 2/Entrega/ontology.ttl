@@ -552,7 +552,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                                       :Sala_Dalí ,
                                       :Sala_Simbolismo ,
                                       :Sala_Expresionismo ,
-                                      :Sala_Warhol ;
+                                      :Sala_Warhol ,
+                                      :Sala_O_Keefe ;
                          :nombre "Museo de Arte Universal" .
 
 
@@ -1280,6 +1281,171 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                        :Car_Crash ,
                        :Mao ;
               :nombre "Sala Warhol" .
+
+:Sala_O_Keefe rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :Flor_Blanca ,
+                       :Cañón_de_Pedernal ,
+                       :Lirio_Negro ,
+                       :Cráneo_de_Vaca_con_Rosa ,
+                       :El_Cañón_Abanico ,
+                       :Nubes_Caladas ,
+                       :Cuernos_y_Red ,
+                       :Rosa_de_Abanico ,
+                       :Calle_Nueva_York_N1 ,
+                       :Mano_de_Buda ;
+              :nombre "Sala O_Keefe" .
+
+
+:Georgia_O_Keefe rdf:type owl:NamedIndividual ,
+                           :Pintor ;
+                 :autor_de :Flor_Blanca ,
+                           :Cañón_de_Pedernal ,
+                           :Lirio_Negro ,
+                           :Cráneo_de_Vaca_con_Rosa ,
+                           :El_Cañón_Abanico ,
+                           :Nubes_Caladas ,
+                           :Cuernos_y_Red ,
+                           :Rosa_de_Abanico ,
+                           :Calle_Nueva_York_N1 ,
+                           :Mano_de_Buda ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Abstracto_y_Naturalismo ;
+                 :nacionalidad "Estadounidense" ;
+                 :nombre "Georgia O'Keeffe" .
+
+:Estilo_Abstracto_y_Naturalismo rdf:type owl:NamedIndividual ,
+                               :Estilo ;
+                      :nombre "Abstracto y Naturalismo" ;
+                      rdfs:comment "Estilo Abstracto y Naturalismo" .
+
+:Flor_Blanca rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+             :tema :Naturaleza ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Abstraccionismo ;
+             :año_de_creacion 1932 ;
+             :complejidad "Media" ;
+             :dimensiones "0.71x0.56" ;
+             :nombre "Flor Blanca" ;
+             :relevancia "Media-alta" .
+
+:Cañón_de_Pedernal rdf:type owl:NamedIndividual ,
+                               :ObraDeArte ;
+                  :tema :Paisaje ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Realismo ;
+                  :año_de_creacion 1941 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "1.00x0.80" ;
+                  :nombre "Cañón de Pedernal" ;
+                  :relevancia "Alta" .
+
+:Lirio_Negro rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+             :tema :Naturaleza ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Abstraccionismo ;
+             :año_de_creacion 1926 ;
+             :complejidad "Media" ;
+             :dimensiones "0.90x0.60" ;
+             :nombre "Lirio Negro" ;
+             :relevancia "Media" .
+
+:Cráneo_de_Vaca_con_Rosa rdf:type owl:NamedIndividual ,
+                                     :ObraDeArte ;
+                        :tema :Naturaleza ;
+                        :tiene_epoca :Epoca_Modernismo ;
+                        :tiene_estilo :Estilo_Simbolismo ;
+                        :año_de_creacion 1931 ;
+                        :complejidad "Alta" ;
+                        :dimensiones "0.85x0.65" ;
+                        :nombre "Cráneo de Vaca con Rosa" ;
+                        :relevancia "Alta" .
+
+:El_Cañón_Abanico rdf:type owl:NamedIndividual ,
+                               :ObraDeArte ;
+                  :tema :Paisaje ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Realismo ;
+                  :año_de_creacion 1949 ;
+                  :complejidad "Media-alta" ;
+                  :dimensiones "1.10x0.90" ;
+                  :nombre "El Cañón Abanico" ;
+                  :relevancia "Media-alta" .
+
+:Nubes_Caladas rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+               :tema :Paisaje ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Abstraccionismo ;
+               :año_de_creacion 1950 ;
+               :complejidad "Media" ;
+               :dimensiones "1.20x0.90" ;
+               :nombre "Nubes Caladas" ;
+               :relevancia "Media" .
+
+:Cuernos_y_Red rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+               :tema :Naturaleza ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Simbolismo ;
+               :año_de_creacion 1934 ;
+               :complejidad "Media-alta" ;
+               :dimensiones "0.80x0.60" ;
+               :nombre "Cuernos y Red" ;
+               :relevancia "Media-alta" .
+
+:Rosa_de_Abanico rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                 :tema :Naturaleza ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Abstraccionismo ;
+                 :año_de_creacion 1947 ;
+                 :complejidad "Media" ;
+                 :dimensiones "0.75x0.60" ;
+                 :nombre "Rosa de Abanico" ;
+                 :relevancia "Media" .
+
+:Calle_Nueva_York_N1 rdf:type owl:NamedIndividual ,
+                                   :ObraDeArte ;
+                     :tema :Urbanismo ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Realismo ;
+                     :año_de_creacion 1925 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "1.20x0.90" ;
+                     :nombre "Calle Nueva York N1" ;
+                     :relevancia "Alta" .
+
+:Mano_de_Buda rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+              :tema :Simbolismo ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Simbolismo ;
+              :año_de_creacion 1953 ;
+              :complejidad "Media" ;
+              :dimensiones "0.90x0.70" ;
+              :nombre "Mano de Buda" ;
+              :relevancia "Media-alta" .
+
+:Urbanismo rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Urbanismo" ;
+         rdfs:comment "Tema urbanismo" .
+
+:Estilo_Realismo rdf:type owl:NamedIndividual ,
+                           :Estilo ;
+                  :nombre "Realismo" ;
+                  rdfs:comment "Estilo Realismo" .
+
+:Estilo_Abstraccionismo rdf:type owl:NamedIndividual ,
+                           :Estilo ;
+                  :nombre "Abstraccionismo" ;
+                  rdfs:comment "Estilo Abstraccionismo" .
+
+
+
 
 #################################################################
 #    General axioms

@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 11/12/2024 11:15:23
+;;; :Date 11/12/2024 11:29:31
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -396,7 +396,7 @@
     )
 
     ([Museo_de_Arte_Universal] of Museo
-         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo] [Sala_Warhol])
+         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo] [Sala_Warhol] [Sala_O_Keefe])
          (nombre  "Museo de Arte Universal")
     )
 
@@ -1008,6 +1008,149 @@
     ([Sala_Warhol] of Sala
          (contiene  [Latas_de_Sopa_Campbell] [Marilyn_Monroe] [Coca_Cola] [Banana] [Elvis] [Self_Portrait] [Double_Elvis] [Brillo_Box] [Car_Crash] [Mao])
          (nombre  "Sala Warhol")
+    )
+
+    ([Sala_O_Keefe] of Sala
+         (contiene  [Flor_Blanca] [Cañón_de_Pedernal] [Lirio_Negro] [Cráneo_de_Vaca_con_Rosa] [El_Cañón_Abanico] [Nubes_Caladas] [Cuernos_y_Red] [Rosa_de_Abanico] [Calle_Nueva_York_N1] [Mano_de_Buda])
+         (nombre  "Sala O_Keefe")
+    )
+
+    ([Georgia_O_Keefe] of Pintor
+         (autor_de  [Flor_Blanca] [Cañón_de_Pedernal] [Lirio_Negro] [Cráneo_de_Vaca_con_Rosa] [El_Cañón_Abanico] [Nubes_Caladas] [Cuernos_y_Red] [Rosa_de_Abanico] [Calle_Nueva_York_N1] [Mano_de_Buda])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Abstracto_y_Naturalismo])
+         (nacionalidad  "Estadounidense")
+         (nombre  "Georgia O'Keeffe")
+    )
+
+    ;;; Estilo Abstracto y Naturalismo
+    ([Estilo_Abstracto_y_Naturalismo] of Estilo
+         (nombre  "Abstracto y Naturalismo")
+    )
+
+    ([Flor_Blanca] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Abstraccionismo])
+         (año_de_creacion  1932)
+         (complejidad  "Media")
+         (dimensiones  "0.71x0.56")
+         (nombre  "Flor Blanca")
+         (relevancia  "Media-alta")
+    )
+
+    ([Cañón_de_Pedernal] of ObraDeArte
+         (tema  [Paisaje])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Realismo])
+         (año_de_creacion  1941)
+         (complejidad  "Alta")
+         (dimensiones  "1.00x0.80")
+         (nombre  "Cañón de Pedernal")
+         (relevancia  "Alta")
+    )
+
+    ([Lirio_Negro] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Abstraccionismo])
+         (año_de_creacion  1926)
+         (complejidad  "Media")
+         (dimensiones  "0.90x0.60")
+         (nombre  "Lirio Negro")
+         (relevancia  "Media")
+    )
+
+    ([Cráneo_de_Vaca_con_Rosa] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
+         (año_de_creacion  1931)
+         (complejidad  "Alta")
+         (dimensiones  "0.85x0.65")
+         (nombre  "Cráneo de Vaca con Rosa")
+         (relevancia  "Alta")
+    )
+
+    ([El_Cañón_Abanico] of ObraDeArte
+         (tema  [Paisaje])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Realismo])
+         (año_de_creacion  1949)
+         (complejidad  "Media-alta")
+         (dimensiones  "1.10x0.90")
+         (nombre  "El Cañón Abanico")
+         (relevancia  "Media-alta")
+    )
+
+    ([Nubes_Caladas] of ObraDeArte
+         (tema  [Paisaje])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Abstraccionismo])
+         (año_de_creacion  1950)
+         (complejidad  "Media")
+         (dimensiones  "1.20x0.90")
+         (nombre  "Nubes Caladas")
+         (relevancia  "Media")
+    )
+
+    ([Cuernos_y_Red] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
+         (año_de_creacion  1934)
+         (complejidad  "Media-alta")
+         (dimensiones  "0.80x0.60")
+         (nombre  "Cuernos y Red")
+         (relevancia  "Media-alta")
+    )
+
+    ([Rosa_de_Abanico] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Abstraccionismo])
+         (año_de_creacion  1947)
+         (complejidad  "Media")
+         (dimensiones  "0.75x0.60")
+         (nombre  "Rosa de Abanico")
+         (relevancia  "Media")
+    )
+
+    ([Calle_Nueva_York_N1] of ObraDeArte
+         (tema  [Urbanismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Realismo])
+         (año_de_creacion  1925)
+         (complejidad  "Alta")
+         (dimensiones  "1.20x0.90")
+         (nombre  "Calle Nueva York N1")
+         (relevancia  "Alta")
+    )
+
+    ([Mano_de_Buda] of ObraDeArte
+         (tema  [Simbolismo])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Simbolismo])
+         (año_de_creacion  1953)
+         (complejidad  "Media")
+         (dimensiones  "0.90x0.70")
+         (nombre  "Mano de Buda")
+         (relevancia  "Media-alta")
+    )
+
+    ;;; Tema urbanismo
+    ([Urbanismo] of Tematica
+         (nombre  "Urbanismo")
+    )
+
+    ;;; Estilo Realismo
+    ([Estilo_Realismo] of Estilo
+         (nombre  "Realismo")
+    )
+
+    ;;; Estilo Abstraccionismo
+    ([Estilo_Abstraccionismo] of Estilo
+         (nombre  "Abstraccionismo")
     )
 
 )
