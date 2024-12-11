@@ -551,7 +551,8 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                                       :Sala_Renacimiento ,
                                       :Sala_Dalí ,
                                       :Sala_Simbolismo ,
-                                      :Sala_Expresionismo ;
+                                      :Sala_Expresionismo ,
+                                      :Sala_Warhol ;
                          :nombre "Museo de Arte Universal" .
 
 
@@ -904,10 +905,20 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 :Sala_Expresionismo rdf:type owl:NamedIndividual ,
                        :Sala ;
               :contiene :Convergencia ,
-                         :Número_5_1948 ,
-                         :Ritmo_de_otoño ,
-                         :Azul_Mural ,
-                         :Eco ;
+                        :Número_5_1948 ,
+                        :Ritmo_de_otoño ,
+                        :Azul_Mural ,
+                        :Eco ,
+                        :Naranja_Rojo_Amarillo ,
+                        :Blanco_y_Violeta ,
+                        :Sin_Título_1953 ,
+                        :Rojos_1956 ,
+                        :Verde_y_Morado ,
+                        :N_14 ,
+                        :Negro_Sobre_Rojo ,
+                        :Azul_y_Gris ,
+                        :Blanco_Sobre_Amarillo ,
+                        :Multiforme ;
               :nombre "Sala Expresionismo" .
 
 :Jackson_Pollock rdf:type owl:NamedIndividual ,
@@ -981,6 +992,294 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                   :Tematica ;
          :nombre "Abstracto" ;
          rdfs:comment "Tema abstracto" .
+
+:Mark_Rothko rdf:type owl:NamedIndividual ,
+                       :Pintor ;
+             :autor_de :Naranja_Rojo_Amarillo ,
+                       :Blanco_y_Violeta ,
+                       :Sin_Título_1953 ,
+                       :Rojos_1956 ,
+                       :Verde_y_Morado ,
+                       :N_14 ,
+                       :Negro_Sobre_Rojo ,
+                       :Azul_y_Gris ,
+                       :Blanco_Sobre_Amarillo ,
+                       :Multiforme ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+             :nacionalidad "Estadounidense" ;
+             :nombre "Mark Rothko" .
+
+:Naranja_Rojo_Amarillo rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                        :tema :Abstracto ;
+                        :tiene :Epoca_Modernismo ,
+                               :Estilo_Expresionismo_Abstracto ;
+                        :año_de_creacion 1961 ;
+                        :complejidad "Alta" ;
+                        :dimensiones "2.42x1.86" ;
+                        :nombre "Naranja, Rojo, Amarillo" ;
+                        :relevancia "Alta" .
+
+:Blanco_y_Violeta rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                  :tema :Abstracto ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                  :año_de_creacion 1957 ;
+                  :complejidad "Media-alta" ;
+                  :dimensiones "2.06x1.64" ;
+                  :nombre "Blanco y Violeta" ;
+                  :relevancia "Alta" .
+
+:Sin_Título_1953 rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                 :tema :Abstracto ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                 :año_de_creacion 1953 ;
+                 :complejidad "Alta" ;
+                 :dimensiones "2.35x1.69" ;
+                 :nombre "Sin Título, 1953" ;
+                 :relevancia "Media-alta" .
+
+:Rojos_1956 rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+            :tema :Abstracto ;
+            :tiene_epoca :Epoca_Modernismo ;
+            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+            :año_de_creacion 1956 ;
+            :complejidad "Media-alta" ;
+            :dimensiones "2.08x1.62" ;
+            :nombre "Rojos, 1956" ;
+            :relevancia "Alta" .
+
+:Verde_y_Morado rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                 :tema :Abstracto ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                 :año_de_creacion 1950 ;
+                 :complejidad "Alta" ;
+                 :dimensiones "1.70x1.30" ;
+                 :nombre "Verde y Morado" ;
+                 :relevancia "Alta" .
+
+:N_14 rdf:type owl:NamedIndividual ,
+                  :ObraDeArte ;
+         :tema :Abstracto ;
+         :tiene_epoca :Epoca_Modernismo ;
+         :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+         :año_de_creacion 1960 ;
+         :complejidad "Alta" ;
+         :dimensiones "2.88x2.12" ;
+         :nombre "Nº 14" ;
+         :relevancia "Alta" .
+
+:Negro_Sobre_Rojo rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                  :tema :Abstracto ;
+                  :tiene :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                  :año_de_creacion 1958 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "2.06x1.63" ;
+                  :nombre "Negro Sobre Rojo" ;
+                  :relevancia "Alta" .
+
+:Azul_y_Gris rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+              :tema :Abstracto ;
+              :tiene :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+              :año_de_creacion 1952 ;
+              :complejidad "Media-alta" ;
+              :dimensiones "1.85x1.27" ;
+              :nombre "Azul y Gris" ;
+              :relevancia "Media-alta" .
+
+:Blanco_Sobre_Amarillo rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+               :tema :Abstracto ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+               :año_de_creacion 1954 ;
+               :complejidad "Alta" ;
+               :dimensiones "1.80x1.35" ;
+               :nombre "Blanco Sobre Amarillo" ;
+               :relevancia "Alta" .
+
+:Multiforme rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+            :tema :Abstracto ;
+            :tiene_epoca :Epoca_Modernismo ;
+            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+            :año_de_creacion 1947 ;
+            :complejidad "Alta" ;
+            :dimensiones "1.68x1.25" ;
+            :nombre "Multiforme" ;
+            :relevancia "Alta" .
+
+:Andy_Warhol rdf:type owl:NamedIndividual ,
+                       :Pintor ;
+             :autor_de :Latas_de_Sopa_Campbell ,
+                       :Marilyn_Monroe ,
+                       :Coca_Cola ,
+                       :Banana ,
+                       :Elvis ,
+                       :Self_Portrait ,
+                       :Double_Elvis ,
+                       :Brillo_Box ,
+                       :Car_Crash ,
+                       :Mao ;
+             :tiene_epoca :Epoca_Contemporaneo ;
+             :tiene_estilo :Estilo_Pop_Art ;
+             :nacionalidad "Estadounidense" ;
+             :nombre "Andy Warhol" .
+
+:Latas_de_Sopa_Campbell rdf:type owl:NamedIndividual ,
+                                   :ObraDeArte ;
+                         :tema :Naturaleza ;
+                         :tiene_epoca :Epoca_Contemporaneo ;
+                         :tiene_estilo :Estilo_Pop_Art ;
+                         :año_de_creacion 1962 ;
+                         :complejidad "Media" ;
+                         :dimensiones "0.51x0.41" ;
+                         :nombre "Latas de Sopa Campbell" ;
+                         :relevancia "Alta" .
+
+:Marilyn_Monroe rdf:type owl:NamedIndividual ,
+                            :ObraDeArte ;
+                :tema :Retrato ;
+                :tiene_epoca :Epoca_Contemporaneo ;
+                :tiene_estilo :Estilo_Pop_Art ;
+                :año_de_creacion 1962 ;
+                :complejidad "Media" ;
+                :dimensiones "1.50x1.20" ;
+                :nombre "Marilyn Monroe" ;
+                :relevancia "Alta" .
+
+:Coca_Cola rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+           :tema :Producto ;
+           :tiene_epoca :Epoca_Contemporaneo ;
+           :tiene_estilo :Estilo_Pop_Art ;
+           :año_de_creacion 1962 ;
+           :complejidad "Media" ;
+           :dimensiones "1.37x0.81" ;
+           :nombre "Coca Cola" ;
+           :relevancia "Media-alta" .
+
+:Banana rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+         :tema :Producto ;
+         :tiene_epoca :Epoca_Contemporaneo ;
+         :tiene_estilo :Estilo_Pop_Art ;
+         :año_de_creacion 1967 ;
+         :complejidad "Media" ;
+         :dimensiones "0.61x0.30" ;
+         :nombre "Banana" ;
+         :relevancia "Media" .
+
+:Elvis rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+         :tema :Retrato ;
+         :tiene_epoca :Epoca_Contemporaneo ;
+         :tiene_estilo :Estilo_Pop_Art ;
+         :año_de_creacion 1963 ;
+         :complejidad "Media" ;
+         :dimensiones "2.08x1.22" ;
+         :nombre "Elvis" ;
+         :relevancia "Alta" .
+
+:Self_Portrait rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+               :tema :Retrato ;
+               :tiene_epoca :Epoca_Contemporaneo ;
+               :tiene_estilo :Estilo_Pop_Art ;
+               :año_de_creacion 1986 ;
+               :complejidad "Media-alta" ;
+               :dimensiones "2.08x1.22" ;
+               :nombre "Self Portrait" ;
+               :relevancia "Alta" .
+
+:Double_Elvis rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+               :tema :Retrato ;
+               :tiene_epoca :Epoca_Contemporaneo ;
+               :tiene_estilo :Estilo_Pop_Art ;
+               :año_de_creacion 1963 ;
+               :complejidad "Alta" ;
+               :dimensiones "2.08x2.44" ;
+               :nombre "Double Elvis" ;
+               :relevancia "Alta" .
+
+:Brillo_Box rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+            :tema :Producto ;
+            :tiene_epoca :Epoca_Contemporaneo ;
+            :tiene_estilo :Estilo_Pop_Art ;
+            :año_de_creacion 1964 ;
+            :complejidad "Media" ;
+            :dimensiones "0.43x0.43x0.43" ;
+            :nombre "Brillo Box" ;
+            :relevancia "Media-alta" .
+
+:Car_Crash rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+           :tema :Catástrofe ;
+           :tiene_epoca :Epoca_Contemporaneo ;
+           :tiene_estilo :Estilo_Pop_Art ;
+           :año_de_creacion 1963 ;
+           :complejidad "Alta" ;
+           :dimensiones "1.73x2.13" ;
+           :nombre "Car Crash" ;
+           :relevancia "Alta" .
+
+:Mao rdf:type owl:NamedIndividual ,
+                 :ObraDeArte ;
+     :tema :Retrato ;
+     :tiene_epoca :Epoca_Contemporaneo ;
+     :tiene_estilo :Estilo_Pop_Art ;
+     :año_de_creacion 1972 ;
+     :complejidad "Media-alta" ;
+     :dimensiones "2.08x1.58" ;
+     :nombre "Mao" ;
+     :relevancia "Alta" .
+
+:Epoca_Contemporaneo rdf:type owl:NamedIndividual ,
+                     :Epoca ;
+            :nombre "Contemporaneo" ;
+            rdfs:comment "Epoca Contemporanea" .
+
+:Estilo_Pop_Art rdf:type owl:NamedIndividual ,
+                               :Estilo ;
+                      :nombre "Pop Art" ;
+                      rdfs:comment "Estilo Pop Art" .
+
+:Catástrofe rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Catástrofe" ;
+         rdfs:comment "Tema catástrofe" .
+
+:Producto rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Producto" ;
+         rdfs:comment "Tema producto" .
+
+:Sala_Warhol rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :Latas_de_Sopa_Campbell ,
+                       :Marilyn_Monroe ,
+                       :Coca_Cola ,
+                       :Banana ,
+                       :Elvis ,
+                       :Self_Portrait ,
+                       :Double_Elvis ,
+                       :Brillo_Box ,
+                       :Car_Crash ,
+                       :Mao ;
+              :nombre "Sala Warhol" .
 
 #################################################################
 #    General axioms
