@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 09/12/2024 19:28:28
+;;; :Date 11/12/2024 11:15:23
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -396,7 +396,7 @@
     )
 
     ([Museo_de_Arte_Universal] of Museo
-         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo])
+         (formado_por  [Sala_Impresionismo] [Sala_Picasso] [Sala_Renacimiento] [Sala_Dalí] [Sala_Simbolismo] [Sala_Expresionismo] [Sala_Warhol])
          (nombre  "Museo de Arte Universal")
     )
 
@@ -681,7 +681,7 @@
     )
 
     ([Sala_Expresionismo] of Sala
-         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco])
+         (contiene  [Convergencia] [Número_5_1948] [Ritmo_de_otoño] [Azul_Mural] [Eco] [Naranja_Rojo_Amarillo] [Blanco_y_Violeta] [Sin_Título_1953] [Rojos_1956] [Verde_y_Morado] [N_14] [Negro_Sobre_Rojo] [Azul_y_Gris] [Blanco_Sobre_Amarillo] [Multiforme])
          (nombre  "Sala Expresionismo")
     )
 
@@ -751,6 +751,263 @@
     ;;; Tema abstracto
     ([Abstracto] of Tematica
          (nombre  "Abstracto")
+    )
+
+    ([Mark_Rothko] of Pintor
+         (autor_de  [Naranja_Rojo_Amarillo] [Blanco_y_Violeta] [Sin_Título_1953] [Rojos_1956] [Verde_y_Morado] [N_14] [Negro_Sobre_Rojo] [Azul_y_Gris] [Blanco_Sobre_Amarillo] [Multiforme])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (nacionalidad  "Estadounidense")
+         (nombre  "Mark Rothko")
+    )
+
+    ([Naranja_Rojo_Amarillo] of ObraDeArte
+         (tema  [Abstracto])
+         (año_de_creacion  1961)
+         (complejidad  "Alta")
+         (dimensiones  "2.42x1.86")
+         (nombre  "Naranja, Rojo, Amarillo")
+         (relevancia  "Alta")
+    )
+
+    ([Blanco_y_Violeta] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1957)
+         (complejidad  "Media-alta")
+         (dimensiones  "2.06x1.64")
+         (nombre  "Blanco y Violeta")
+         (relevancia  "Alta")
+    )
+
+    ([Sin_Título_1953] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1953)
+         (complejidad  "Alta")
+         (dimensiones  "2.35x1.69")
+         (nombre  "Sin Título, 1953")
+         (relevancia  "Media-alta")
+    )
+
+    ([Rojos_1956] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1956)
+         (complejidad  "Media-alta")
+         (dimensiones  "2.08x1.62")
+         (nombre  "Rojos, 1956")
+         (relevancia  "Alta")
+    )
+
+    ([Verde_y_Morado] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1950)
+         (complejidad  "Alta")
+         (dimensiones  "1.70x1.30")
+         (nombre  "Verde y Morado")
+         (relevancia  "Alta")
+    )
+
+    ([N_14] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1960)
+         (complejidad  "Alta")
+         (dimensiones  "2.88x2.12")
+         (nombre  "Nº 14")
+         (relevancia  "Alta")
+    )
+
+    ([Negro_Sobre_Rojo] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1958)
+         (complejidad  "Alta")
+         (dimensiones  "2.06x1.63")
+         (nombre  "Negro Sobre Rojo")
+         (relevancia  "Alta")
+    )
+
+    ([Azul_y_Gris] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1952)
+         (complejidad  "Media-alta")
+         (dimensiones  "1.85x1.27")
+         (nombre  "Azul y Gris")
+         (relevancia  "Media-alta")
+    )
+
+    ([Blanco_Sobre_Amarillo] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1954)
+         (complejidad  "Alta")
+         (dimensiones  "1.80x1.35")
+         (nombre  "Blanco Sobre Amarillo")
+         (relevancia  "Alta")
+    )
+
+    ([Multiforme] of ObraDeArte
+         (tema  [Abstracto])
+         (tiene_epoca  [Epoca_Modernismo])
+         (tiene_estilo  [Estilo_Expresionismo_Abstracto])
+         (año_de_creacion  1947)
+         (complejidad  "Alta")
+         (dimensiones  "1.68x1.25")
+         (nombre  "Multiforme")
+         (relevancia  "Alta")
+    )
+
+    ([Andy_Warhol] of Pintor
+         (autor_de  [Latas_de_Sopa_Campbell] [Marilyn_Monroe] [Coca_Cola] [Banana] [Elvis] [Self_Portrait] [Double_Elvis] [Brillo_Box] [Car_Crash] [Mao])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (nacionalidad  "Estadounidense")
+         (nombre  "Andy Warhol")
+    )
+
+    ([Latas_de_Sopa_Campbell] of ObraDeArte
+         (tema  [Naturaleza])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1962)
+         (complejidad  "Media")
+         (dimensiones  "0.51x0.41")
+         (nombre  "Latas de Sopa Campbell")
+         (relevancia  "Alta")
+    )
+
+    ([Marilyn_Monroe] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1962)
+         (complejidad  "Media")
+         (dimensiones  "1.50x1.20")
+         (nombre  "Marilyn Monroe")
+         (relevancia  "Alta")
+    )
+
+    ([Coca_Cola] of ObraDeArte
+         (tema  [Producto])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1962)
+         (complejidad  "Media")
+         (dimensiones  "1.37x0.81")
+         (nombre  "Coca Cola")
+         (relevancia  "Media-alta")
+    )
+
+    ([Banana] of ObraDeArte
+         (tema  [Producto])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1967)
+         (complejidad  "Media")
+         (dimensiones  "0.61x0.30")
+         (nombre  "Banana")
+         (relevancia  "Media")
+    )
+
+    ([Elvis] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1963)
+         (complejidad  "Media")
+         (dimensiones  "2.08x1.22")
+         (nombre  "Elvis")
+         (relevancia  "Alta")
+    )
+
+    ([Self_Portrait] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1986)
+         (complejidad  "Media-alta")
+         (dimensiones  "2.08x1.22")
+         (nombre  "Self Portrait")
+         (relevancia  "Alta")
+    )
+
+    ([Double_Elvis] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1963)
+         (complejidad  "Alta")
+         (dimensiones  "2.08x2.44")
+         (nombre  "Double Elvis")
+         (relevancia  "Alta")
+    )
+
+    ([Brillo_Box] of ObraDeArte
+         (tema  [Producto])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1964)
+         (complejidad  "Media")
+         (dimensiones  "0.43x0.43x0.43")
+         (nombre  "Brillo Box")
+         (relevancia  "Media-alta")
+    )
+
+    ([Car_Crash] of ObraDeArte
+         (tema  [Catástrofe])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1963)
+         (complejidad  "Alta")
+         (dimensiones  "1.73x2.13")
+         (nombre  "Car Crash")
+         (relevancia  "Alta")
+    )
+
+    ([Mao] of ObraDeArte
+         (tema  [Retrato])
+         (tiene_epoca  [Epoca_Contemporaneo])
+         (tiene_estilo  [Estilo_Pop_Art])
+         (año_de_creacion  1972)
+         (complejidad  "Media-alta")
+         (dimensiones  "2.08x1.58")
+         (nombre  "Mao")
+         (relevancia  "Alta")
+    )
+
+    ;;; Epoca Contemporanea
+    ([Epoca_Contemporaneo] of Epoca
+         (nombre  "Contemporaneo")
+    )
+
+    ;;; Estilo Pop Art
+    ([Estilo_Pop_Art] of Estilo
+         (nombre  "Pop Art")
+    )
+
+    ;;; Tema catástrofe
+    ([Catástrofe] of Tematica
+         (nombre  "Catástrofe")
+    )
+
+    ;;; Tema producto
+    ([Producto] of Tematica
+         (nombre  "Producto")
+    )
+
+    ([Sala_Warhol] of Sala
+         (contiene  [Latas_de_Sopa_Campbell] [Marilyn_Monroe] [Coca_Cola] [Banana] [Elvis] [Self_Portrait] [Double_Elvis] [Brillo_Box] [Car_Crash] [Mao])
+         (nombre  "Sala Warhol")
     )
 
 )
