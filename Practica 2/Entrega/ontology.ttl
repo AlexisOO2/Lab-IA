@@ -91,19 +91,20 @@
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene_epoca
 :tiene_epoca rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdfs:domain :ObraDeArte ,
-                   :Pintor ;
-       rdfs:range :Epoca ;
-       rdfs:comment "Una obra de arte o un pintor tienen una cierta época" .
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :ObraDeArte ,
+                         :Pintor ;
+             rdfs:range :Epoca ;
+             rdfs:comment "Una obra de arte o un pintor tienen una cierta época" .
+
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene_estilo
 :tiene_estilo rdf:type owl:ObjectProperty ;
-       rdfs:subPropertyOf owl:topObjectProperty ;
-       rdfs:domain :ObraDeArte ,
-                   :Pintor ;
-       rdfs:range :Estilo ;
-       rdfs:comment "Una obra de arte o un pintor tienen una cierto estilo" .
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :ObraDeArte ,
+                          :Pintor ;
+              rdfs:range :Estilo ;
+              rdfs:comment "Una obra de arte o un pintor tienen una cierto estilo" .
 
 
 ###  http://www.w3.org/2002/07/owl#topObjectProperty
@@ -263,6 +264,195 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Abstracto
+:Abstracto rdf:type owl:NamedIndividual ,
+                    :Tematica ;
+           :nombre "Abstracto" ;
+           rdfs:comment "Tema abstracto" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Andy_Warhol
+:Andy_Warhol rdf:type owl:NamedIndividual ,
+                      :Pintor ;
+             :autor_de :Banana ,
+                       :Brillo_Box ,
+                       :Car_Crash ,
+                       :Coca_Cola ,
+                       :Double_Elvis ,
+                       :Elvis ,
+                       :Latas_de_Sopa_Campbell ,
+                       :Mao ,
+                       :Marilyn_Monroe ,
+                       :Self_Portrait ;
+             :tiene_epoca :Epoca_Contemporaneo ;
+             :tiene_estilo :Estilo_Pop_Art ;
+             :nacionalidad "Estadounidense" ;
+             :nombre "Andy Warhol" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Autorretrato_con_collar_de_espinas
+:Autorretrato_con_collar_de_espinas rdf:type owl:NamedIndividual ,
+                                             :ObraDeArte ;
+                                    :tema :Retrato ;
+                                    :tiene_epoca :Epoca_Modernismo ;
+                                    :tiene_estilo :Estilo_Simbolismo ;
+                                    :año_de_creacion 1940 ;
+                                    :complejidad "Alta" ;
+                                    :dimensiones "0.63x0.49" ;
+                                    :nombre "Autorretrato con collar de espinas" ;
+                                    :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Azul_Mural
+:Azul_Mural rdf:type owl:NamedIndividual ,
+                     :ObraDeArte ;
+            :tema :Abstracto ;
+            :tiene_epoca :Epoca_Modernismo ;
+            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+            :año_de_creacion 1943 ;
+            :complejidad "Alta" ;
+            :dimensiones "2.43x6.08" ;
+            :nombre "Azul Mural" ;
+            :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Azul_y_Gris
+:Azul_y_Gris rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+             :tema :Abstracto ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+             :año_de_creacion 1952 ;
+             :complejidad "Media-alta" ;
+             :dimensiones "1.85x1.27" ;
+             :nombre "Azul y Gris" ;
+             :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Banana
+:Banana rdf:type owl:NamedIndividual ,
+                 :ObraDeArte ;
+        :tema :Producto ;
+        :tiene_epoca :Epoca_Contemporaneo ;
+        :tiene_estilo :Estilo_Pop_Art ;
+        :año_de_creacion 1967 ;
+        :complejidad "Media" ;
+        :dimensiones "0.61x0.30" ;
+        :nombre "Banana" ;
+        :relevancia "Media" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Blanco_Sobre_Amarillo
+:Blanco_Sobre_Amarillo rdf:type owl:NamedIndividual ,
+                                :ObraDeArte ;
+                       :tema :Abstracto ;
+                       :tiene_epoca :Epoca_Modernismo ;
+                       :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                       :año_de_creacion 1954 ;
+                       :complejidad "Alta" ;
+                       :dimensiones "1.80x1.30" ;
+                       :nombre "Blanco Sobre Amarillo" ;
+                       :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Blanco_y_Violeta
+:Blanco_y_Violeta rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Abstracto ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                  :año_de_creacion 1957 ;
+                  :complejidad "Media-alta" ;
+                  :dimensiones "2.06x1.64" ;
+                  :nombre "Blanco y Violeta" ;
+                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Boy_and_Dog_in_a_Johnnypump
+:Boy_and_Dog_in_a_Johnnypump rdf:type owl:NamedIndividual ,
+                                      :ObraDeArte ;
+                             :tema :Familia ;
+                             :tiene_epoca :Epoca_Modernismo ;
+                             :tiene_estilo :Estilo_Arte_Urbano ;
+                             :año_de_creacion 1982 ;
+                             :complejidad "Alta" ;
+                             :dimensiones "1.60x1.80" ;
+                             :nombre "Boy and Dog in a Johnnypump" ;
+                             :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Brillo_Box
+:Brillo_Box rdf:type owl:NamedIndividual ,
+                     :ObraDeArte ;
+            :tema :Producto ;
+            :tiene_epoca :Epoca_Contemporaneo ;
+            :tiene_estilo :Estilo_Pop_Art ;
+            :año_de_creacion 1964 ;
+            :complejidad "Media" ;
+            :dimensiones "0.43x0.43x0.43" ;
+            :nombre "Brillo Box" ;
+            :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cabeza_I
+:Cabeza_I rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+          :tema :Retrato ;
+          :tiene_epoca :Epoca_Modernismo ;
+          :tiene_estilo :Estilo_Expresionismo ;
+          :año_de_creacion 1949 ;
+          :complejidad "Alta" ;
+          :dimensiones "0.51x0.43" ;
+          :nombre "Cabeza I" ;
+          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Calle_Nueva_York_N1
+:Calle_Nueva_York_N1 rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                     :tema :Urbanismo ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Realismo ;
+                     :año_de_creacion 1925 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "1.20x0.90" ;
+                     :nombre "Calle Nueva York N1" ;
+                     :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Car_Crash
+:Car_Crash rdf:type owl:NamedIndividual ,
+                    :ObraDeArte ;
+           :tema :Catástrofe ;
+           :tiene_epoca :Epoca_Contemporaneo ;
+           :tiene_estilo :Estilo_Pop_Art ;
+           :año_de_creacion 1963 ;
+           :complejidad "Alta" ;
+           :dimensiones "1.73x2.13" ;
+           :nombre "Car Crash" ;
+           :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Catástrofe
+:Catástrofe rdf:type owl:NamedIndividual ,
+                     :Tematica ;
+            :nombre "Catástrofe" ;
+            rdfs:comment "Tema catástrofe" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cañón_de_Pedernal
+:Cañón_de_Pedernal rdf:type owl:NamedIndividual ,
+                            :ObraDeArte ;
+                   :tema :Paisaje ;
+                   :tiene_epoca :Epoca_Modernismo ;
+                   :tiene_estilo :Estilo_Realismo ;
+                   :año_de_creacion 1941 ;
+                   :complejidad "Alta" ;
+                   :dimensiones "1.00x0.80" ;
+                   :nombre "Cañón de Pedernal" ;
+                   :relevancia "Alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Chica_ante_el_espejo
 :Chica_ante_el_espejo rdf:type owl:NamedIndividual ,
                                :ObraDeArte ;
@@ -276,6 +466,26 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                       :relevancia "Alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Ciencia
+:Ciencia rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Ciencia" ;
+         rdfs:comment "Tema ciencia" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cisnes_que_se_reflejan_como_elefantes
+:Cisnes_que_se_reflejan_como_elefantes rdf:type owl:NamedIndividual ,
+                                                :ObraDeArte ;
+                                       :tema :Metamorfosis ;
+                                       :tiene_epoca :Epoca_Modernismo ;
+                                       :tiene_estilo :Estilo_Surrealista ;
+                                       :año_de_creacion 1937 ;
+                                       :complejidad "Media-alta" ;
+                                       :dimensiones "0.61x0.65" ;
+                                       :nombre "Cisnes que se reflejan como elefantes" ;
+                                       :relevancia "Alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Claude_Monet
 :Claude_Monet rdf:type owl:NamedIndividual ,
                        :Pintor ;
@@ -285,6 +495,222 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
               :tiene_estilo :Estilo_Impresionista ;
               :nacionalidad "Francesa" ;
               :nombre "Claude Monet" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Coca_Cola
+:Coca_Cola rdf:type owl:NamedIndividual ,
+                    :ObraDeArte ;
+           :tema :Producto ;
+           :tiene_epoca :Epoca_Contemporaneo ;
+           :tiene_estilo :Estilo_Pop_Art ;
+           :año_de_creacion 1962 ;
+           :complejidad "Media" ;
+           :dimensiones "1.37x0.81" ;
+           :nombre "Coca Cola" ;
+           :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Convergencia
+:Convergencia rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Abstracto ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+              :año_de_creacion 1952 ;
+              :complejidad "Alta" ;
+              :dimensiones "2.40x3.93" ;
+              :nombre "Convergencia" ;
+              :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cristo_de_San_Juan_de_la_Cruz
+:Cristo_de_San_Juan_de_la_Cruz rdf:type owl:NamedIndividual ,
+                                        :ObraDeArte ;
+                               :tema :Religión ;
+                               :tiene_epoca :Epoca_Modernismo ;
+                               :tiene_estilo :Estilo_Surrealista ;
+                               :año_de_creacion 1951 ;
+                               :complejidad "Alta" ;
+                               :dimensiones "2.05x1.16" ;
+                               :nombre "Cristo de San Juan de la Cruz" ;
+                               :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Crown
+:Crown rdf:type owl:NamedIndividual ,
+                :ObraDeArte ;
+       :tema :Retrato ;
+       :tiene_epoca :Epoca_Modernismo ;
+       :tiene_estilo :Estilo_Arte_Urbano ;
+       :año_de_creacion 1981 ;
+       :complejidad "Alta" ;
+       :dimensiones "1.20x1.50" ;
+       :nombre "Crown" ;
+       :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Crucifixión
+:Crucifixión rdf:type owl:NamedIndividual ,
+                      :Tematica ;
+             :nombre "Crucifixión" ;
+             rdfs:comment "Tema crucifixión" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Crucifixión_1965
+:Crucifixión_1965 rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Crucifixión ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Expresionismo ;
+                  :año_de_creacion 1965 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "1.70x2.00" ;
+                  :nombre "Crucifixión 1965" ;
+                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cráneo_de_Vaca_con_Rosa
+:Cráneo_de_Vaca_con_Rosa rdf:type owl:NamedIndividual ,
+                                  :ObraDeArte ;
+                         :tema :Naturaleza ;
+                         :tiene_epoca :Epoca_Modernismo ;
+                         :tiene_estilo :Estilo_Simbolismo ;
+                         :año_de_creacion 1931 ;
+                         :complejidad "Alta" ;
+                         :dimensiones "0.85x0.65" ;
+                         :nombre "Cráneo de Vaca con Rosa" ;
+                         :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cuernos_y_Red
+:Cuernos_y_Red rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+               :tema :Naturaleza ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Simbolismo ;
+               :año_de_creacion 1934 ;
+               :complejidad "Media-alta" ;
+               :dimensiones "0.80x0.60" ;
+               :nombre "Cuernos y Red" ;
+               :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Cultura_Afrolatina
+:Cultura_Afrolatina rdf:type owl:NamedIndividual ,
+                             :Tematica ;
+                    :nombre "Cultura Afrolatina" ;
+                    rdfs:comment "Tema cultura afrolatina" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Deporte
+:Deporte rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Deporte" ;
+         rdfs:comment "Tema deporte" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Double_Elvis
+:Double_Elvis rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Retrato ;
+              :tiene_epoca :Epoca_Contemporaneo ;
+              :tiene_estilo :Estilo_Pop_Art ;
+              :año_de_creacion 1963 ;
+              :complejidad "Alta" ;
+              :dimensiones "2.08x2.44" ;
+              :nombre "Double Elvis" ;
+              :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Dustheads
+:Dustheads rdf:type owl:NamedIndividual ,
+                    :ObraDeArte ;
+           :tema :Retrato ;
+           :tiene_epoca :Epoca_Modernismo ;
+           :tiene_estilo :Estilo_Arte_Urbano ;
+           :año_de_creacion 1982 ;
+           :complejidad "Alta" ;
+           :dimensiones "1.60x1.20" ;
+           :nombre "Dustheads" ;
+           :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Eco
+:Eco rdf:type owl:NamedIndividual ,
+              :ObraDeArte ;
+     :tema :Abstracto ;
+     :tiene_epoca :Epoca_Modernismo ;
+     :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+     :año_de_creacion 1951 ;
+     :complejidad "Media-alta" ;
+     :dimensiones "1.90x1.42" ;
+     :nombre "Eco" ;
+     :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_Abrazo_de_Amor_de_El_Universo
+:El_Abrazo_de_Amor_de_El_Universo rdf:type owl:NamedIndividual ,
+                                           :ObraDeArte ;
+                                  :tema :Simbolismo ;
+                                  :tiene_epoca :Epoca_Modernismo ;
+                                  :tiene_estilo :Estilo_Surrealista ;
+                                  :año_de_creacion 1949 ;
+                                  :complejidad "Alta" ;
+                                  :dimensiones "1.18x0.90" ;
+                                  :nombre "El Abrazo de Amor de El Universo" ;
+                                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_Cañón_Abanico
+:El_Cañón_Abanico rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Paisaje ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Realismo ;
+                  :año_de_creacion 1949 ;
+                  :complejidad "Media-alta" ;
+                  :dimensiones "1.10x0.90" ;
+                  :nombre "El Cañón Abanico" ;
+                  :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_descubrimiento_de_América_por_Cristóbal_Colón
+:El_descubrimiento_de_América_por_Cristóbal_Colón rdf:type owl:NamedIndividual ,
+                                                           :ObraDeArte ;
+                                                  :tema :Histórico ;
+                                                  :tiene_epoca :Epoca_Modernismo ;
+                                                  :tiene_estilo :Estilo_Surrealista ;
+                                                  :año_de_creacion 1959 ;
+                                                  :complejidad "Alta" ;
+                                                  :dimensiones "4.10x2.90" ;
+                                                  :nombre "El descubrimiento de América por Cristóbal Colón" ;
+                                                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_gran_masturbador
+:El_gran_masturbador rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                     :tema :Psicológico ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Surrealista ;
+                     :año_de_creacion 1929 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "1.10x0.89" ;
+                     :nombre "El gran masturbador" ;
+                     :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_rostro_de_la_guerra
+:El_rostro_de_la_guerra rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                        :tema :Psicológico ;
+                        :tiene_epoca :Epoca_Modernismo ;
+                        :tiene_estilo :Estilo_Surrealista ;
+                        :año_de_creacion 1940 ;
+                        :complejidad "Media-alta" ;
+                        :dimensiones "0.64x0.79" ;
+                        :nombre "El rostro de la guerra" ;
+                        :relevancia "Alta" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_sueño
@@ -300,6 +726,19 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
           :relevancia "Alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_venado_herido
+:El_venado_herido rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Simbolismo ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Simbolismo ;
+                  :año_de_creacion 1946 ;
+                  :complejidad "Media" ;
+                  :dimensiones "0.30x0.22" ;
+                  :nombre "El venado herido" ;
+                  :relevancia "Media-alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/El_viejo_guitarrista
 :El_viejo_guitarrista rdf:type owl:NamedIndividual ,
                                :ObraDeArte ;
@@ -311,6 +750,33 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                       :dimensiones "1.2x0.8" ;
                       :nombre "El viejo guitarrista" ;
                       :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Elvis
+:Elvis rdf:type owl:NamedIndividual ,
+                :ObraDeArte ;
+       :tema :Retrato ;
+       :tiene_epoca :Epoca_Contemporaneo ;
+       :tiene_estilo :Estilo_Pop_Art ;
+       :año_de_creacion 1963 ;
+       :complejidad "Media" ;
+       :dimensiones "2.08x1.22" ;
+       :nombre "Elvis" ;
+       :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Contemporaneo
+:Epoca_Contemporaneo rdf:type owl:NamedIndividual ,
+                              :Epoca ;
+                     :nombre "Contemporaneo" ;
+                     rdfs:comment "Epoca Contemporanea" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Expresionismo_Abstracto
+:Epoca_Expresionismo_Abstracto rdf:type owl:NamedIndividual ,
+                                        :Epoca ;
+                               :nombre "Expresionismo_Abstracto" ;
+                               rdfs:comment "Epoca del Expresionismo_Abstracto" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Epoca_Impresionismo
@@ -334,11 +800,67 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                     rdfs:comment "Epoca del Renacimiento" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Abstraccionismo
+:Estilo_Abstraccionismo rdf:type owl:NamedIndividual ,
+                                 :Estilo ;
+                        :nombre "Abstraccionismo" ;
+                        rdfs:comment "Estilo Abstraccionismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Abstracto_y_Naturalismo
+:Estilo_Abstracto_y_Naturalismo rdf:type owl:NamedIndividual ,
+                                         :Estilo ;
+                                :nombre "Abstracto y Naturalismo" ;
+                                rdfs:comment "Estilo Abstracto y Naturalismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Arte_Urbano
+:Estilo_Arte_Urbano rdf:type owl:NamedIndividual ,
+                             :Estilo ;
+                    :nombre "Arte Urbano" ;
+                    rdfs:comment "Estilo Arte Urbano" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Drip_Painting
+:Estilo_Drip_Painting rdf:type owl:NamedIndividual ,
+                               :Estilo ;
+                      :nombre "Drip Painting" ;
+                      rdfs:comment "Estilo Drip Painting" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Expresionismo
+:Estilo_Expresionismo rdf:type owl:NamedIndividual ,
+                               :Estilo ;
+                      :nombre "Expresionismo" ;
+                      rdfs:comment "Estilo Expresionismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Expresionismo_Abstracto
+:Estilo_Expresionismo_Abstracto rdf:type owl:NamedIndividual ,
+                                         :Estilo ;
+                                :nombre "Expresionismo Abstracto" ;
+                                rdfs:comment "Estilo Expresionismo Abstracto" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Impresionista
 :Estilo_Impresionista rdf:type owl:NamedIndividual ,
                                :Estilo ;
                       :nombre "Impresionista" ;
                       rdfs:comment "Estilo Impresionista" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Pop_Art
+:Estilo_Pop_Art rdf:type owl:NamedIndividual ,
+                         :Estilo ;
+                :nombre "Pop Art" ;
+                rdfs:comment "Estilo Pop Art" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Realismo
+:Estilo_Realismo rdf:type owl:NamedIndividual ,
+                          :Estilo ;
+                 :nombre "Realismo" ;
+                 rdfs:comment "Estilo Realismo" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Renacentista
@@ -348,21 +870,57 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                      rdfs:comment "Estilo Renacentista" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Simbolismo
+:Estilo_Simbolismo rdf:type owl:NamedIndividual ,
+                            :Estilo ;
+                   :nombre "Simbolismo" ;
+                   rdfs:comment "Estilo Simbolismo" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estilo_Surrealista
 :Estilo_Surrealista rdf:type owl:NamedIndividual ,
                              :Estilo ;
                     :nombre "Surrealista" ;
                     rdfs:comment "Estilo Surrealista" .
 
-:Estilo_Expresionismo_Abstracto rdf:type owl:NamedIndividual ,
-                             :Estilo ;
-                    :nombre "Expresionismo Abstracto" ;
-                    rdfs:comment "Estilo Expresionismo Abstracto" .
 
-:Estilo_Simbolismo rdf:type owl:NamedIndividual ,
-                           :Estilo ;
-                  :nombre "Simbolismo" ;
-                  rdfs:comment "Estilo Simbolismo" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estudio_del_autorretrato
+:Estudio_del_autorretrato rdf:type owl:NamedIndividual ,
+                                   :ObraDeArte ;
+                          :tema :Retrato ;
+                          :tiene_epoca :Epoca_Modernismo ;
+                          :tiene_estilo :Estilo_Expresionismo ;
+                          :año_de_creacion 1971 ;
+                          :complejidad "Alta" ;
+                          :dimensiones "0.81x0.71" ;
+                          :nombre "Estudio del autorretrato" ;
+                          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estudio_para_el_retrato_de_Papa_Inocencio_X
+:Estudio_para_el_retrato_de_Papa_Inocencio_X rdf:type owl:NamedIndividual ,
+                                                      :ObraDeArte ;
+                                             :tema :Retrato ;
+                                             :tiene_epoca :Epoca_Modernismo ;
+                                             :tiene_estilo :Estilo_Expresionismo ;
+                                             :año_de_creacion 1953 ;
+                                             :complejidad "Alta" ;
+                                             :dimensiones "1.43x1.22" ;
+                                             :nombre "Estudio para el retrato de Papa Inocencio X" ;
+                                             :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Estudio_para_un_retrato_de_Van_Gogh
+:Estudio_para_un_retrato_de_Van_Gogh rdf:type owl:NamedIndividual ,
+                                              :ObraDeArte ;
+                                     :tema :Retrato ;
+                                     :tiene_epoca :Epoca_Modernismo ;
+                                     :tiene_estilo :Estilo_Expresionismo ;
+                                     :año_de_creacion 1957 ;
+                                     :complejidad "Alta" ;
+                                     :dimensiones "0.76x0.66" ;
+                                     :nombre "Estudio para un retrato de Van Gogh" ;
+                                     :relevancia "Alta" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Familia
@@ -370,6 +928,135 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                   :Tematica ;
          :nombre "Familia" ;
          rdfs:comment "Tema familia" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Figura
+:Figura rdf:type owl:NamedIndividual ,
+                 :Tematica ;
+        :nombre "Figura" ;
+        rdfs:comment "Tema figura" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Figura_en_un_paisaje
+:Figura_en_un_paisaje rdf:type owl:NamedIndividual ,
+                               :ObraDeArte ;
+                      :tema :Figura ;
+                      :tiene_epoca :Epoca_Modernismo ;
+                      :tiene_estilo :Estilo_Expresionismo ;
+                      :año_de_creacion 1945 ;
+                      :complejidad "Alta" ;
+                      :dimensiones "1.20x1.53" ;
+                      :nombre "Figura en un paisaje" ;
+                      :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Figura_tumbada
+:Figura_tumbada rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+                :tema :Figura ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Expresionismo ;
+                :año_de_creacion 1969 ;
+                :complejidad "Alta" ;
+                :dimensiones "1.55x1.95" ;
+                :nombre "Figura tumbada" ;
+                :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Flexible
+:Flexible rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+          :tema :Abstracto ;
+          :tiene_epoca :Epoca_Modernismo ;
+          :tiene_estilo :Estilo_Arte_Urbano ;
+          :año_de_creacion 1984 ;
+          :complejidad "Alta" ;
+          :dimensiones "2.10x1.60" ;
+          :nombre "Flexible" ;
+          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Flor_Blanca
+:Flor_Blanca rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+             :tema :Naturaleza ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Abstraccionismo ;
+             :año_de_creacion 1932 ;
+             :complejidad "Media" ;
+             :dimensiones "0.71x0.56" ;
+             :nombre "Flor Blanca" ;
+             :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Francis_Bacon
+:Francis_Bacon rdf:type owl:NamedIndividual ,
+                        :Pintor ;
+               :autor_de :Cabeza_I ,
+                         :Crucifixión_1965 ,
+                         :Estudio_del_autorretrato ,
+                         :Estudio_para_el_retrato_de_Papa_Inocencio_X ,
+                         :Estudio_para_un_retrato_de_Van_Gogh ,
+                         :Figura_en_un_paisaje ,
+                         :Figura_tumbada ,
+                         :Pintura_1946 ,
+                         :Tres_estudios_para_figuras_al_pie_de_una_crucifixión ,
+                         :Tríptico_Mayo_1973 ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Expresionismo ;
+               :nacionalidad "Británico" ;
+               :nombre "Francis Bacon" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Frida_Kahlo
+:Frida_Kahlo rdf:type owl:NamedIndividual ,
+                      :Pintor ;
+             :autor_de :Autorretrato_con_collar_de_espinas ,
+                       :El_Abrazo_de_Amor_de_El_Universo ,
+                       :El_venado_herido ,
+                       :Henry_Ford_Hospital ,
+                       :La_columna_rota ,
+                       :Las_dos_Fridas ,
+                       :Lo_Que_el_Agua_Me_Dio ,
+                       :Mi_Vestido_Cuelga_Allí ,
+                       :Unos_Cuantos_Piquetitos ,
+                       :Viva_la_vida ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Simbolismo ;
+             :nacionalidad "Mexicana" ;
+             :nombre "Frida Kahlo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Galatea_de_las_esferas
+:Galatea_de_las_esferas rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                        :tema :Ciencia ;
+                        :tiene_epoca :Epoca_Modernismo ;
+                        :tiene_estilo :Estilo_Surrealista ;
+                        :año_de_creacion 1952 ;
+                        :complejidad "Alta" ;
+                        :dimensiones "0.65x0.54" ;
+                        :nombre "Galatea de las esferas" ;
+                        :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Georgia_O_Keefe
+:Georgia_O_Keefe rdf:type owl:NamedIndividual ,
+                          :Pintor ;
+                 :autor_de :Calle_Nueva_York_N1 ,
+                           :Cañón_de_Pedernal ,
+                           :Cráneo_de_Vaca_con_Rosa ,
+                           :Cuernos_y_Red ,
+                           :El_Cañón_Abanico ,
+                           :Flor_Blanca ,
+                           :Lirio_Negro ,
+                           :Mano_de_Buda ,
+                           :Nubes_Caladas ,
+                           :Rosa_de_Abanico ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Abstracto_y_Naturalismo ;
+                 :nacionalidad "Estadounidense" ;
+                 :nombre "Georgia O'Keeffe" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Guernica
@@ -392,6 +1079,52 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
         rdfs:comment "Tema guerra" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Henry_Ford_Hospital
+:Henry_Ford_Hospital rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                     :tema :Simbolismo ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Surrealista ;
+                     :año_de_creacion 1932 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "0.31x0.38" ;
+                     :nombre "Henry Ford Hospital" ;
+                     :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Histórico
+:Histórico rdf:type owl:NamedIndividual ,
+                    :Tematica ;
+           :nombre "Histórico" ;
+           rdfs:comment "Tema histórico" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Hollywood_Africans
+:Hollywood_Africans rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                    :tema :Cultura_Afrolatina ;
+                    :tiene_epoca :Epoca_Modernismo ;
+                    :tiene_estilo :Estilo_Arte_Urbano ;
+                    :año_de_creacion 1983 ;
+                    :complejidad "Alta" ;
+                    :dimensiones "1.50x1.20" ;
+                    :nombre "Hollywood Africans" ;
+                    :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Horn_Players
+:Horn_Players rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Música ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Arte_Urbano ;
+              :año_de_creacion 1983 ;
+              :complejidad "Alta" ;
+              :dimensiones "1.50x1.80" ;
+              :nombre "Horn Players" ;
+              :relevancia "Alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Impresión_Sol_Naciente
 :Impresión_Sol_Naciente rdf:type owl:NamedIndividual ,
                                  :ObraDeArte ;
@@ -405,6 +1138,44 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                         :relevancia "alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Jackson_Pollock
+:Jackson_Pollock rdf:type owl:NamedIndividual ,
+                          :Pintor ;
+                 :autor_de :Azul_Mural ,
+                           :Convergencia ,
+                           :Eco ,
+                           :La_Llama_Azul ,
+                           :Lavanda_Mist ,
+                           :Lucifer ,
+                           :Número_5_1948 ,
+                           :One_Number_31_1950 ,
+                           :Pasiphae ,
+                           :Ritmo_de_otoño ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                 :nacionalidad "Estadounidense" ;
+                 :nombre "Jackson Pollock" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Jean_Michel_Basquiat
+:Jean_Michel_Basquiat rdf:type owl:NamedIndividual ,
+                               :Pintor ;
+                      :autor_de :Boy_and_Dog_in_a_Johnnypump ,
+                                :Crown ,
+                                :Dustheads ,
+                                :Flexible ,
+                                :Hollywood_Africans ,
+                                :Horn_Players ,
+                                :Profit_I ,
+                                :Riding_with_Death ,
+                                :Sin_título_1981 ,
+                                :Untitled_Boxer ;
+                      :tiene_epoca :Epoca_Contemporaneo ;
+                      :tiene_estilo :Estilo_Expresionismo ;
+                      :nacionalidad "Estadounidense" ;
+                      :nombre "Jean-Michel Basquiat" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Juan
 :Juan rdf:type owl:NamedIndividual ,
                :Visitante ;
@@ -413,6 +1184,32 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
       :conocimiento_de_arte "medio-alto" ;
       :nombre "Juan" ;
       :tipo "persona" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_Llama_Azul
+:La_Llama_Azul rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+               :tema :Abstracto ;
+               :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+               :tiene_estilo :Estilo_Drip_Painting ;
+               :año_de_creacion 1953 ;
+               :complejidad "Media" ;
+               :dimensiones "0.90x1.20" ;
+               :nombre "La Llama Azul" ;
+               :relevancia "Media" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_columna_rota
+:La_columna_rota rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                 :tema :Sentimental ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Simbolismo ;
+                 :año_de_creacion 1944 ;
+                 :complejidad "Alta" ;
+                 :dimensiones "0.40x0.34" ;
+                 :nombre "La columna rota" ;
+                 :relevancia "Alta" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_familia_de_saltimbanquis
@@ -441,6 +1238,32 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                     :relevancia "Media-alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_persistencia_de_la_memoria
+:La_persistencia_de_la_memoria rdf:type owl:NamedIndividual ,
+                                        :ObraDeArte ;
+                               :tema :Paisaje ;
+                               :tiene_epoca :Epoca_Modernismo ;
+                               :tiene_estilo :Estilo_Surrealista ;
+                               :año_de_creacion 1931 ;
+                               :complejidad "Media" ;
+                               :dimensiones "0.24x0.33" ;
+                               :nombre "La persistencia de la memoria" ;
+                               :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_tentación_de_San_Antonio
+:La_tentación_de_San_Antonio rdf:type owl:NamedIndividual ,
+                                      :ObraDeArte ;
+                             :tema :Religión ;
+                             :tiene_epoca :Epoca_Modernismo ;
+                             :tiene_estilo :Estilo_Surrealista ;
+                             :año_de_creacion 1946 ;
+                             :complejidad "Alta" ;
+                             :dimensiones "0.89x1.19" ;
+                             :nombre "La tentación de San Antonio" ;
+                             :relevancia "Media-alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/La_Última_Cena
 :La_Última_Cena rdf:type owl:NamedIndividual ,
                          :ObraDeArte ;
@@ -451,6 +1274,19 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                 :complejidad "Muy alta" ;
                 :dimensiones "460x880" ;
                 :nombre "La Última Cena" ;
+                :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Las_dos_Fridas
+:Las_dos_Fridas rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+                :tema :Retrato ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Simbolismo ;
+                :año_de_creacion 1939 ;
+                :complejidad "Alta" ;
+                :dimensiones "1.73x1.74" ;
+                :nombre "Las dos Fridas" ;
                 :relevancia "Alta" .
 
 
@@ -467,6 +1303,32 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                           :relevancia "Alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Latas_de_Sopa_Campbell
+:Latas_de_Sopa_Campbell rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                        :tema :Naturaleza ;
+                        :tiene_epoca :Epoca_Contemporaneo ;
+                        :tiene_estilo :Estilo_Pop_Art ;
+                        :año_de_creacion 1962 ;
+                        :complejidad "Media" ;
+                        :dimensiones "0.51x0.41" ;
+                        :nombre "Latas de Sopa Campbell" ;
+                        :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Lavanda_Mist
+:Lavanda_Mist rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Abstracto ;
+              :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+              :tiene_estilo :Estilo_Drip_Painting ;
+              :año_de_creacion 1950 ;
+              :complejidad "Alta" ;
+              :dimensiones "2.21x2.97" ;
+              :nombre "Lavanda Mist" ;
+              :relevancia "Alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Leonardo_da_Vinci
 :Leonardo_da_Vinci rdf:type owl:NamedIndividual ,
                             :Pintor ;
@@ -476,6 +1338,32 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                    :tiene_estilo :Estilo_Renacentista ;
                    :nacionalidad "Italiana" ;
                    :nombre "Leonardo Da Vinci" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Lirio_Negro
+:Lirio_Negro rdf:type owl:NamedIndividual ,
+                      :ObraDeArte ;
+             :tema :Naturaleza ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Abstraccionismo ;
+             :año_de_creacion 1926 ;
+             :complejidad "Media" ;
+             :dimensiones "0.90x0.60" ;
+             :nombre "Lirio Negro" ;
+             :relevancia "Media" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Lo_Que_el_Agua_Me_Dio
+:Lo_Que_el_Agua_Me_Dio rdf:type owl:NamedIndividual ,
+                                :ObraDeArte ;
+                       :tema :Simbolismo ;
+                       :tiene_epoca :Epoca_Modernismo ;
+                       :tiene_estilo :Estilo_Surrealista ;
+                       :año_de_creacion 1938 ;
+                       :complejidad "Alta" ;
+                       :dimensiones "0.91x0.70" ;
+                       :nombre "Lo Que el Agua Me Dio" ;
+                       :relevancia "Media-alta" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Los_Nenúfares
@@ -504,6 +1392,77 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                   :relevancia "Alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Lucifer
+:Lucifer rdf:type owl:NamedIndividual ,
+                  :ObraDeArte ;
+         :tema :Abstracto ;
+         :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+         :tiene_estilo :Estilo_Drip_Painting ;
+         :año_de_creacion 1947 ;
+         :complejidad "Alta" ;
+         :dimensiones "1.44x2.24" ;
+         :nombre "Lucifer" ;
+         :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mano_de_Buda
+:Mano_de_Buda rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Simbolismo ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Simbolismo ;
+              :año_de_creacion 1953 ;
+              :complejidad "Media" ;
+              :dimensiones "0.90x0.70" ;
+              :nombre "Mano de Buda" ;
+              :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mao
+:Mao rdf:type owl:NamedIndividual ,
+              :ObraDeArte ;
+     :tema :Retrato ;
+     :tiene_epoca :Epoca_Contemporaneo ;
+     :tiene_estilo :Estilo_Pop_Art ;
+     :año_de_creacion 1972 ;
+     :complejidad "Media-alta" ;
+     :dimensiones "2.08x1.58" ;
+     :nombre "Mao" ;
+     :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Marilyn_Monroe
+:Marilyn_Monroe rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+                :tema :Retrato ;
+                :tiene_epoca :Epoca_Contemporaneo ;
+                :tiene_estilo :Estilo_Pop_Art ;
+                :año_de_creacion 1962 ;
+                :complejidad "Media" ;
+                :dimensiones "1.50x1.20" ;
+                :nombre "Marilyn Monroe" ;
+                :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mark_Rothko
+:Mark_Rothko rdf:type owl:NamedIndividual ,
+                      :Pintor ;
+             :autor_de :Azul_y_Gris ,
+                       :Blanco_Sobre_Amarillo ,
+                       :Blanco_y_Violeta ,
+                       :Multiforme ,
+                       :N_14 ,
+                       :Naranja_Rojo_Amarillo ,
+                       :Negro_Sobre_Rojo ,
+                       :Rojos_1956 ,
+                       :Sin_Título_1953 ,
+                       :Verde_y_Morado ;
+             :tiene_epoca :Epoca_Modernismo ;
+             :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+             :nacionalidad "Estadounidense" ;
+             :nombre "Mark Rothko" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Masacre_en_Corea
 :Masacre_en_Corea rdf:type owl:NamedIndividual ,
                            :ObraDeArte ;
@@ -515,6 +1474,26 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                   :dimensiones "1.1x2.1" ;
                   :nombre "Masacre en Corea" ;
                   :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Metamorfosis
+:Metamorfosis rdf:type owl:NamedIndividual ,
+                       :Tematica ;
+              :nombre "Metamorfosis" ;
+              rdfs:comment "Tema metamorfosis" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mi_Vestido_Cuelga_Allí
+:Mi_Vestido_Cuelga_Allí rdf:type owl:NamedIndividual ,
+                                 :ObraDeArte ;
+                        :tema :Simbolismo ;
+                        :tiene_epoca :Epoca_Modernismo ;
+                        :tiene_estilo :Estilo_Surrealista ;
+                        :año_de_creacion 1933 ;
+                        :complejidad "Media" ;
+                        :dimensiones "0.39x0.47" ;
+                        :nombre "Mi Vestido Cuelga Allí" ;
+                        :relevancia "Media" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mona_Lisa
@@ -530,6 +1509,13 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
            :relevancia "Alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Muerte
+:Muerte rdf:type owl:NamedIndividual ,
+                 :Tematica ;
+        :nombre "Muerte" ;
+        rdfs:comment "Tema muerte" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Mujer_con_sombrero
 :Mujer_con_sombrero rdf:type owl:NamedIndividual ,
                              :ObraDeArte ;
@@ -543,18 +1529,31 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                     :relevancia "Media-alta" .
 
 
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Multiforme
+:Multiforme rdf:type owl:NamedIndividual ,
+                     :ObraDeArte ;
+            :tema :Abstracto ;
+            :tiene_epoca :Epoca_Modernismo ;
+            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+            :año_de_creacion 1947 ;
+            :complejidad "Alta" ;
+            :dimensiones "1.68x1.25" ;
+            :nombre "Multiforme" ;
+            :relevancia "Alta" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Museo_de_Arte_Universal
 :Museo_de_Arte_Universal rdf:type owl:NamedIndividual ,
                                   :Museo ;
-                         :formado_por :Sala_Impresionismo ,
+                         :formado_por :Sala_Arte_Urbano ,
+                                      :Sala_Dalí ,
+                                      :Sala_Expresionismo ,
+                                      :Sala_Impresionismo ,
+                                      :Sala_O_Keefe ,
                                       :Sala_Picasso ,
                                       :Sala_Renacimiento ,
-                                      :Sala_Dalí ,
                                       :Sala_Simbolismo ,
-                                      :Sala_Expresionismo ,
-                                      :Sala_Warhol ,
-                                      :Sala_O_Keefe ,
-                                      :Sala_Arte_Urbano ;
+                                      :Sala_Warhol ;
                          :nombre "Museo de Arte Universal" .
 
 
@@ -563,6 +1562,98 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                  :Tematica ;
         :nombre "Música" ;
         rdfs:comment "Tema música" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/N_14
+:N_14 rdf:type owl:NamedIndividual ,
+               :ObraDeArte ;
+      :tema :Abstracto ;
+      :tiene_epoca :Epoca_Modernismo ;
+      :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+      :año_de_creacion 1960 ;
+      :complejidad "Alta" ;
+      :dimensiones "2.88x2.12" ;
+      :nombre "Nº 14" ;
+      :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Naranja_Rojo_Amarillo
+:Naranja_Rojo_Amarillo rdf:type owl:NamedIndividual ,
+                                :ObraDeArte ;
+                       :tema :Abstracto ;
+                       :tiene_epoca :Epoca_Modernismo ;
+                       :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                       :año_de_creacion 1961 ;
+                       :complejidad "Alta" ;
+                       :dimensiones "2.42x1.86" ;
+                       :nombre "Naranja, Rojo, Amarillo" ;
+                       :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Naturaleza
+:Naturaleza rdf:type owl:NamedIndividual ,
+                     :Tematica ;
+            :nombre "Naturaleza" ;
+            rdfs:comment "Tema naturaleza" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Negro_Sobre_Rojo
+:Negro_Sobre_Rojo rdf:type owl:NamedIndividual ,
+                           :ObraDeArte ;
+                  :tema :Abstracto ;
+                  :tiene_epoca :Epoca_Modernismo ;
+                  :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                  :año_de_creacion 1958 ;
+                  :complejidad "Alta" ;
+                  :dimensiones "2.06x1.63" ;
+                  :nombre "Negro Sobre Rojo" ;
+                  :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Nubes_Caladas
+:Nubes_Caladas rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+               :tema :Paisaje ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Abstraccionismo ;
+               :año_de_creacion 1950 ;
+               :complejidad "Media" ;
+               :dimensiones "1.20x0.90" ;
+               :nombre "Nubes Caladas" ;
+               :relevancia "Media" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Número_5_1948
+:Número_5_1948 rdf:type owl:NamedIndividual ,
+                        :ObraDeArte ;
+               :tema :Abstracto ;
+               :tiene_epoca :Epoca_Modernismo ;
+               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+               :año_de_creacion 1948 ;
+               :complejidad "Alta" ;
+               :dimensiones "2.40x1.22" ;
+               :nombre "Número 5, 1948" ;
+               :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/One_Number_31_1950
+:One_Number_31_1950 rdf:type owl:NamedIndividual ,
+                             :ObraDeArte ;
+                    :tema :Abstracto ;
+                    :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+                    :tiene_estilo :Estilo_Drip_Painting ;
+                    :año_de_creacion 1950 ;
+                    :complejidad "Muy alta" ;
+                    :dimensiones "2.69x5.30" ;
+                    :nombre "One: Number 31, 1950" ;
+                    :relevancia "Muy alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Onírico
+:Onírico rdf:type owl:NamedIndividual ,
+                  :Tematica ;
+         :nombre "Onírico" ;
+         rdfs:comment "Tema onírico" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Pablo_Picasso
@@ -590,11 +1681,66 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
          :nombre "Paisaje" ;
          rdfs:comment "Tema paisaje" .
 
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Pasiphae
+:Pasiphae rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+          :tema :Abstracto ;
+          :tiene_epoca :Epoca_Expresionismo_Abstracto ;
+          :tiene_estilo :Estilo_Drip_Painting ;
+          :año_de_creacion 1943 ;
+          :complejidad "Alta" ;
+          :dimensiones "1.29x2.40" ;
+          :nombre "Pasiphaë" ;
+          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Pintura_1946
+:Pintura_1946 rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Abstracto ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Expresionismo ;
+              :año_de_creacion 1946 ;
+              :complejidad "Alta" ;
+              :dimensiones "1.27x1.52" ;
+              :nombre "Pintura 1946" ;
+              :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Producto
+:Producto rdf:type owl:NamedIndividual ,
+                   :Tematica ;
+          :nombre "Producto" ;
+          rdfs:comment "Tema producto" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Profit_I
+:Profit_I rdf:type owl:NamedIndividual ,
+                   :ObraDeArte ;
+          :tema :Abstracto ;
+          :tiene_epoca :Epoca_Modernismo ;
+          :tiene_estilo :Estilo_Arte_Urbano ;
+          :año_de_creacion 1983 ;
+          :complejidad "Alta" ;
+          :dimensiones "2.00x1.50" ;
+          :nombre "Profit I" ;
+          :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Psicológico
+:Psicológico rdf:type owl:NamedIndividual ,
+                      :Tematica ;
+             :nombre "Psicológico" ;
+             rdfs:comment "Tema psicológico" .
+
+
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Religión
 :Religión rdf:type owl:NamedIndividual ,
                    :Tematica ;
           :nombre "Religión" ;
           rdfs:comment "Tema religión" .
+
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Retrato
 :Retrato rdf:type owl:NamedIndividual ,
@@ -602,6 +1748,141 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
          :nombre "Retrato" ;
          rdfs:comment "Tema retrato" .
 
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Retrato_de_Mae_West
+:Retrato_de_Mae_West rdf:type owl:NamedIndividual ,
+                              :ObraDeArte ;
+                     :tema :Retrato ;
+                     :tiene_epoca :Epoca_Modernismo ;
+                     :tiene_estilo :Estilo_Surrealista ;
+                     :año_de_creacion 1935 ;
+                     :complejidad "Alta" ;
+                     :dimensiones "0.60x0.60" ;
+                     :nombre "Retrato de Mae West" ;
+                     :relevancia "Media-alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Riding_with_Death
+:Riding_with_Death rdf:type owl:NamedIndividual ,
+                            :ObraDeArte ;
+                   :tema :Muerte ;
+                   :tiene_epoca :Epoca_Modernismo ;
+                   :tiene_estilo :Estilo_Arte_Urbano ;
+                   :año_de_creacion 1988 ;
+                   :complejidad "Alta" ;
+                   :dimensiones "1.50x1.70" ;
+                   :nombre "Riding with Death" ;
+                   :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Ritmo_de_otoño
+:Ritmo_de_otoño rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+                :tema :Abstracto ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                :año_de_creacion 1950 ;
+                :complejidad "Alta" ;
+                :dimensiones "2.66x5.25" ;
+                :nombre "Ritmo de otoño" ;
+                :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Rojos_1956
+:Rojos_1956 rdf:type owl:NamedIndividual ,
+                     :ObraDeArte ;
+            :tema :Abstracto ;
+            :tiene_epoca :Epoca_Modernismo ;
+            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+            :año_de_creacion 1956 ;
+            :complejidad "Media-alta" ;
+            :dimensiones "2.08x1.62" ;
+            :nombre "Rojos, 1956" ;
+            :relevancia "Alta" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Rosa_de_Abanico
+:Rosa_de_Abanico rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                 :tema :Naturaleza ;
+                 :tiene_epoca :Epoca_Modernismo ;
+                 :tiene_estilo :Estilo_Abstraccionismo ;
+                 :año_de_creacion 1947 ;
+                 :complejidad "Media" ;
+                 :dimensiones "0.75x0.60" ;
+                 :nombre "Rosa de Abanico" ;
+                 :relevancia "Media" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Arte_Urbano
+:Sala_Arte_Urbano rdf:type owl:NamedIndividual ,
+                           :Sala ;
+                  :contiene :Boy_and_Dog_in_a_Johnnypump ,
+                            :Crown ,
+                            :Dustheads ,
+                            :Flexible ,
+                            :Hollywood_Africans ,
+                            :Horn_Players ,
+                            :Profit_I ,
+                            :Riding_with_Death ,
+                            :Sin_título_1981 ,
+                            :Untitled_Boxer ;
+                  :contiguas :Sala_O_Keefe ;
+                  :nombre "Sala Arte Urbano" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Dalí
+:Sala_Dalí rdf:type owl:NamedIndividual ,
+                    :Sala ;
+           :contiene :Cisnes_que_se_reflejan_como_elefantes ,
+                     :Cristo_de_San_Juan_de_la_Cruz ,
+                     :El_descubrimiento_de_América_por_Cristóbal_Colón ,
+                     :El_gran_masturbador ,
+                     :El_rostro_de_la_guerra ,
+                     :Galatea_de_las_esferas ,
+                     :La_persistencia_de_la_memoria ,
+                     :La_tentación_de_San_Antonio ,
+                     :Retrato_de_Mae_West ,
+                     :Sueño_causado_por_el_vuelo_de_una_abeja ;
+           :contiguas :Sala_Picasso ;
+           :nombre "Sala Salvador Dalí" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Expresionismo
+:Sala_Expresionismo rdf:type owl:NamedIndividual ,
+                             :Sala ;
+                    :contiene :Azul_Mural ,
+                              :Azul_y_Gris ,
+                              :Blanco_Sobre_Amarillo ,
+                              :Blanco_y_Violeta ,
+                              :Cabeza_I ,
+                              :Convergencia ,
+                              :Crucifixión_1965 ,
+                              :Eco ,
+                              :Estudio_del_autorretrato ,
+                              :Estudio_para_el_retrato_de_Papa_Inocencio_X ,
+                              :Estudio_para_un_retrato_de_Van_Gogh ,
+                              :Figura_en_un_paisaje ,
+                              :Figura_tumbada ,
+                              :La_Llama_Azul ,
+                              :Lavanda_Mist ,
+                              :Lucifer ,
+                              :Multiforme ,
+                              :N_14 ,
+                              :Naranja_Rojo_Amarillo ,
+                              :Negro_Sobre_Rojo ,
+                              :Número_5_1948 ,
+                              :One_Number_31_1950 ,
+                              :Pasiphae ,
+                              :Pintura_1946 ,
+                              :Ritmo_de_otoño ,
+                              :Rojos_1956 ,
+                              :Sin_Título_1953 ,
+                              :Tres_estudios_para_figuras_al_pie_de_una_crucifixión ,
+                              :Tríptico_Mayo_1973 ,
+                              :Verde_y_Morado ;
+                    :contiguas :Sala_Dalí ;
+                    :nombre "Sala Expresionismo" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Impresionismo
@@ -611,6 +1892,23 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                               :Los_Nenúfares ;
                     :contiguas :Sala_Renacimiento ;
                     :nombre "Sala de Impresionismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_O_Keefe
+:Sala_O_Keefe rdf:type owl:NamedIndividual ,
+                       :Sala ;
+              :contiene :Calle_Nueva_York_N1 ,
+                        :Cañón_de_Pedernal ,
+                        :Cráneo_de_Vaca_con_Rosa ,
+                        :Cuernos_y_Red ,
+                        :El_Cañón_Abanico ,
+                        :Flor_Blanca ,
+                        :Lirio_Negro ,
+                        :Mano_de_Buda ,
+                        :Nubes_Caladas ,
+                        :Rosa_de_Abanico ;
+              :contiguas :Sala_Impresionismo ;
+              :nombre "Sala O_Keefe" .
 
 
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Picasso
@@ -626,6 +1924,7 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                         :Los_tres_músicos ,
                         :Masacre_en_Corea ,
                         :Mujer_con_sombrero ;
+              :contiguas :Sala_Simbolismo ;
               :nombre "Sala Pablo Picasso" .
 
 
@@ -634,720 +1933,66 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                             :Sala ;
                    :contiene :La_Última_Cena ,
                              :Mona_Lisa ;
+                   :contiguas :Sala_Expresionismo ;
                    :nombre "Sala de Renacimiento" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sentimental
-:Sentimental rdf:type owl:NamedIndividual ,
-                      :Tematica ;
-             :nombre "Sentimental" ;
-             rdfs:comment "Tema sentimental" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Simbolismo
+:Sala_Simbolismo rdf:type owl:NamedIndividual ,
+                          :Sala ;
+                 :contiene :Autorretrato_con_collar_de_espinas ,
+                           :El_Abrazo_de_Amor_de_El_Universo ,
+                           :El_venado_herido ,
+                           :Henry_Ford_Hospital ,
+                           :La_columna_rota ,
+                           :Las_dos_Fridas ,
+                           :Lo_Que_el_Agua_Me_Dio ,
+                           :Mi_Vestido_Cuelga_Allí ,
+                           :Unos_Cuantos_Piquetitos ,
+                           :Viva_la_vida ;
+                 :contiguas :Sala_Warhol ;
+                 :nombre "Sala Simbolismo" .
 
 
-###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sueño
-:Sueño rdf:type owl:NamedIndividual ,
-                :Tematica ;
-       :nombre "Sueño" ;
-       rdfs:comment "Tema sueño" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sala_Warhol
+:Sala_Warhol rdf:type owl:NamedIndividual ,
+                      :Sala ;
+             :contiene :Banana ,
+                       :Brillo_Box ,
+                       :Car_Crash ,
+                       :Coca_Cola ,
+                       :Double_Elvis ,
+                       :Elvis ,
+                       :Latas_de_Sopa_Campbell ,
+                       :Mao ,
+                       :Marilyn_Monroe ,
+                       :Self_Portrait ;
+             :contiguas :Sala_Arte_Urbano ;
+             :nombre "Sala Warhol" .
 
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Salvador_Dalí
 :Salvador_Dalí rdf:type owl:NamedIndividual ,
                         :Pintor ;
-               :autor_de :La_persistencia_de_la_memoria ,
+               :autor_de :Cisnes_que_se_reflejan_como_elefantes ,
                          :Cristo_de_San_Juan_de_la_Cruz ,
-                         :Sueño_causado_por_el_vuelo_de_una_abeja ,
-                         :La_tentación_de_San_Antonio ,
-                         :El_gran_masturbador ,
-                         :Cisnes_que_se_reflejan_como_elefantes ,
-                         :Retrato_de_Mae_West ,
-                         :Galatea_de_las_esferas ,
                          :El_descubrimiento_de_América_por_Cristóbal_Colón ,
-                         :El_rostro_de_la_guerra;
+                         :El_gran_masturbador ,
+                         :El_rostro_de_la_guerra ,
+                         :Galatea_de_las_esferas ,
+                         :La_persistencia_de_la_memoria ,
+                         :La_tentación_de_San_Antonio ,
+                         :Retrato_de_Mae_West ,
+                         :Sueño_causado_por_el_vuelo_de_una_abeja ;
                :tiene_epoca :Epoca_Modernismo ;
                :tiene_estilo :Estilo_Surrealista ;
                :nacionalidad "Español" ;
                :nombre "Salvador Dalí" .
 
 
-:La_persistencia_de_la_memoria rdf:type owl:NamedIndividual ,
-                                      :ObraDeArte ;
-                              :tema :Paisaje ;
-                              :tiene_epoca :Epoca_Modernismo ;
-                              :tiene_estilo :Estilo_Surrealista ;
-                              :año_de_creacion 1931 ;
-                              :complejidad "Media" ;
-                              :dimensiones "0.24x0.33" ;
-                              :nombre "La persistencia de la memoria" ;
-                              :relevancia "Alta" .
-
-:Cristo_de_San_Juan_de_la_Cruz rdf:type owl:NamedIndividual ,
-                                      :ObraDeArte ;
-                              :tema :Religión ;
-                              :tiene_epoca :Epoca_Modernismo ;
-                              :tiene_estilo :Estilo_Surrealista ;
-                              :año_de_creacion 1951 ;
-                              :complejidad "Alta" ;
-                              :dimensiones "2.05x1.16" ;
-                              :nombre "Cristo de San Juan de la Cruz" ;
-                              :relevancia "Alta" .
-
-:Sueño_causado_por_el_vuelo_de_una_abeja rdf:type owl:NamedIndividual ,
-                                     :ObraDeArte ;
-                             :tema :Onírico ;
-                             :tiene_epoca :Epoca_Modernismo ;
-                             :tiene_estilo :Estilo_Surrealista ;
-                             :año_de_creacion 1944 ;
-                             :complejidad "Media-alta" ;
-                             :dimensiones "0.51x0.41" ;
-                             :nombre "Sueño causado por el vuelo de una abeja" ;
-                             :relevancia "Alta" .
-
-:La_tentación_de_San_Antonio rdf:type owl:NamedIndividual ,
-                                     :ObraDeArte ;
-                             :tema :Religión ;
-                             :tiene_epoca :Epoca_Modernismo ;
-                             :tiene_estilo :Estilo_Surrealista ;
-                             :año_de_creacion 1946 ;
-                             :complejidad "Alta" ;
-                             :dimensiones "0.89x1.19" ;
-                             :nombre "La tentación de San Antonio" ;
-                             :relevancia "Media-alta" .
-
-:El_gran_masturbador rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                     :tema :Psicológico ;
-                     :tiene_epoca :Epoca_Modernismo ;
-                     :tiene_estilo :Estilo_Surrealista ;
-                     :año_de_creacion 1929 ;
-                     :complejidad "Alta" ;
-                     :dimensiones "1.10x0.89" ;
-                     :nombre "El gran masturbador" ;
-                     :relevancia "Alta" .
-
-:Cisnes_que_se_reflejan_como_elefantes rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-                   :tema :Metamorfosis ;
-                   :tiene_epoca :Epoca_Modernismo ;
-                   :tiene_estilo :Estilo_Surrealista ;
-                   :año_de_creacion 1937 ;
-                   :complejidad "Media-alta" ;
-                   :dimensiones "0.61x0.65" ;
-                   :nombre "Cisnes que se reflejan como elefantes" ;
-                   :relevancia "Alta" .
-
-:Retrato_de_Mae_West rdf:type owl:NamedIndividual ,
-                              :ObraDeArte ;
-                      :tema :Retrato ;
-                      :tiene_epoca :Epoca_Modernismo ;
-                      :tiene_estilo :Estilo_Surrealista ;
-                      :año_de_creacion 1935 ;
-                      :complejidad "Alta" ;
-                      :dimensiones "0.60x0.60" ;
-                      :nombre "Retrato de Mae West" ;
-                      :relevancia "Media-alta" .
-
-:Galatea_de_las_esferas rdf:type owl:NamedIndividual ,
-                                  :ObraDeArte ;
-                          :tema :Ciencia ;
-                          :tiene_epoca :Epoca_Modernismo ;
-                          :tiene_estilo :Estilo_Surrealista ;
-                          :año_de_creacion 1952 ;
-                          :complejidad "Alta" ;
-                          :dimensiones "0.65x0.54" ;
-                          :nombre "Galatea de las esferas" ;
-                          :relevancia "Alta" .
-
-:El_descubrimiento_de_América_por_Cristóbal_Colón rdf:type owl:NamedIndividual ,
-                                 :ObraDeArte ;
-                         :tema :Histórico ;
-                         :tiene_epoca :Epoca_Modernismo ;
-                         :tiene_estilo :Estilo_Surrealista ;
-                         :año_de_creacion 1959 ;
-                         :complejidad "Alta" ;
-                         :dimensiones "4.10x2.90" ;
-                         :nombre "El descubrimiento de América por Cristóbal Colón" ;
-                         :relevancia "Alta" .
-
-:El_rostro_de_la_guerra rdf:type owl:NamedIndividual ,
-                                 :ObraDeArte ;
-                         :tema :Psicológico ;
-                         :tiene_epoca :Epoca_Modernismo ;
-                         :tiene_estilo :Estilo_Surrealista ;
-                         :año_de_creacion 1940 ;
-                         :complejidad "Media-alta" ;
-                         :dimensiones "0.64x0.79" ;
-                         :nombre "El rostro de la guerra" ;
-                         :relevancia "Alta" .
-
-
-:Onírico rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Onírico" ;
-         rdfs:comment "Tema onírico" .
-
-:Psicológico rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Psicológico" ;
-         rdfs:comment "Tema psicológico" .
-
-:Metamorfosis rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Metamorfosis" ;
-         rdfs:comment "Tema metamorfosis" .
-
-:Ciencia rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Ciencia" ;
-         rdfs:comment "Tema ciencia" .
-
-:Histórico rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Histórico" ;
-         rdfs:comment "Tema histórico" .
-
-
-:Sala_Dalí rdf:type owl:NamedIndividual ,
-                       :Sala ;
-              :contiene :La_persistencia_de_la_memoria ,
-                         :Cristo_de_San_Juan_de_la_Cruz ,
-                         :Sueño_causado_por_el_vuelo_de_una_abeja ,
-                         :La_tentación_de_San_Antonio ,
-                         :El_gran_masturbador ,
-                         :Cisnes_que_se_reflejan_como_elefantes ,
-                         :Retrato_de_Mae_West ,
-                         :Galatea_de_las_esferas ,
-                         :El_descubrimiento_de_América_por_Cristóbal_Colón ,
-                         :El_rostro_de_la_guerra;
-              :nombre "Sala Salvador Dalí" .
-
-:Frida_Kahlo rdf:type owl:NamedIndividual ,
-                        :Pintor ;
-               :autor_de :Las_dos_Fridas ,
-                         :La_columna_rota ,
-                         :El_venado_herido ,
-                         :Viva_la_vida ,
-                         :Autorretrato_con_collar_de_espinas ,
-                         :Henry_Ford_Hospital ,
-                         :Lo_Que_el_Agua_Me_Dio ,
-                         :El_Abrazo_de_Amor_de_El_Universo ,
-                         :Mi_Vestido_Cuelga_Allí ,
-                         :Unos_Cuantos_Piquetitos ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Simbolismo ;
-               :nacionalidad "Mexicana" ;
-               :nombre "Frida Kahlo" .
-
-:Las_dos_Fridas rdf:type owl:NamedIndividual ,
-                          :ObraDeArte ;
-                  :tema :Retrato ;
-                  :tiene_epoca :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Simbolismo ;
-                  :año_de_creacion 1939 ;
-                  :complejidad "Alta" ;
-                  :dimensiones "1.73x1.74" ;
-                  :nombre "Las dos Fridas" ;
-                  :relevancia "Alta" .
-
-
-:La_columna_rota rdf:type owl:NamedIndividual ,
-                          :ObraDeArte ;
-                  :tema :Sentimental ;
-                  :tiene_epoca :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Simbolismo ;
-                  :año_de_creacion 1944 ;
-                  :complejidad "Alta" ;
-                  :dimensiones "0.40x0.34" ;
-                  :nombre "La columna rota" ;
-                  :relevancia "Alta" .
-
-:El_venado_herido rdf:type owl:NamedIndividual ,
-                            :ObraDeArte ;
-                    :tema :Simbolismo ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Simbolismo ;
-                    :año_de_creacion 1946 ;
-                    :complejidad "Media" ;
-                    :dimensiones "0.30x0.22" ;
-                    :nombre "El venado herido" ;
-                    :relevancia "Media-alta" .
-
-:Viva_la_vida rdf:type owl:NamedIndividual ,
-                        :ObraDeArte ;
-                :tema :Naturaleza ;
-                :tiene_epoca :Epoca_Modernismo ;
-                :tiene_estilo :Estilo_Simbolismo ;
-                :año_de_creacion 1954 ;
-                :complejidad "Media" ;
-                :dimensiones "0.78x0.64" ;
-                :nombre "Viva la vida" ;
-                :relevancia "Media-alta" .
-
-:Autorretrato_con_collar_de_espinas rdf:type owl:NamedIndividual ,
-                          :ObraDeArte ;
-                  :tema :Retrato ;
-                  :tiene_epoca :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Simbolismo ;
-                  :año_de_creacion 1940 ;
-                  :complejidad "Alta" ;
-                  :dimensiones "0.63x0.49" ;
-                  :nombre "Autorretrato con collar de espinas" ;
-                  :relevancia "Alta" .
-
-:Henry_Ford_Hospital rdf:type owl:NamedIndividual ,
-                               :ObraDeArte ;
-                    :tema :Simbolismo ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Surrealista ;
-                    :año_de_creacion 1932 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "0.31x0.38" ;
-                    :nombre "Henry Ford Hospital" ;
-                    :relevancia "Alta" .
-
-:Lo_Que_el_Agua_Me_Dio rdf:type owl:NamedIndividual ,
-                                  :ObraDeArte ;
-                     :tema :Simbolismo ;
-                     :tiene_epoca :Epoca_Modernismo ;
-                     :tiene_estilo :Estilo_Surrealista ;
-                     :año_de_creacion 1938 ;
-                     :complejidad "Alta" ;
-                     :dimensiones "0.91x0.70" ;
-                     :nombre "Lo Que el Agua Me Dio" ;
-                     :relevancia "Media-alta" .
-
-:El_Abrazo_de_Amor_de_El_Universo rdf:type owl:NamedIndividual ,
-                                               :ObraDeArte ;
-                      :tema :Simbolismo ;
-                      :tiene_epoca :Epoca_Modernismo ;
-                      :tiene_estilo :Estilo_Surrealista ;
-                      :año_de_creacion 1949 ;
-                      :complejidad "Alta" ;
-                      :dimensiones "1.18x0.90" ;
-                      :nombre "El Abrazo de Amor de El Universo" ;
-                      :relevancia "Alta" .
-
-:Mi_Vestido_Cuelga_Allí rdf:type owl:NamedIndividual ,
-                                    :ObraDeArte ;
-                        :tema :Simbolismo ;
-                        :tiene_epoca :Epoca_Modernismo ;
-                        :tiene_estilo :Estilo_Surrealista ;
-                        :año_de_creacion 1933 ;
-                        :complejidad "Media" ;
-                        :dimensiones "0.39x0.47" ;
-                        :nombre "Mi Vestido Cuelga Allí" ;
-                        :relevancia "Media" .
-
-:Unos_Cuantos_Piquetitos rdf:type owl:NamedIndividual ,
-                                      :ObraDeArte ;
-                          :tema :Simbolismo ;
-                          :tiene_epoca :Epoca_Modernismo ;
-                          :tiene_estilo :Estilo_Surrealista ;
-                          :año_de_creacion 1935 ;
-                          :complejidad "Media" ;
-                          :dimensiones "0.60x0.50" ;
-                          :nombre "Unos Cuantos Piquetitos" ;
-                          :relevancia "Media-alta" .
-
-:Naturaleza rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Naturaleza" ;
-         rdfs:comment "Tema naturaleza" .
-
-:Simbolismo rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Simbolismo" ;
-         rdfs:comment "Tema simbolismo" .
-
-:Sala_Simbolismo rdf:type owl:NamedIndividual ,
-                       :Sala ;
-              :contiene :Las_dos_Fridas ,
-                         :La_columna_rota ,
-                         :El_venado_herido ,
-                         :Viva_la_vida ,
-                         :Autorretrato_con_collar_de_espinas ,
-                         :Henry_Ford_Hospital ,
-                         :Lo_Que_el_Agua_Me_Dio ,
-                         :El_Abrazo_de_Amor_de_El_Universo ,
-                         :Mi_Vestido_Cuelga_Allí ,
-                         :Unos_Cuantos_Piquetitos ;
-              :nombre "Sala Simbolismo" .
-
-:Sala_Expresionismo rdf:type owl:NamedIndividual ,
-                       :Sala ;
-              :contiene :Convergencia ,
-                        :Número_5_1948 ,
-                        :Ritmo_de_otoño ,
-                        :Azul_Mural ,
-                        :Eco ,
-                        :Pasiphae ,
-                        :La_Llama_Azul ,
-                        :Lucifer ,
-                        :One_Number_31_1950 ,
-                        :Lavanda_Mist ,
-                        :Naranja_Rojo_Amarillo ,
-                        :Blanco_y_Violeta ,
-                        :Sin_Título_1953 ,
-                        :Rojos_1956 ,
-                        :Verde_y_Morado ,
-                        :N_14 ,
-                        :Negro_Sobre_Rojo ,
-                        :Azul_y_Gris ,
-                        :Blanco_Sobre_Amarillo ,
-                        :Multiforme ,
-                        :Estudio_del_autorretrato ,
-                        :Tres_estudios_para_figuras_al_pie_de_una_crucifixión ,
-                        :Cabeza_I ,
-                        :Figura_en_un_paisaje ,
-                        :Pintura_1946 ,
-                        :Figura_tumbada ,
-                        :Estudio_para_un_retrato_de_Van_Gogh ,
-                        :Estudio_para_el_retrato_de_Papa_Inocencio_X ,
-                        :Crucifixión_1965 ,
-                        :Tríptico_Mayo_1973 ;
-              :nombre "Sala Expresionismo" .
-
-:Jackson_Pollock rdf:type owl:NamedIndividual ,
-                        :Pintor ;
-               :autor_de :Convergencia ,
-                         :Número_5_1948 ,
-                         :Ritmo_de_otoño ,
-                         :Azul_Mural ,
-                         :Eco ,
-                         :Pasiphae ,
-                         :La_Llama_Azul ,
-                         :Lucifer ,
-                         :One_Number_31_1950 ,
-                         :Lavanda_Mist ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-               :nacionalidad "Estadounidense" ;
-               :nombre "Jackson Pollock" .
-
-:Convergencia rdf:type owl:NamedIndividual ,
-                        :ObraDeArte ;
-              :tema :Abstracto ;
-              :tiene_epoca :Epoca_Modernismo ;
-              :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-              :año_de_creacion 1952 ;
-              :complejidad "Alta" ;
-              :dimensiones "2.40x3.93" ;
-              :nombre "Convergencia" ;
-              :relevancia "Alta" .
-
-:Número_5_1948 rdf:type owl:NamedIndividual ,
-                         :ObraDeArte ;
-               :tema :Abstracto ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-               :año_de_creacion 1948 ;
-               :complejidad "Alta" ;
-               :dimensiones "2.40x1.22" ;
-               :nombre "Número 5, 1948" ;
-               :relevancia "Alta" .
-
-:Ritmo_de_otoño rdf:type owl:NamedIndividual ,
-                          :ObraDeArte ;
-                :tema :Abstracto ;
-                :tiene_epoca :Epoca_Modernismo ;
-                :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-                :año_de_creacion 1950 ;
-                :complejidad "Alta" ;
-                :dimensiones "2.66x5.25" ;
-                :nombre "Ritmo de otoño" ;
-                :relevancia "Alta" .
-
-:Azul_Mural rdf:type owl:NamedIndividual ,
-                      :ObraDeArte ;
-            :tema :Abstracto ;
-            :tiene_epoca :Epoca_Modernismo ;
-            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-            :año_de_creacion 1943 ;
-            :complejidad "Alta" ;
-            :dimensiones "2.43x6.08" ;
-            :nombre "Azul Mural" ;
-            :relevancia "Alta" .
-
-:Eco rdf:type owl:NamedIndividual ,
-              :ObraDeArte ;
-      :tema :Abstracto ;
-      :tiene_epoca :Epoca_Modernismo ;
-      :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-      :año_de_creacion 1951 ;
-      :complejidad "Media-alta" ;
-      :dimensiones "1.90x1.42" ;
-      :nombre "Eco" ;
-      :relevancia "Media-alta" .
-
-:Pasiphae rdf:type owl:NamedIndividual ,
-                      :ObraDeArte ;
-           :tema :Abstracto ;
-           :tiene_epoca :Epoca_Expresionismo_Abstracto ;
-           :tiene_estilo :Estilo_Drip_Painting ;
-           :año_de_creacion 1943 ;
-           :complejidad "Alta" ;
-           :dimensiones "1.29x2.40" ;
-           :nombre "Pasiphaë" ;
-           :relevancia "Alta" .
-
-:La_Llama_Azul rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-                :tema :Abstracto ;
-                :tiene_epoca :Epoca_Expresionismo_Abstracto ;
-                :tiene_estilo :Estilo_Drip_Painting ;
-                :año_de_creacion 1953 ;
-                :complejidad "Media" ;
-                :dimensiones "0.90x1.20" ;
-                :nombre "La Llama Azul" ;
-                :relevancia "Media" .
-
-:Lucifer rdf:type owl:NamedIndividual ,
-                      :ObraDeArte ;
-           :tema :Abstracto ;
-           :tiene_epoca :Epoca_Expresionismo_Abstracto ;
-           :tiene_estilo :Estilo_Drip_Painting ;
-           :año_de_creacion 1947 ;
-           :complejidad "Alta" ;
-           :dimensiones "1.44x2.24" ;
-           :nombre "Lucifer" ;
-           :relevancia "Alta" .
-
-:One_Number_31_1950 rdf:type owl:NamedIndividual ,
-                                  :ObraDeArte ;
-                   :tema :Abstracto ;
-                   :tiene_epoca :Epoca_Expresionismo_Abstracto ;
-                   :tiene_estilo :Estilo_Drip_Painting ;
-                   :año_de_creacion 1950 ;
-                   :complejidad "Muy alta" ;
-                   :dimensiones "2.69x5.30" ;
-                   :nombre "One: Number 31, 1950" ;
-                   :relevancia "Muy alta" .
-
-:Lavanda_Mist rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-                :tema :Abstracto ;
-                :tiene_epoca :Epoca_Expresionismo_Abstracto ;
-                :tiene_estilo :Estilo_Drip_Painting ;
-                :año_de_creacion 1950 ;
-                :complejidad "Alta" ;
-                :dimensiones "2.21x2.97" ;
-                :nombre "Lavanda Mist" ;
-                :relevancia "Alta" .
-
-:Epoca_Expresionismo_Abstracto rdf:type owl:NamedIndividual ,
-                             :Epoca ;
-                    :nombre "Expresionismo_Abstracto" ;
-                    rdfs:comment "Epoca del Expresionismo_Abstracto" .
-
-:Estilo_Drip_Painting rdf:type owl:NamedIndividual ,
-                             :Estilo ;
-                    :nombre "Drip Painting" ;
-                    rdfs:comment "Estilo Drip Painting" .
-
-:Abstracto rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Abstracto" ;
-         rdfs:comment "Tema abstracto" .
-
-:Mark_Rothko rdf:type owl:NamedIndividual ,
-                       :Pintor ;
-             :autor_de :Naranja_Rojo_Amarillo ,
-                       :Blanco_y_Violeta ,
-                       :Sin_Título_1953 ,
-                       :Rojos_1956 ,
-                       :Verde_y_Morado ,
-                       :N_14 ,
-                       :Negro_Sobre_Rojo ,
-                       :Azul_y_Gris ,
-                       :Blanco_Sobre_Amarillo ,
-                       :Multiforme ;
-             :tiene_epoca :Epoca_Modernismo ;
-             :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-             :nacionalidad "Estadounidense" ;
-             :nombre "Mark Rothko" .
-
-:Naranja_Rojo_Amarillo rdf:type owl:NamedIndividual ,
-                                 :ObraDeArte ;
-                        :tema :Abstracto ;
-                        :tiene :Epoca_Modernismo ,
-                               :Estilo_Expresionismo_Abstracto ;
-                        :año_de_creacion 1961 ;
-                        :complejidad "Alta" ;
-                        :dimensiones "2.42x1.86" ;
-                        :nombre "Naranja, Rojo, Amarillo" ;
-                        :relevancia "Alta" .
-
-:Blanco_y_Violeta rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                  :tema :Abstracto ;
-                  :tiene_epoca :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-                  :año_de_creacion 1957 ;
-                  :complejidad "Media-alta" ;
-                  :dimensiones "2.06x1.64" ;
-                  :nombre "Blanco y Violeta" ;
-                  :relevancia "Alta" .
-
-:Sin_Título_1953 rdf:type owl:NamedIndividual ,
-                              :ObraDeArte ;
-                 :tema :Abstracto ;
-                 :tiene_epoca :Epoca_Modernismo ;
-                 :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-                 :año_de_creacion 1953 ;
-                 :complejidad "Alta" ;
-                 :dimensiones "2.35x1.69" ;
-                 :nombre "Sin Título, 1953" ;
-                 :relevancia "Media-alta" .
-
-:Rojos_1956 rdf:type owl:NamedIndividual ,
-                        :ObraDeArte ;
-            :tema :Abstracto ;
-            :tiene_epoca :Epoca_Modernismo ;
-            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-            :año_de_creacion 1956 ;
-            :complejidad "Media-alta" ;
-            :dimensiones "2.08x1.62" ;
-            :nombre "Rojos, 1956" ;
-            :relevancia "Alta" .
-
-:Verde_y_Morado rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                 :tema :Abstracto ;
-                 :tiene_epoca :Epoca_Modernismo ;
-                 :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-                 :año_de_creacion 1950 ;
-                 :complejidad "Alta" ;
-                 :dimensiones "1.70x1.30" ;
-                 :nombre "Verde y Morado" ;
-                 :relevancia "Alta" .
-
-:N_14 rdf:type owl:NamedIndividual ,
-                  :ObraDeArte ;
-         :tema :Abstracto ;
-         :tiene_epoca :Epoca_Modernismo ;
-         :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-         :año_de_creacion 1960 ;
-         :complejidad "Alta" ;
-         :dimensiones "2.88x2.12" ;
-         :nombre "Nº 14" ;
-         :relevancia "Alta" .
-
-:Negro_Sobre_Rojo rdf:type owl:NamedIndividual ,
-                              :ObraDeArte ;
-                  :tema :Abstracto ;
-                  :tiene :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-                  :año_de_creacion 1958 ;
-                  :complejidad "Alta" ;
-                  :dimensiones "2.06x1.63" ;
-                  :nombre "Negro Sobre Rojo" ;
-                  :relevancia "Alta" .
-
-:Azul_y_Gris rdf:type owl:NamedIndividual ,
-                          :ObraDeArte ;
-              :tema :Abstracto ;
-              :tiene :Epoca_Modernismo ;
-              :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-              :año_de_creacion 1952 ;
-              :complejidad "Media-alta" ;
-              :dimensiones "1.85x1.27" ;
-              :nombre "Azul y Gris" ;
-              :relevancia "Media-alta" .
-
-:Blanco_Sobre_Amarillo rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-               :tema :Abstracto ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-               :año_de_creacion 1954 ;
-               :complejidad "Alta" ;
-               :dimensiones "1.80x1.35" ;
-               :nombre "Blanco Sobre Amarillo" ;
-               :relevancia "Alta" .
-
-:Multiforme rdf:type owl:NamedIndividual ,
-                        :ObraDeArte ;
-            :tema :Abstracto ;
-            :tiene_epoca :Epoca_Modernismo ;
-            :tiene_estilo :Estilo_Expresionismo_Abstracto ;
-            :año_de_creacion 1947 ;
-            :complejidad "Alta" ;
-            :dimensiones "1.68x1.25" ;
-            :nombre "Multiforme" ;
-            :relevancia "Alta" .
-
-:Andy_Warhol rdf:type owl:NamedIndividual ,
-                       :Pintor ;
-             :autor_de :Latas_de_Sopa_Campbell ,
-                       :Marilyn_Monroe ,
-                       :Coca_Cola ,
-                       :Banana ,
-                       :Elvis ,
-                       :Self_Portrait ,
-                       :Double_Elvis ,
-                       :Brillo_Box ,
-                       :Car_Crash ,
-                       :Mao ;
-             :tiene_epoca :Epoca_Contemporaneo ;
-             :tiene_estilo :Estilo_Pop_Art ;
-             :nacionalidad "Estadounidense" ;
-             :nombre "Andy Warhol" .
-
-:Latas_de_Sopa_Campbell rdf:type owl:NamedIndividual ,
-                                   :ObraDeArte ;
-                         :tema :Naturaleza ;
-                         :tiene_epoca :Epoca_Contemporaneo ;
-                         :tiene_estilo :Estilo_Pop_Art ;
-                         :año_de_creacion 1962 ;
-                         :complejidad "Media" ;
-                         :dimensiones "0.51x0.41" ;
-                         :nombre "Latas de Sopa Campbell" ;
-                         :relevancia "Alta" .
-
-:Marilyn_Monroe rdf:type owl:NamedIndividual ,
-                            :ObraDeArte ;
-                :tema :Retrato ;
-                :tiene_epoca :Epoca_Contemporaneo ;
-                :tiene_estilo :Estilo_Pop_Art ;
-                :año_de_creacion 1962 ;
-                :complejidad "Media" ;
-                :dimensiones "1.50x1.20" ;
-                :nombre "Marilyn Monroe" ;
-                :relevancia "Alta" .
-
-:Coca_Cola rdf:type owl:NamedIndividual ,
-                      :ObraDeArte ;
-           :tema :Producto ;
-           :tiene_epoca :Epoca_Contemporaneo ;
-           :tiene_estilo :Estilo_Pop_Art ;
-           :año_de_creacion 1962 ;
-           :complejidad "Media" ;
-           :dimensiones "1.37x0.81" ;
-           :nombre "Coca Cola" ;
-           :relevancia "Media-alta" .
-
-:Banana rdf:type owl:NamedIndividual ,
-                   :ObraDeArte ;
-         :tema :Producto ;
-         :tiene_epoca :Epoca_Contemporaneo ;
-         :tiene_estilo :Estilo_Pop_Art ;
-         :año_de_creacion 1967 ;
-         :complejidad "Media" ;
-         :dimensiones "0.61x0.30" ;
-         :nombre "Banana" ;
-         :relevancia "Media" .
-
-:Elvis rdf:type owl:NamedIndividual ,
-                   :ObraDeArte ;
-         :tema :Retrato ;
-         :tiene_epoca :Epoca_Contemporaneo ;
-         :tiene_estilo :Estilo_Pop_Art ;
-         :año_de_creacion 1963 ;
-         :complejidad "Media" ;
-         :dimensiones "2.08x1.22" ;
-         :nombre "Elvis" ;
-         :relevancia "Alta" .
-
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Self_Portrait
 :Self_Portrait rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
+                        :ObraDeArte ;
                :tema :Retrato ;
                :tiene_epoca :Epoca_Contemporaneo ;
                :tiene_estilo :Estilo_Pop_Art ;
@@ -1357,362 +2002,81 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                :nombre "Self Portrait" ;
                :relevancia "Alta" .
 
-:Double_Elvis rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-               :tema :Retrato ;
-               :tiene_epoca :Epoca_Contemporaneo ;
-               :tiene_estilo :Estilo_Pop_Art ;
-               :año_de_creacion 1963 ;
-               :complejidad "Alta" ;
-               :dimensiones "2.08x2.44" ;
-               :nombre "Double Elvis" ;
-               :relevancia "Alta" .
 
-:Brillo_Box rdf:type owl:NamedIndividual ,
-                        :ObraDeArte ;
-            :tema :Producto ;
-            :tiene_epoca :Epoca_Contemporaneo ;
-            :tiene_estilo :Estilo_Pop_Art ;
-            :año_de_creacion 1964 ;
-            :complejidad "Media" ;
-            :dimensiones "0.43x0.43x0.43" ;
-            :nombre "Brillo Box" ;
-            :relevancia "Media-alta" .
-
-:Car_Crash rdf:type owl:NamedIndividual ,
-                       :ObraDeArte ;
-           :tema :Catástrofe ;
-           :tiene_epoca :Epoca_Contemporaneo ;
-           :tiene_estilo :Estilo_Pop_Art ;
-           :año_de_creacion 1963 ;
-           :complejidad "Alta" ;
-           :dimensiones "1.73x2.13" ;
-           :nombre "Car Crash" ;
-           :relevancia "Alta" .
-
-:Mao rdf:type owl:NamedIndividual ,
-                 :ObraDeArte ;
-     :tema :Retrato ;
-     :tiene_epoca :Epoca_Contemporaneo ;
-     :tiene_estilo :Estilo_Pop_Art ;
-     :año_de_creacion 1972 ;
-     :complejidad "Media-alta" ;
-     :dimensiones "2.08x1.58" ;
-     :nombre "Mao" ;
-     :relevancia "Alta" .
-
-:Epoca_Contemporaneo rdf:type owl:NamedIndividual ,
-                     :Epoca ;
-            :nombre "Contemporaneo" ;
-            rdfs:comment "Epoca Contemporanea" .
-
-:Estilo_Pop_Art rdf:type owl:NamedIndividual ,
-                               :Estilo ;
-                      :nombre "Pop Art" ;
-                      rdfs:comment "Estilo Pop Art" .
-
-:Catástrofe rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Catástrofe" ;
-         rdfs:comment "Tema catástrofe" .
-
-:Producto rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Producto" ;
-         rdfs:comment "Tema producto" .
-
-:Sala_Warhol rdf:type owl:NamedIndividual ,
-                       :Sala ;
-              :contiene :Latas_de_Sopa_Campbell ,
-                       :Marilyn_Monroe ,
-                       :Coca_Cola ,
-                       :Banana ,
-                       :Elvis ,
-                       :Self_Portrait ,
-                       :Double_Elvis ,
-                       :Brillo_Box ,
-                       :Car_Crash ,
-                       :Mao ;
-              :nombre "Sala Warhol" .
-
-:Sala_O_Keefe rdf:type owl:NamedIndividual ,
-                       :Sala ;
-              :contiene :Flor_Blanca ,
-                       :Cañón_de_Pedernal ,
-                       :Lirio_Negro ,
-                       :Cráneo_de_Vaca_con_Rosa ,
-                       :El_Cañón_Abanico ,
-                       :Nubes_Caladas ,
-                       :Cuernos_y_Red ,
-                       :Rosa_de_Abanico ,
-                       :Calle_Nueva_York_N1 ,
-                       :Mano_de_Buda ;
-              :nombre "Sala O_Keefe" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sentimental
+:Sentimental rdf:type owl:NamedIndividual ,
+                      :Tematica ;
+             :nombre "Sentimental" ;
+             rdfs:comment "Tema sentimental" .
 
 
-:Georgia_O_Keefe rdf:type owl:NamedIndividual ,
-                           :Pintor ;
-                 :autor_de :Flor_Blanca ,
-                           :Cañón_de_Pedernal ,
-                           :Lirio_Negro ,
-                           :Cráneo_de_Vaca_con_Rosa ,
-                           :El_Cañón_Abanico ,
-                           :Nubes_Caladas ,
-                           :Cuernos_y_Red ,
-                           :Rosa_de_Abanico ,
-                           :Calle_Nueva_York_N1 ,
-                           :Mano_de_Buda ;
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Simbolismo
+:Simbolismo rdf:type owl:NamedIndividual ,
+                     :Tematica ;
+            :nombre "Simbolismo" ;
+            rdfs:comment "Tema simbolismo" .
+
+
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sin_Título_1953
+:Sin_Título_1953 rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                 :tema :Abstracto ;
                  :tiene_epoca :Epoca_Modernismo ;
-                 :tiene_estilo :Estilo_Abstracto_y_Naturalismo ;
-                 :nacionalidad "Estadounidense" ;
-                 :nombre "Georgia O'Keeffe" .
+                 :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                 :año_de_creacion 1953 ;
+                 :complejidad "Alta" ;
+                 :dimensiones "2.35x1.69" ;
+                 :nombre "Sin Título, 1953" ;
+                 :relevancia "Media-alta" .
 
-:Estilo_Abstracto_y_Naturalismo rdf:type owl:NamedIndividual ,
-                               :Estilo ;
-                      :nombre "Abstracto y Naturalismo" ;
-                      rdfs:comment "Estilo Abstracto y Naturalismo" .
 
-:Flor_Blanca rdf:type owl:NamedIndividual ,
-                        :ObraDeArte ;
-             :tema :Naturaleza ;
-             :tiene_epoca :Epoca_Modernismo ;
-             :tiene_estilo :Estilo_Abstraccionismo ;
-             :año_de_creacion 1932 ;
-             :complejidad "Media" ;
-             :dimensiones "0.71x0.56" ;
-             :nombre "Flor Blanca" ;
-             :relevancia "Media-alta" .
-
-:Cañón_de_Pedernal rdf:type owl:NamedIndividual ,
-                               :ObraDeArte ;
-                  :tema :Paisaje ;
-                  :tiene_epoca :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Realismo ;
-                  :año_de_creacion 1941 ;
-                  :complejidad "Alta" ;
-                  :dimensiones "1.00x0.80" ;
-                  :nombre "Cañón de Pedernal" ;
-                  :relevancia "Alta" .
-
-:Lirio_Negro rdf:type owl:NamedIndividual ,
-                         :ObraDeArte ;
-             :tema :Naturaleza ;
-             :tiene_epoca :Epoca_Modernismo ;
-             :tiene_estilo :Estilo_Abstraccionismo ;
-             :año_de_creacion 1926 ;
-             :complejidad "Media" ;
-             :dimensiones "0.90x0.60" ;
-             :nombre "Lirio Negro" ;
-             :relevancia "Media" .
-
-:Cráneo_de_Vaca_con_Rosa rdf:type owl:NamedIndividual ,
-                                     :ObraDeArte ;
-                        :tema :Naturaleza ;
-                        :tiene_epoca :Epoca_Modernismo ;
-                        :tiene_estilo :Estilo_Simbolismo ;
-                        :año_de_creacion 1931 ;
-                        :complejidad "Alta" ;
-                        :dimensiones "0.85x0.65" ;
-                        :nombre "Cráneo de Vaca con Rosa" ;
-                        :relevancia "Alta" .
-
-:El_Cañón_Abanico rdf:type owl:NamedIndividual ,
-                               :ObraDeArte ;
-                  :tema :Paisaje ;
-                  :tiene_epoca :Epoca_Modernismo ;
-                  :tiene_estilo :Estilo_Realismo ;
-                  :año_de_creacion 1949 ;
-                  :complejidad "Media-alta" ;
-                  :dimensiones "1.10x0.90" ;
-                  :nombre "El Cañón Abanico" ;
-                  :relevancia "Media-alta" .
-
-:Nubes_Caladas rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-               :tema :Paisaje ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Abstraccionismo ;
-               :año_de_creacion 1950 ;
-               :complejidad "Media" ;
-               :dimensiones "1.20x0.90" ;
-               :nombre "Nubes Caladas" ;
-               :relevancia "Media" .
-
-:Cuernos_y_Red rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-               :tema :Naturaleza ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Simbolismo ;
-               :año_de_creacion 1934 ;
-               :complejidad "Media-alta" ;
-               :dimensiones "0.80x0.60" ;
-               :nombre "Cuernos y Red" ;
-               :relevancia "Media-alta" .
-
-:Rosa_de_Abanico rdf:type owl:NamedIndividual ,
-                              :ObraDeArte ;
-                 :tema :Naturaleza ;
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sin_título_1981
+:Sin_título_1981 rdf:type owl:NamedIndividual ,
+                          :ObraDeArte ;
+                 :tema :Abstracto ;
                  :tiene_epoca :Epoca_Modernismo ;
-                 :tiene_estilo :Estilo_Abstraccionismo ;
-                 :año_de_creacion 1947 ;
-                 :complejidad "Media" ;
-                 :dimensiones "0.75x0.60" ;
-                 :nombre "Rosa de Abanico" ;
-                 :relevancia "Media" .
+                 :tiene_estilo :Estilo_Arte_Urbano ;
+                 :año_de_creacion 1981 ;
+                 :complejidad "Alta" ;
+                 :dimensiones "1.83x1.40" ;
+                 :nombre "Sin título 1981" ;
+                 :relevancia "Alta" .
 
-:Calle_Nueva_York_N1 rdf:type owl:NamedIndividual ,
-                                   :ObraDeArte ;
-                     :tema :Urbanismo ;
-                     :tiene_epoca :Epoca_Modernismo ;
-                     :tiene_estilo :Estilo_Realismo ;
-                     :año_de_creacion 1925 ;
-                     :complejidad "Alta" ;
-                     :dimensiones "1.20x0.90" ;
-                     :nombre "Calle Nueva York N1" ;
-                     :relevancia "Alta" .
 
-:Mano_de_Buda rdf:type owl:NamedIndividual ,
-                           :ObraDeArte ;
-              :tema :Simbolismo ;
-              :tiene_epoca :Epoca_Modernismo ;
-              :tiene_estilo :Estilo_Simbolismo ;
-              :año_de_creacion 1953 ;
-              :complejidad "Media" ;
-              :dimensiones "0.90x0.70" ;
-              :nombre "Mano de Buda" ;
-              :relevancia "Media-alta" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sueño
+:Sueño rdf:type owl:NamedIndividual ,
+                :Tematica ;
+       :nombre "Sueño" ;
+       rdfs:comment "Tema sueño" .
 
-:Urbanismo rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Urbanismo" ;
-         rdfs:comment "Tema urbanismo" .
 
-:Estilo_Realismo rdf:type owl:NamedIndividual ,
-                           :Estilo ;
-                  :nombre "Realismo" ;
-                  rdfs:comment "Estilo Realismo" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Sueño_causado_por_el_vuelo_de_una_abeja
+:Sueño_causado_por_el_vuelo_de_una_abeja rdf:type owl:NamedIndividual ,
+                                                  :ObraDeArte ;
+                                         :tema :Onírico ;
+                                         :tiene_epoca :Epoca_Modernismo ;
+                                         :tiene_estilo :Estilo_Surrealista ;
+                                         :año_de_creacion 1944 ;
+                                         :complejidad "Media-alta" ;
+                                         :dimensiones "0.51x0.41" ;
+                                         :nombre "Sueño causado por el vuelo de una abeja" ;
+                                         :relevancia "Alta" .
 
-:Estilo_Abstraccionismo rdf:type owl:NamedIndividual ,
-                           :Estilo ;
-                  :nombre "Abstraccionismo" ;
-                  rdfs:comment "Estilo Abstraccionismo" .
 
-:Francis_Bacon rdf:type owl:NamedIndividual ,
-                        :Pintor ;
-               :autor_de :Estudio_del_autorretrato ,
-                         :Tres_estudios_para_figuras_al_pie_de_una_crucifixión ,
-                         :Cabeza_I ,
-                         :Figura_en_un_paisaje ,
-                         :Pintura_1946 ,
-                         :Figura_tumbada ,
-                         :Estudio_para_un_retrato_de_Van_Gogh ,
-                         :Estudio_para_el_retrato_de_Papa_Inocencio_X ,
-                         :Crucifixión_1965 ,
-                         :Tríptico_Mayo_1973 ;
-               :tiene_epoca :Epoca_Modernismo ;
-               :tiene_estilo :Estilo_Expresionismo ;
-               :nacionalidad "Británico" ;
-               :nombre "Francis Bacon" .
-
-:Estudio_del_autorretrato rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Retrato ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1971 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "0.81x0.71" ;
-                    :nombre "Estudio del autorretrato" ;
-                    :relevancia "Alta" .
-
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Tres_estudios_para_figuras_al_pie_de_una_crucifixión
 :Tres_estudios_para_figuras_al_pie_de_una_crucifixión rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Crucifixión ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1944 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.75x2.13" ;
-                    :nombre "Tres estudios para figuras al pie de una crucifixión" ;
-                    :relevancia "Alta" .
+                                                               :ObraDeArte ;
+                                                      :tema :Crucifixión ;
+                                                      :tiene_epoca :Epoca_Modernismo ;
+                                                      :tiene_estilo :Estilo_Expresionismo ;
+                                                      :año_de_creacion 1944 ;
+                                                      :complejidad "Alta" ;
+                                                      :dimensiones "1.75x2.13" ;
+                                                      :nombre "Tres estudios para figuras al pie de una crucifixión" ;
+                                                      :relevancia "Alta" .
 
-:Cabeza_I rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Retrato ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1949 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "0.51x0.43" ;
-                    :nombre "Cabeza I" ;
-                    :relevancia "Alta" .
 
-:Figura_en_un_paisaje rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Figura ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1945 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.20x1.53" ;
-                    :nombre "Figura en un paisaje" ;
-                    :relevancia "Alta" .
-
-:Pintura_1946 rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Abstracto ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1946 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.27x1.52" ;
-                    :nombre "Pintura 1946" ;
-                    :relevancia "Alta" .
-
-:Figura_tumbada rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Figura ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1969 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.55x1.95" ;
-                    :nombre "Figura tumbada" ;
-                    :relevancia "Alta" .
-
-:Estudio_para_un_retrato_de_Van_Gogh rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Retrato ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1957 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "0.76x0.66" ;
-                    :nombre "Estudio para un retrato de Van Gogh" ;
-                    :relevancia "Alta" .
-
-:Estudio_para_el_retrato_de_Papa_Inocencio_X rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Retrato ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1953 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.43x1.22" ;
-                    :nombre "Estudio para el retrato de Papa Inocencio X" ;
-                    :relevancia "Alta" .
-
-:Crucifixión_1965 rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Crucifixión ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Expresionismo ;
-                    :año_de_creacion 1965 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.70x2.00" ;
-                    :nombre "Crucifixión 1965" ;
-                    :relevancia "Alta" .
-
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Tríptico_Mayo_1973
 :Tríptico_Mayo_1973 rdf:type owl:NamedIndividual ,
                              :ObraDeArte ;
                     :tema :Abstracto ;
@@ -1724,181 +2088,64 @@ owl:topObjectProperty rdfs:domain :ObraDeArte ;
                     :nombre "Tríptico Mayo 1973" ;
                     :relevancia "Alta" .
 
-:Estilo_Expresionismo rdf:type owl:NamedIndividual ,
-                           :Estilo ;
-                  :nombre "Expresionismo" ;
-                  rdfs:comment "Estilo Expresionismo" .
 
-:Crucifixión rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Crucifixión" ;
-         rdfs:comment "Tema crucifixión" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Unos_Cuantos_Piquetitos
+:Unos_Cuantos_Piquetitos rdf:type owl:NamedIndividual ,
+                                  :ObraDeArte ;
+                         :tema :Simbolismo ;
+                         :tiene_epoca :Epoca_Modernismo ;
+                         :tiene_estilo :Estilo_Surrealista ;
+                         :año_de_creacion 1935 ;
+                         :complejidad "Media" ;
+                         :dimensiones "0.60x0.50" ;
+                         :nombre "Unos Cuantos Piquetitos" ;
+                         :relevancia "Media-alta" .
 
-:Figura rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Figura" ;
-         rdfs:comment "Tema figura" .
 
-:Jean_Michel_Basquiat rdf:type owl:NamedIndividual ,
-                                :Pintor ;
-               :autor_de :Sin_título_1981 ,
-                         :Hollywood_Africans ,
-                         :Flexible ,
-                         :Horn_Players ,
-                         :Boy_and_Dog_in_a_Johnnypump ,
-                         :Untitled_Boxer ,
-                         :Crown ,
-                         :Dustheads ,
-                         :Profit_I ,
-                         :Riding_with_Death ;
-               :tiene_epoca :Epoca_Contemporaneo ;
-               :tiene_estilo :Estilo_Expresionismo ;
-               :nacionalidad "Estadounidense" ;
-               :nombre "Jean-Michel Basquiat" .
-
-:Sin_título_1981 rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Abstracto ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1981 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.83x1.40" ;
-                    :nombre "Sin título 1981" ;
-                    :relevancia "Alta" .
-
-:Hollywood_Africans rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Cultura_Afrolatina ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1983 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.50x1.20" ;
-                    :nombre "Hollywood Africans" ;
-                    :relevancia "Alta" .
-
-:Flexible rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Abstracto ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1984 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "2.10x1.60" ;
-                    :nombre "Flexible" ;
-                    :relevancia "Alta" .
-
-:Horn_Players rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Música ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1983 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.50x1.80" ;
-                    :nombre "Horn Players" ;
-                    :relevancia "Alta" .
-
-:Boy_and_Dog_in_a_Johnnypump rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Familia ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1982 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.60x1.80" ;
-                    :nombre "Boy and Dog in a Johnnypump" ;
-                    :relevancia "Alta" .
-
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Untitled_Boxer
 :Untitled_Boxer rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Deporte ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1982 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.90x1.50" ;
-                    :nombre "Untitled Boxer" ;
-                    :relevancia "Alta" .
+                         :ObraDeArte ;
+                :tema :Deporte ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Arte_Urbano ;
+                :año_de_creacion 1982 ;
+                :complejidad "Alta" ;
+                :dimensiones "1.90x1.50" ;
+                :nombre "Untitled Boxer" ;
+                :relevancia "Alta" .
 
-:Crown rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Retrato ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1981 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.20x1.50" ;
-                    :nombre "Crown" ;
-                    :relevancia "Alta" .
 
-:Dustheads rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Retrato ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1982 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.60x1.20" ;
-                    :nombre "Dustheads" ;
-                    :relevancia "Alta" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Urbanismo
+:Urbanismo rdf:type owl:NamedIndividual ,
+                    :Tematica ;
+           :nombre "Urbanismo" ;
+           rdfs:comment "Tema urbanismo" .
 
-:Profit_I rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Abstracto ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1983 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "2.00x1.50" ;
-                    :nombre "Profit I" ;
-                    :relevancia "Alta" .
 
-:Riding_with_Death rdf:type owl:NamedIndividual ,
-                             :ObraDeArte ;
-                    :tema :Muerte ;
-                    :tiene_epoca :Epoca_Modernismo ;
-                    :tiene_estilo :Estilo_Arte_Urbano ;
-                    :año_de_creacion 1988 ;
-                    :complejidad "Alta" ;
-                    :dimensiones "1.50x1.70" ;
-                    :nombre "Riding with Death" ;
-                    :relevancia "Alta" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Verde_y_Morado
+:Verde_y_Morado rdf:type owl:NamedIndividual ,
+                         :ObraDeArte ;
+                :tema :Abstracto ;
+                :tiene_epoca :Epoca_Modernismo ;
+                :tiene_estilo :Estilo_Expresionismo_Abstracto ;
+                :año_de_creacion 1950 ;
+                :complejidad "Alta" ;
+                :dimensiones "1.70x1.30" ;
+                :nombre "Verde y Morado" ;
+                :relevancia "Alta" .
 
-:Estilo_Arte_Urbano rdf:type owl:NamedIndividual ,
-                           :Estilo ;
-                  :nombre "Arte Urbano" ;
-                  rdfs:comment "Estilo Arte Urbano" .
 
-:Cultura_Afrolatina rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Cultura Afrolatina" ;
-         rdfs:comment "Tema cultura afrolatina" .
-
-:Deporte rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Deporte" ;
-         rdfs:comment "Tema deporte" .
-
-:Muerte rdf:type owl:NamedIndividual ,
-                  :Tematica ;
-         :nombre "Muerte" ;
-         rdfs:comment "Tema muerte" .
-
-:Sala_Arte_Urbano rdf:type owl:NamedIndividual ,
-                       :Sala ;
-              :contiene :Sin_título_1981 ,
-                         :Hollywood_Africans ,
-                         :Flexible ,
-                         :Horn_Players ,
-                         :Boy_and_Dog_in_a_Johnnypump ,
-                         :Untitled_Boxer ,
-                         :Crown ,
-                         :Dustheads ,
-                         :Profit_I ,
-                         :Riding_with_Death ;
-              :nombre "Sala Arte Urbano" .
+###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/Viva_la_vida
+:Viva_la_vida rdf:type owl:NamedIndividual ,
+                       :ObraDeArte ;
+              :tema :Naturaleza ;
+              :tiene_epoca :Epoca_Modernismo ;
+              :tiene_estilo :Estilo_Simbolismo ;
+              :año_de_creacion 1954 ;
+              :complejidad "Media" ;
+              :dimensiones "0.78x0.64" ;
+              :nombre "Viva la vida" ;
+              :relevancia "Media-alta" .
 
 
 #################################################################
