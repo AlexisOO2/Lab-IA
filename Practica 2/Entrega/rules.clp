@@ -7,6 +7,20 @@
     (slot puntuacion
         (type INTEGER)
         (create-accessor read-write))
+    (slot duracion-vista
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0)
+    )
+    (slot sala
+        (type INSTANCE)
+        (create-accessor read-write)
+    )
+    (slot dia
+        (type INTEGER)
+        (create-accessor read-write)
+        (default 0)
+    )
     (slot valorada
         (type SYMBOL)
         (default FALSE))
@@ -86,6 +100,20 @@
 	(multislot recomendaciones (type INSTANCE))
 )
 
+;;; Template para una lista de recomendaciones con orden
+(deftemplate MAIN::lista-rec-ordenada
+	(multislot recomendaciones (type INSTANCE))
+)
+
+;;; Template para una lista de recomendaciones ordenadas por sala
+(deftemplate MAIN::lista-rec-salas
+	(multislot recomendaciones (type INSTANCE))
+)
+
+;;; Template para una lista de las mejores recomendaciones
+(deftemplate MAIN::lista-rec-mejores
+	(multislot recomendaciones (type INSTANCE))
+)
 
 ;;; ---------------------------------------------------------
 ;;;                     FUNCIONES
@@ -141,6 +169,25 @@
     ?lista
 )
 
+(deffunction maximo-puntuacion ($?lista)
+	(bind ?maximo -1)
+	(bind ?elemento nil)
+	(progn$ (?curr-rec $?lista)
+		(bind ?curr-cont (send ?curr-rec get-nombre_obra))
+		(bind ?curr-punt (send ?curr-rec get-puntuacion))
+		(if (> ?curr-punt ?maximo)
+			then 
+			(bind ?maximo ?curr-punt)
+			(bind ?elemento ?curr-rec)
+		)
+	)
+	?elemento
+)
+
+;;; ---------------------------------------------------------
+;;;                     REGLAS
+;;; ---------------------------------------------------------
+
 (defrule MAIN::initialRule "Regla inicial"
 	(declare (salience 10))
 	=>
@@ -153,9 +200,6 @@
 	(focus recopilacion-usuario)
 )
 
-;;; ---------------------------------------------------------
-;;;                     REGLAS
-;;; ---------------------------------------------------------
 
 
 ;;; MODULO DE PREGUNTAS
@@ -163,7 +207,7 @@
 (defrule recopilacion-usuario::establecer-tamanyo-grupo
     (not (datos_grupo))
 	=>
-	(bind ?tamanyo (pregunta-numerica "¿De cuantos visitantes esta formado el grupo? " 1 100))
+	(bind ?tamanyo (pregunta-numerica "¿De cuantos visitantes esta formado el grupo? " 1 20))
     (assert (datos_grupo (tamanyo ?tamanyo)))
 )
 
@@ -311,17 +355,11 @@
 
 
 
-;;; MODULO DE SELECCIÓN
+;;; MODULO DE PROCESADO DE DATOS
 
 (deffacts procesado-datos::hechos-iniciales
     (obras_seleccionadas nil)
-    (valorar-conocimiento nil)
-    (valorar-autor nil)
-    (valorar-epoca nil)
-    (valorar-estilo nil)
-    (valorar-tematica nil)
-    (valorar-relevancia nil)
-    (lista-obras-visita)
+    (pasar_generacion nil)
 )
 
 (defrule procesado-datos::añadir_todas_las_obras
@@ -335,20 +373,28 @@
 )
 
 (defrule procesado-datos::valorar-nivel-complejidad
+    (declare (salience 10))
     (datos_grupo (nivel ?nivel))
+    (datos_grupo (tamanyo ?tamanyo))
     (preferencias_grupo (autor_favorito ?autor))
     (preferencias_grupo (epoca_favorita ?epoca))
     (preferencias_grupo (estilo_favorito ?estilo))
     (preferencias_grupo (tematica_favorita ?tematica))
-    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (valorada ?v))
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (valorada ?v) (duracion-vista ?t))
 	?cont <-(object (is-a ObraDeArte) (relevancia ?relevancia) (complejidad ?complejidad) (tiene_epoca ?epoca_obra))
-    ?hecho <- (valorar-conocimiento nil)
     (test (eq (instance-name ?cont) (instance-name ?conta)))
     (test (eq ?v FALSE))
     =>
     (bind ?epoca_obra (send ?cont get-tiene_epoca))
     (bind ?estilo_obra (send ?cont get-tiene_estilo))
     (bind ?tematica_obra (send ?cont get-tema))
+    (bind $?lista_salas (find-all-instances ((?inst Sala)) TRUE))
+    (loop-for-count (?i 1 (length$ $?lista_salas)) do
+        (bind ?obras_salas (send (nth$ ?i $?lista_salas) get-contiene))
+        (if (member$ ?conta ?obras_salas)
+            then (send ?rec put-sala (nth$ ?i $?lista_salas))
+        )
+    )
     ;;Complejidad
     (bind ?com 0)
     (if (eq ?complejidad "Muy baja")
@@ -372,105 +418,179 @@
     (if (eq ?complejidad "Muy Alta")
         then (bind ?com 10)
     )
+    (if (< ?nivel ?com)
+        then (unmake-instance ?rec)
+    )
     (if (>= ?nivel ?com)
         then (bind ?p 100)
+        ;;Autor
+        (bind $?cuadros (send ?autor get-autor_de))
+        (if (member$ ?conta $?cuadros) then 
+            (bind ?p (+ ?p 100))
+        )
+        ;;Epoca
+        (if (eq ?epoca ?epoca_obra)
+            then (bind ?p (+ ?p 100))
+        )
+        ;;Estilo
+        (if (eq ?estilo ?estilo_obra)
+            then (bind ?p (+ ?p 100))
+        )
+        ;;Tematica
+        (if (eq ?tematica ?tematica_obra)
+            then (bind ?p (+ ?p 100))
+        )
+        ;;Relevancia
+        (if (eq ?relevancia "Muy baja")
+            then (bind ?p (* ?p 1))
+        )
+        (if (eq ?relevancia "Baja")
+            then (bind ?p (* ?p 2))
+        )   
+        (if (eq ?relevancia "Media-baja")
+            then (bind ?p (* ?p 3))
+        )
+        (if (eq ?relevancia "Media")
+            then (bind ?p (* ?p 5))
+        )
+        (if (eq ?relevancia "Media-alta")
+            then (bind ?p (* ?p 8))
+        )
+        (if (eq ?relevancia "Alta")
+            then (bind ?p (* ?p 9))
+        )
+        (if (eq ?relevancia "Muy Alta")
+            then (bind ?p (* ?p 10))
+        )
+        ;;Tiempo
+        (bind ?t (+ 2 (* 2 (/ (* ?com ?tamanyo) 5))))
+        (send ?rec put-duracion-vista ?t)
+        (send ?rec put-puntuacion ?p)
+        (send ?rec put-valorada TRUE)
     )
-    (if (< ?nivel ?com)
-        then (bind ?p 0)
+)
+(defrule procesado-datos::pasar-generacion
+    (declare (salience -1))
+    ?hecho <- (pasar_generacion nil)
+    =>
+    (retract ?hecho)
+    (focus generacion_soluciones)
+)
+
+;;; MODULO DE SELECCION DE OBRAS
+(deffacts generacion_soluciones::hechos-iniciales
+    (obras-seleccionadas nil)
+    (obras-ordenadas-puntuacion nil)
+    (obras-ordenadas-salas nil)
+    (obras-seleccionadas-tiempo nil)
+    (anadidr-tiempo nil)
+    (lista-obras-visita)
+    (lista-rec-salas)
+)
+
+(defrule generacion_soluciones::seleccionar-obras
+    (declare (salience 10))
+    ?hecho <- (obras-seleccionadas nil)
+    =>
+    (printout t "Seleccionando las obras para su visita..." crlf)
+    (bind ?lista (find-all-instances ((?inst Recomendacion)) TRUE))
+    (assert (lista-obras-visita (recomendaciones ?lista)))
+    (retract ?hecho)
+)
+
+(defrule generacion_soluciones::crea-lista-ordenada "Se crea una lista ordenada de contenido"
+    (declare (salience 5))
+    (not (lista-rec-ordenada))
+	(lista-obras-visita (recomendaciones $?lista))
+    ?hecho <- (obras-ordenadas-puntuacion nil)
+	=>
+	(bind $?resultado (create$ ))
+	(while (not (eq (length$ $?lista) 0))  do
+		(bind ?curr-rec (maximo-puntuacion $?lista))
+		(bind $?lista (delete-member$ $?lista ?curr-rec))
+		(bind $?resultado (insert$ $?resultado (+ (length$ $?resultado) 1) ?curr-rec))
+	)
+	(assert (lista-rec-ordenada (recomendaciones $?resultado)))
+    (printout t "Ordenando obras de arte..." crlf)
+    (loop-for-count (?i 1 (length$ $?resultado)) do
+        (bind ?curr-obj (nth$ ?i $?resultado))
     )
-    ;;Autor
-    (bind $?cuadros (send ?autor get-autor_de))
-    (if (member$ ?conta $?cuadros) then 
-        (bind ?p (+ ?p 100))
-        (printout t "Autor " ?p crlf)
+    (retract ?hecho)
+)
+
+(defrule generacion_soluciones::selccionar-mejores-obras
+    (declare (salience 4))
+    ?hecho <- (obras-seleccionadas-tiempo nil)
+    (lista-rec-ordenada (recomendaciones $?lista))
+    ?g <- (datos_grupo (dias ?dias) (horasdia ?horasdia)) 
+    =>
+    (bind ?resultado (create$ ))
+    (bind ?tiempo_total 0)
+    (bind ?tiempo_max (* (* ?horasdia 60) ?dias))
+    (bind $?lista_aux_salas (create$ ))
+    (loop-for-count (?i 1 (length$ $?lista)) do
+        (bind ?curr-obj (nth$ ?i $?lista))
+        (bind ?tiempo_total (+ ?tiempo_total (send ?curr-obj get-duracion-vista)))
+        (if (<= ?tiempo_total ?tiempo_max)
+            then (bind ?resultado (insert$ ?resultado (+ (length$ ?resultado) 1) ?curr-obj))
+            (if (not (member$ (send ?curr-obj get-sala) $?lista_aux_salas)) then 
+                (bind $?lista_aux_salas (insert$ $?lista_aux_salas (+ (length$ $?lista_aux_salas) 1) (send ?curr-obj get-sala)))
+                (bind ?tiempo_total (+ ?tiempo_total 2))
+            )
+        )
     )
-    ;;Epoca
-    (printout t "Epoca " ?epoca  "-" ?epoca_obra crlf)
-    (if (eq ?epoca ?epoca_obra)
-        then (bind ?p (+ ?p 100))
-        (printout t "Epoca " ?p crlf)
-    )
-    (send ?rec put-puntuacion ?p)
-    (send ?rec put-valorada TRUE)
+    (assert (lista-rec-mejores (recomendaciones ?resultado)))
+    (retract ?hecho)
 )
 
 
-;; (defrule procesado-datos::valorar-epoca
-;;     (preferencias_grupo (epoca_favorita ?epoca))
-;;     ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
-;;     ?cont <-(object (is-a ObraDeArte))
-;;     ?hecho <- (valorar-epoca nil)
-;;     (test (eq (instance-name ?cont) (instance-name ?conta)))
-;;     =>
-;;     (bind ?p 0)
-;;     (if (eq ?epoca (send ?cont get-tiene_epoca))
-;;         then (bind ?p 100)
-;;     )
-;;     (send ?rec put-puntuacion ?p)
-;;     (printout t ?p crlf)
-;; )
+(defrule generacion_soluciones::ordenar-salas
+    (declare (salience 3))
+    (lista-rec-mejores (recomendaciones $?lista))
+    ?hecho <- (obras-ordenadas-salas nil)
+    =>
+    (bind ?lista_salas (find-all-instances ((?inst Sala)) TRUE))
+    (bind ?resultado (create$ ))
+    (loop-for-count (?i 1 (length$ ?lista_salas)) do
+        (bind ?curr-sala (nth$ ?i ?lista_salas))
+        (loop-for-count (?j 1 (length$ $?lista)) do
+            (bind ?curr-obj (nth$ ?j $?lista))
+            (bind ?curr-obra (send ?curr-obj get-nombre_obra))
+            (bind ?sala-obra (send ?curr-obj get-sala))
+            (if (eq ?sala-obra ?curr-sala) then 
+                (bind ?resultado (insert$ ?resultado (+ (length$ ?resultado) 1) ?curr-obj))
+            )
+        )
+    )
+    (assert (lista-rec-salas (recomendaciones ?resultado)))
+    (retract ?hecho)
 
-;; (defrule procesado-datos::valorar-estilo
-;;     (preferencias_grupo (estilo_favorito ?estilo))
-;;     ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
-;;     ?cont <-(object (is-a ObraDeArte))
-;;     ?hecho <- (valorar-estilo nil)
-;;     (test (eq (instance-name ?cont) (instance-name ?conta)))
-;;     =>
-;;     (bind ?p 0)
-;;     (if (eq ?estilo (send ?cont get-tiene_estilo))
-;;         then (bind ?p 100)
-;;     )
-;;     (send ?rec put-puntuacion ?p)
-;;     (printout t ?p crlf)
-;; )
+)
 
-;; (defrule procesado-datos::valorar-tematica
-;;     (preferencias_grupo (tematica_favorita ?tematica))
-;;     ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
-;;     ?cont <-(object (is-a ObraDeArte))
-;;     ?hecho <- (valorar-tematica nil)
-;;     (test (eq (instance-name ?cont) (instance-name ?conta)))
-;;     =>
-;;     (bind ?p 0)
-;;     (if (eq ?tematica (send ?cont get-tema))
-;;         then (bind ?p 100)
-;;     )
-;;     (send ?rec put-puntuacion ?p)
-;;     (printout t ?p crlf)
-;; )
-
-;; (defrule procesado-datos::valorar-relevancia
-;;     ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
-;;     ?cont <-(object (is-a ObraDeArte) (relevancia ?relevancia))
-;;     ?hecho <- (valorar-relevancia nil)
-;;     (test (eq (instance-name ?cont) (instance-name ?conta)))
-;;     =>
-;;     (bind ?p 0)
-;;     (if (eq ?relevancia "Muy baja")
-;;         then (bind ?p 1)
-;;     )
-;;     (if (eq ?relevancia "Baja")
-;;         then (bind ?p 2)
-;;     )   
-;;     (if (eq ?relevancia "Media-baja")
-;;         then (bind ?p 3)
-;;     )
-;;     (if (eq ?relevancia "Media")
-;;         then (bind ?p 5)
-;;     )
-;;     (if (eq ?relevancia "Media-alta")
-;;         then (bind ?p 8)
-;;     )
-;;     (if (eq ?relevancia "Alta")
-;;         then (bind ?p 9)
-;;     )
-;;     (if (eq ?relevancia "Muy Alta")
-;;         then (bind ?p 10)
-;;     )
-;;     (send ?rec put-puntuacion ?p)
-;;     (printout t ?p crlf)
-;; )
+(defrule generacion_soluciones::anadir-tiempo
+    (declare (salience 2))
+    ?g <- (datos_grupo (dias ?dias) (horasdia ?horasdia))
+    ?hecho <- (anadidr-tiempo nil)
+    (lista-rec-salas (recomendaciones $?lista))
+    =>
+    (bind ?tiempo_total 0)
+    (bind ?horasdia (* ?horasdia 60))
+    (bind ?dia 1)
+    (loop-for-count (?i 1 (length$ $?lista)) do
+        (bind ?curr-obj (nth$ ?i $?lista))
+        (bind ?tiempo_total (+ ?tiempo_total (send ?curr-obj get-duracion-vista)))
+        (if (>= ?tiempo_total ?horasdia) then
+            (bind ?tiempo_total 0)
+            (bind ?dia (+ ?dia 1))
+        )
+        (if (> ?dia ?dias) then
+            (break)
+        )
+        (send ?curr-obj put-dia ?dia)
+    )
+    (retract ?hecho)
+    (focus resultados_al_grupo)
+)
 
 ;;; MODULO DE IMPRESION DE RESULTADOS
 
@@ -480,14 +600,14 @@
 
 
 (defrule resultados_al_grupo::imprimir-resultados
-    (lista-obras-visita (recomendaciones $?lista))
+    (lista-rec-salas (recomendaciones $?lista))
     ?hecho <- (mostrar_resultados nil)
     =>
     (printout t "Las obras seleccionadas para su visita son: " crlf)
     (printout t "----------------------------------------------" crlf)
     (loop-for-count (?i 1 (length$ $?lista)) do
         (bind ?curr-obj (nth$ ?i $?lista))
-        (printout t "Cuadro " ?i ": "  (send ?curr-obj get-nombre) crlf)
+        (printout t "Obra: " (send ?curr-obj get-nombre_obra) " Puntuacion " (send ?curr-obj get-puntuacion) " Duracion " (send ?curr-obj get-duracion-vista) " Sala " (send ?curr-obj get-sala) " Dia " (send ?curr-obj get-dia) crlf)
     )
     (printout t "----------------------------------------------" crlf)
     (retract ?hecho)
