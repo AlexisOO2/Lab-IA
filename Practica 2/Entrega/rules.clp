@@ -79,7 +79,7 @@
 ;; Template para los datos del usuario o grupo
 (deftemplate MAIN::datos_grupo
 	(slot tamanyo (type INTEGER) (default 1)) ;tamanyo del grupo
-	(slot nivel (type INTEGER)(default -1)) ;conocimiento
+	(slot nivel (type INTEGER)(default 5)) ;conocimiento
 	(slot menores (type INTEGER)(default -1)) ; existe algun menor de edad
     (slot dias (type INTEGER)(default -1)) ;nº dias en visitar el museo
     (slot horasdia (type INTEGER)(default -1)) ;nº horas/dia
@@ -246,9 +246,11 @@
 
 (defrule recopilacion-usuario::establecer-nivel-conocimiento
     ?g <- (datos_grupo (nivel ?nivel))
-    (test (< ?nivel 0))
+    (test (eq ?nivel 5))
     =>
-    (bind ?nivel (pregunta-numerica "Cual dirias que es tu nivel de conocimiento sobre el arte?" 0 10))
+    (bind ?res (pregunta-numerica "Cual dirias que es tu nivel de conocimiento sobre el arte?" 1 5))
+    (bind ?nivel (+ ?nivel ?res))
+    (printout t ?nivel crlf)
     (modify ?g (nivel ?nivel))
     (focus recopilacion-prefs)
 )
