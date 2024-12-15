@@ -40,15 +40,15 @@
     (role concrete)
     (pattern-match reactive)
     ;;; El tema de una obra de arte está relacionada a una cierta temática
-    (multislot tema
+    (slot tema
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Una obra de arte o un pintor tienen una cierta época
-    (multislot tiene_epoca
+    (slot tiene_epoca
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Una obra de arte o un pintor tienen una cierto estilo
-    (multislot tiene_estilo
+    (slot tiene_estilo
         (type INSTANCE)
         (create-accessor read-write))
     (multislot topObjectProperty
