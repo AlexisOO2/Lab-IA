@@ -604,11 +604,19 @@
     (lista-rec-salas (recomendaciones $?lista))
     ?hecho <- (mostrar_resultados nil)
     =>
-    (printout t "Las obras seleccionadas para su visita son: " crlf)
-    (printout t "----------------------------------------------" crlf)
-    (loop-for-count (?i 1 (length$ $?lista)) do
-        (bind ?curr-obj (nth$ ?i $?lista))
-        (printout t "Obra: " (send ?curr-obj get-nombre_obra) " Puntuacion " (send ?curr-obj get-puntuacion) " Duracion " (send ?curr-obj get-duracion-vista) " Sala " (send ?curr-obj get-sala) " Dia " (send ?curr-obj get-dia) crlf)
+    (printout t "Las obras seleccionadas para su visita son según el día son: " crlf)
+    (loop-for-count (?i 1 5) do
+        (printout t "-------------------- Dia " ?i " ----------------------" crlf)
+        (loop-for-count (?j 1 (length$ $?lista)) do
+            (bind ?curr-obj (nth$ ?j $?lista))
+            (if (eq ?i (send ?curr-obj get-dia)) then
+                (printout t "Obra: " (send (send ?curr-obj get-nombre_obra) get-nombre) crlf)
+                (printout t "Sala: " (send (send ?curr-obj get-sala) get-nombre) crlf)
+                (printout t "Duracion: " (send ?curr-obj get-duracion-vista) " minutos" crlf)
+                (printout t crlf)
+            )
+        )
+
     )
     (printout t "----------------------------------------------" crlf)
     (retract ?hecho)
