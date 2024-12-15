@@ -1,3 +1,28 @@
+(defclass Recomendacion 
+	(is-a USER)
+	(role concrete)
+    (slot nombre_obra
+		(type INSTANCE)
+		(create-accessor read-write))
+    (slot puntuacion
+        (type INTEGER)
+        (create-accessor read-write))
+    (multislot justificaciones
+		(type STRING)
+		(create-accessor read-write))
+)
+
+(defclass Dia
+	(is-a USER)
+	(role concrete)
+	(multislot recomendaciones
+		(type INSTANCE)
+		(create-accessor read-write))
+	(slot tiempo-maximo
+		(type INTEGER)
+		(create-accessor read-write))
+)
+
 ;;; ---------------------------------------------------------
 ;;;                     MAIN
 ;;; ---------------------------------------------------------
@@ -290,43 +315,164 @@
 
 (deffacts procesado-datos::hechos-iniciales
     (obras_seleccionadas nil)
+    (valorar-conocimiento nil)
+    (valorar-autor nil)
+    (valorar-epoca nil)
+    (valorar-estilo nil)
+    (valorar-tematica nil)
+    (valorar-relevancia nil)
     (lista-obras-visita)
 )
 
-;;; ejemplo para mostrar los cuadros
-(defrule procesado-datos::añadir_cuadros
-;;de momento solo haremos que añada el el cuadro preferido y aquel de su autor favorito que cumpla con sus preferencias
-    ?g <- (lista-obras-visita (recomendaciones $?l))
+(defrule procesado-datos::añadir_todas_las_obras
     ?hecho <- (obras_seleccionadas nil)
-    ?autor_favorito <- (preferencias_grupo (autor_favorito ?autor))
-    ?obra_favorita <- (preferencias_grupo (obra_favorita ?obra))
-    ?tematica_favorita <- (preferencias_grupo (tematica_favorita ?tematica))
-    ?epoca_favorita <- (preferencias_grupo (epoca_favorita ?epoca))
-    ?estilo_favorito <- (preferencias_grupo (estilo_favorito ?estilo))
     =>
-	(bind $?obras (send ?autor get-autor_de))
-    (bind $?lista (create$))
-    (loop-for-count (?i 1 (length$ $?obras)) do
-        (bind ?curr-obj (nth$ ?i $?obras))
-        (bind $?caracteristicas (send ?curr-obj get-tiene))
-        (bind ?epoca_cuadro (nth$ 1 ?caracteristicas))
-        (bind ?estilo_cuadro (nth$ 2 ?caracteristicas))
-        (if (and (eq ?epoca_cuadro ?epoca) (eq ?estilo_cuadro ?estilo))
-            then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?curr-obj))
-        )
-    )
-    (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?obra))
+	(bind $?lista (find-all-instances ((?inst ObraDeArte)) TRUE))
+	(progn$ (?curr-con ?lista)
+		(make-instance (gensym) of Recomendacion (nombre_obra ?curr-con)(puntuacion 0))
+	)	
     (retract ?hecho)
-    (modify ?g (recomendaciones $?lista))
-    (focus resultados_al_grupo)
+)
 
+(defrule procesado-datos::valorar-nivel-complejidad
+    (datos_grupo (nivel ?nivel))
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
+	?cont <-(object (is-a ObraDeArte) (relevancia ?relevancia) (complejidad ?complejidad))
+    ?hecho <- (valorar-conocimiento nil)
+    (test (eq (instance-name ?cont) (instance-name ?conta)))
+    (test (eq ?p 0))
+    =>
+    (bind ?com 0)
+    (if (eq ?complejidad "Muy baja")
+        then (bind ?com 1)
+    )
+    (if (eq ?complejidad "Baja")
+        then (bind ?com 2)
+    )   
+    (if (eq ?complejidad "Media-baja")
+        then (bind ?com 3)
+    )
+    (if (eq ?complejidad "Media")
+        then (bind ?com 5)
+    )
+    (if (eq ?complejidad "Media-alta")
+        then (bind ?com 8)
+    )
+    (if (eq ?complejidad "Alta")
+        then (bind ?com 9)
+    )
+    (if (eq ?complejidad "Muy Alta")
+        then (bind ?com 10)
+    )
+    (if (>= ?nivel ?com)
+        then (bind ?p 100)
+    )
+    (if (< ?nivel ?com)
+        then (bind ?p 0)
+    )
+    (send ?rec put-puntuacion ?p)
+    (printout t ?com " " ?nivel " " ?p crlf)
+)
+
+(defrule procesado-datos::valorar-autor
+    (preferencias_grupo (autor_favorito ?autor))
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
+    ?cont <-(object (is-a ObraDeArte))
+    ?hecho <- (valorar-autor nil)
+    (test (eq (instance-name ?cont) (instance-name ?conta)))
+    =>
+    (bind $?cuadros (send ?autor get-autor_de))
+    (bind ?p 0)
+    (if (member$ ?conta $?cuadros) then 
+        (bind ?p 100)
+        (printout t "Autor " ?p crlf)
+    )
+    (send ?rec put-puntuacion ?p)
+    (printout t ?p crlf)
+)
+
+
+(defrule procesado-datos::valorar-epoca
+    (preferencias_grupo (epoca_favorita ?epoca))
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
+    ?cont <-(object (is-a ObraDeArte))
+    ?hecho <- (valorar-epoca nil)
+    (test (eq (instance-name ?cont) (instance-name ?conta)))
+    =>
+    (bind ?p 0)
+    (if (eq ?epoca (send ?cont get-tiene_epoca))
+        then (bind ?p 100)
+    )
+    (send ?rec put-puntuacion ?p)
+    (printout t ?p crlf)
+)
+
+(defrule procesado-datos::valorar-estilo
+    (preferencias_grupo (estilo_favorito ?estilo))
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
+    ?cont <-(object (is-a ObraDeArte))
+    ?hecho <- (valorar-estilo nil)
+    (test (eq (instance-name ?cont) (instance-name ?conta)))
+    =>
+    (bind ?p 0)
+    (if (eq ?estilo (send ?cont get-tiene_estilo))
+        then (bind ?p 100)
+    )
+    (send ?rec put-puntuacion ?p)
+    (printout t ?p crlf)
+)
+
+(defrule procesado-datos::valorar-tematica
+    (preferencias_grupo (tematica_favorita ?tematica))
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
+    ?cont <-(object (is-a ObraDeArte))
+    ?hecho <- (valorar-tematica nil)
+    (test (eq (instance-name ?cont) (instance-name ?conta)))
+    =>
+    (bind ?p 0)
+    (if (eq ?tematica (send ?cont get-tema))
+        then (bind ?p 100)
+    )
+    (send ?rec put-puntuacion ?p)
+    (printout t ?p crlf)
+)
+
+(defrule procesado-datos::valorar-relevancia
+    ?rec <- (object (is-a Recomendacion) (nombre_obra ?conta) (puntuacion ?p) (justificaciones $?just))
+    ?cont <-(object (is-a ObraDeArte) (relevancia ?relevancia))
+    ?hecho <- (valorar-relevancia nil)
+    (test (eq (instance-name ?cont) (instance-name ?conta)))
+    =>
+    (bind ?p 0)
+    (if (eq ?relevancia "Muy baja")
+        then (bind ?p 1)
+    )
+    (if (eq ?relevancia "Baja")
+        then (bind ?p 2)
+    )   
+    (if (eq ?relevancia "Media-baja")
+        then (bind ?p 3)
+    )
+    (if (eq ?relevancia "Media")
+        then (bind ?p 5)
+    )
+    (if (eq ?relevancia "Media-alta")
+        then (bind ?p 8)
+    )
+    (if (eq ?relevancia "Alta")
+        then (bind ?p 9)
+    )
+    (if (eq ?relevancia "Muy Alta")
+        then (bind ?p 10)
+    )
+    (send ?rec put-puntuacion ?p)
+    (printout t ?p crlf)
 )
 
 ;;; MODULO DE IMPRESION DE RESULTADOS
 
 (deffacts resultados_al_grupo::hechos-iniciales
     (mostrar_resultados nil)
-    (lista-obras-visita)
 )
 
 
