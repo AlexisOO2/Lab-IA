@@ -80,7 +80,6 @@
 (deftemplate MAIN::datos_grupo
 	(slot tamanyo (type INTEGER) (default 1)) ;tamanyo del grupo
 	(slot nivel (type INTEGER)(default 5)) ;conocimiento
-	(slot menores (type INTEGER)(default -1)) ; existe algun menor de edad
     (slot dias (type INTEGER)(default -1)) ;nº dias en visitar el museo
     (slot horasdia (type INTEGER)(default -1)) ;nº horas/dia
     (slot tiempo (type INTEGER)(default -1)) ;total de tiempo
@@ -209,14 +208,6 @@
 	=>
 	(bind ?tamanyo (pregunta-numerica "¿De cuantos visitantes esta formado el grupo? " 1 20))
     (assert (datos_grupo (tamanyo ?tamanyo)))
-)
-
-(defrule recopilacion-usuario::establecer-todos-mayores-edad
-	?g <- (datos_grupo (menores ?menores))
-	(test (< ?menores 0))
-	=>
-	(bind ?menores (pregunta-numerica "Es el Usuario o algun miembro del grupo menor de edad?" 0 1))
-	(modify ?g (menores ?menores))
 )
 
 (defrule recopilacion-usuario::establecer-horas-visita
