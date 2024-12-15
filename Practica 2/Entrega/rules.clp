@@ -250,7 +250,6 @@
     =>
     (bind ?res (pregunta-numerica "Cual dirias que es tu nivel de conocimiento sobre el arte?" 1 5))
     (bind ?nivel (+ ?nivel ?res))
-    (printout t ?nivel crlf)
     (modify ?g (nivel ?nivel))
     (focus recopilacion-prefs)
 )
