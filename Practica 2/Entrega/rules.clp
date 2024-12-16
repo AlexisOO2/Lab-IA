@@ -136,30 +136,6 @@
 	?respuesta
 )
 
-; Funcion para hacer una pregunta multi-respuesta con indices
-(deffunction MAIN::pregunta-multirespuesta (?pregunta $?valores-posibles)
-    (bind ?linea (format nil "%s" ?pregunta))
-    (printout t ?linea crlf)
-    (progn$ (?var ?valores-posibles)
-            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
-            (printout t ?linea crlf)
-    )
-    (format t "%s" "Indica los numeros referentes a los pintores separados por un espacio: ")
-    (bind ?resp (readline))
-    (bind ?numeros (explode$ ?resp))
-    (bind $?lista (create$ ))
-    (progn$ (?var ?numeros)
-        (if (and (integerp ?var) (and (>= ?var 0) (<= ?var (length$ ?valores-posibles))))
-            then
-                (if (not (member$ ?var ?lista))
-                    then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?var))
-                )
-        )
-    )
-    (if (member$ 0 ?lista) then (bind ?lista (create$ 0)))
-    ?lista
-)
-
 (deffunction maximo-puntuacion ($?lista)
 	(bind ?maximo -1)
 	(bind ?elemento nil)
