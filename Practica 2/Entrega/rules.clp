@@ -2,7 +2,7 @@
 ;;;                     Clases Auxiliares
 ;;; ---------------------------------------------------------
 
-(defclass Recomendacion 
+(defclass Recomendacion "Esta clase auxiliar contiene los datos de la recomendacion de una obra"
 	(is-a USER)
 	(role concrete)
     (slot nombre_obra
@@ -49,6 +49,7 @@
 	(export ?ALL)
 )
 
+;;; Modulo de procesado de los datos obtenidos del usuario
 (defmodule procesado-datos
 	(import MAIN ?ALL)
 	(import recopilacion-usuario deftemplate ?ALL)
@@ -56,11 +57,13 @@
 	(export ?ALL)
 )
 
+;;; Modulo de generacion de soluciones
 (defmodule generacion-soluciones
 	(import MAIN ?ALL)
 	(export ?ALL)
 )
 
+;;; Modulo de representacion de los resultados
 (defmodule resultados-al-grupo
 	(import MAIN ?ALL)
 	(export ?ALL)
@@ -91,7 +94,7 @@
 	(multislot recomendaciones (type INSTANCE))
 )
 
-;;; Template para una lista de recomendaciones con orden
+;;; Template para una lista de recomendaciones con ordenada segun su puntuacion
 (deftemplate MAIN::lista-rec-ordenada
 	(multislot recomendaciones (type INSTANCE))
 )
@@ -136,6 +139,7 @@
 	?respuesta
 )
 
+;;; Funcion para obtener el maximo de una lista de puntuaciones
 (deffunction maximo-puntuacion ($?lista)
 	(bind ?maximo -1)
 	(bind ?elemento nil)
@@ -171,14 +175,14 @@
 
 ;;; MODULO DE PREGUNTAS
 
-(defrule recopilacion-usuario::establecer-tamanyo-grupo
+(defrule recopilacion-usuario::establecer-tamanyo-grupo "Pregunta y establece el tamanyo del grupo"
     (not (datos_grupo))
 	=>
 	(bind ?tamanyo (pregunta-numerica "¿De cuantos visitantes esta formado el grupo? " 1 20))
     (assert (datos_grupo (tamanyo ?tamanyo)))
 )
 
-(defrule recopilacion-usuario::establecer-horas-visita
+(defrule recopilacion-usuario::establecer-horas-visita "Pregunta y establece las horas que durara cada visita"
 	?g <- (datos_grupo (horasdia ?horasdia))
 	(test (< ?horasdia 0))
 	=>
@@ -186,7 +190,7 @@
 	(modify ?g (horasdia ?horasdia))
 )
 
-(defrule recopilacion-usuario::establecer-dias-visita
+(defrule recopilacion-usuario::establecer-dias-visita "Pregunta y establece los dias que se visitara el museo"
     ?g <- (datos_grupo (dias ?dias))
     (test (< ?dias 0))
     =>
@@ -194,7 +198,7 @@
     (modify ?g (dias ?dias))
 )
 
-(defrule recopilacion-usuario::establecer-nivel-conocimiento
+(defrule recopilacion-usuario::establecer-nivel-conocimiento "Pregunta y establece el nivel de conocimiento sobre el arte"
     ?g <- (datos_grupo (nivel ?nivel))
     (test (eq ?nivel 5))
     =>
@@ -204,7 +208,7 @@
     (focus recopilacion-prefs)
 )
 
-(deffacts recopilacion-prefs::hechos-iniciales
+(deffacts recopilacion-prefs::hechos-iniciales "Crea los hechos iniciales para el modulo de preferencias"
     (autor_favorito nil)
     (obra_favorita nil)
     (tematica_favorita nil)
@@ -213,7 +217,7 @@
     (preferencias_grupo)
 )
 
-(defrule recopilacion-prefs::establecer-autor-preferido
+(defrule recopilacion-prefs::establecer-autor-preferido "Pregunta y establece el autor preferido"
     ?g <- (preferencias_grupo (autor_favorito ?autor))
     ?hecho <- (autor_favorito nil)
     =>
@@ -230,7 +234,7 @@
     (retract ?hecho)
 )
 
-(defrule recopilacion-prefs::establecer-obra-preferida
+(defrule recopilacion-prefs::establecer-obra-preferida "Pregunta y establece la obra preferida"
     ?g <- (preferencias_grupo (obra_favorita ?obra))
     ?hecho <- (obra_favorita nil)
     =>
@@ -249,7 +253,7 @@
 
 
 
-(defrule recopilacion-prefs::establecer-tematica-preferida
+(defrule recopilacion-prefs::establecer-tematica-preferida "Pregunta y establece la tematica preferida"
     ?g <- (preferencias_grupo (tematica_favorita ?obra))
     ?hecho <- (tematica_favorita nil)
     =>
@@ -267,7 +271,7 @@
 )
 
 
-(defrule recopilacion-prefs::establecer-epoca-preferida
+(defrule recopilacion-prefs::establecer-epoca-preferida "Pregunta y establece la epoca preferida"
     ?g <- (preferencias_grupo (epoca_favorita ?obra))
     ?hecho <- (epoca_favorita nil)
     =>
@@ -285,7 +289,7 @@
 )
 
 
-(defrule recopilacion-prefs::establecer-estilo-preferido
+(defrule recopilacion-prefs::establecer-estilo-preferido "Pregunta y establece el estilo preferido"
     ?g <- (preferencias_grupo (estilo_favorito ?obra))
     ?hecho <- (estilo_favorito nil)
     =>
@@ -308,12 +312,12 @@
 
 ;;; MODULO DE PROCESADO DE DATOS
 
-(deffacts procesado-datos::hechos-iniciales
+(deffacts procesado-datos::hechos-iniciales "Crea los hechos iniciales para el modulo de procesado de datos"
     (obras_seleccionadas nil)
     (pasar_generacion nil)
 )
 
-(defrule procesado-datos::añadir_todas_las_obras
+(defrule procesado-datos::añadir_todas_las_obras "Selecciona todas las que se pueden visitar en el museo"
     ?hecho <- (obras_seleccionadas nil)
     =>
 	(bind $?lista (find-all-instances ((?inst ObraDeArte)) TRUE))
@@ -323,7 +327,7 @@
     (retract ?hecho)
 )
 
-(defrule procesado-datos::valorar-nivel-complejidad
+(defrule procesado-datos::valorar-obras "Valora las obras segun las preferencias del grupo"
     (declare (salience 10))
     (datos_grupo (nivel ?nivel))
     (datos_grupo (tamanyo ?tamanyo))
@@ -421,7 +425,7 @@
         (send ?rec put-valorada TRUE)
     )
 )
-(defrule procesado-datos::pasar-generacion
+(defrule procesado-datos::pasar-generacion "Pasa a la generacion de soluciones"
     (declare (salience -1))
     ?hecho <- (pasar_generacion nil)
     =>
@@ -430,7 +434,7 @@
 )
 
 ;;; MODULO DE SELECCION DE OBRAS
-(deffacts generacion-soluciones::hechos-iniciales
+(deffacts generacion-soluciones::hechos-iniciales "Crea los hechos iniciales para el modulo de generacion de soluciones"
     (obras-seleccionadas nil)
     (obras-ordenadas-puntuacion nil)
     (obras-ordenadas-salas nil)
@@ -440,7 +444,7 @@
     (lista-rec-salas)
 )
 
-(defrule generacion-soluciones::seleccionar-obras
+(defrule generacion-soluciones::seleccionar-obras "Selecciona las obras con mejor puntuación"
     (declare (salience 10))
     ?hecho <- (obras-seleccionadas nil)
     =>
@@ -450,7 +454,7 @@
     (retract ?hecho)
 )
 
-(defrule generacion-soluciones::crea-lista-ordenada "Se crea una lista ordenada de contenido"
+(defrule generacion-soluciones::crea-lista-ordenada "Se ordenan las obras segun su puntuacion"
     (declare (salience 5))
     (not (lista-rec-ordenada))
 	(lista-obras-visita (recomendaciones $?lista))
@@ -470,7 +474,7 @@
     (retract ?hecho)
 )
 
-(defrule generacion-soluciones::selccionar-mejores-obras
+(defrule generacion-soluciones::selccionar-mejores-obras "Se seleccionan las mejores obras que se pueden visitar en el periodo de tiempo definido"
     (declare (salience 4))
     ?hecho <- (obras-seleccionadas-tiempo nil)
     (lista-rec-ordenada (recomendaciones $?lista))
@@ -496,7 +500,7 @@
 )
 
 
-(defrule generacion-soluciones::ordenar-salas
+(defrule generacion-soluciones::ordenar-salas "Se ordenan la seleccion de obras segun su sala"
     (declare (salience 3))
     (lista-rec-mejores (recomendaciones $?lista))
     ?hecho <- (obras-ordenadas-salas nil)
@@ -519,7 +523,7 @@
 
 )
 
-(defrule generacion-soluciones::anadir-tiempo
+(defrule generacion-soluciones::anadir-tiempo "A cada obra se le asigna el dia que será visitada"
     (declare (salience 2))
     ?g <- (datos_grupo (dias ?dias) (horasdia ?horasdia))
     ?hecho <- (anadidr-tiempo nil)
@@ -546,12 +550,12 @@
 
 ;;; MODULO DE IMPRESION DE RESULTADOS
 
-(deffacts resultados-al-grupo::hechos-iniciales
+(deffacts resultados-al-grupo::hechos-iniciales "Crea los hechos iniciales para el modulo de resultados"
     (mostrar_resultados nil)
 )
 
 
-(defrule resultados-al-grupo::imprimir-resultados
+(defrule resultados-al-grupo::imprimir-resultados "Imprime las obras seleccionadas para la visita"
     (lista-rec-salas (recomendaciones $?lista))
     ?hecho <- (mostrar_resultados nil)
     =>
