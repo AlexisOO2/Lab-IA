@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 16/12/2024 18:10:50
+;;; :Date 16/12/2024 18:14:00
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -146,7 +146,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Un usuario tiene preferencia por un Pintor u Obras de Arte
-    (slot prefiere
+    (multislot prefiere
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Un visitante realiza una visita
