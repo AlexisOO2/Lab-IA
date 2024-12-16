@@ -86,7 +86,7 @@
     (slot estilo_favorito (type INSTANCE))
 )
 
-;;; Template para una lista de las obras que se van a visitar
+;;; Template para una lista de las obras que se pueden visitar
 (deftemplate MAIN::lista-obras-visita
 	(multislot recomendaciones (type INSTANCE))
 )
