@@ -40,6 +40,7 @@
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/contiguas
 :contiguas rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:FunctionalProperty ;
            rdfs:domain :Sala ;
            rdfs:range :Sala ;
            rdfs:comment "Dos salas son contiguas" .
@@ -84,6 +85,7 @@
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tema
 :tema rdf:type owl:ObjectProperty ;
       rdfs:subPropertyOf owl:topObjectProperty ;
+      rdf:type owl:FunctionalProperty ;
       rdfs:domain :ObraDeArte ;
       rdfs:range :Tematica ;
       rdfs:comment "El tema de una obra de arte está relacionada a una cierta temática" .
@@ -92,6 +94,7 @@
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene_epoca
 :tiene_epoca rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
+             rdf:type owl:FunctionalProperty ;
              rdfs:domain :ObraDeArte ,
                          :Pintor ;
              rdfs:range :Epoca ;
@@ -101,15 +104,11 @@
 ###  http://www.semanticweb.org/maca/ontologies/2024/10/lab-ontology/tiene_estilo
 :tiene_estilo rdf:type owl:ObjectProperty ;
               rdfs:subPropertyOf owl:topObjectProperty ;
+              rdf:type owl:FunctionalProperty ;
               rdfs:domain :ObraDeArte ,
                           :Pintor ;
               rdfs:range :Estilo ;
               rdfs:comment "Una obra de arte o un pintor tienen una cierto estilo" .
-
-
-###  http://www.w3.org/2002/07/owl#topObjectProperty
-owl:topObjectProperty rdfs:domain :ObraDeArte ;
-                      rdfs:range :Tematica .
 
 
 #################################################################
