@@ -2,7 +2,7 @@
 ;;; ontology.clp
 ;;; Translated by owl2clips
 ;;; Translated to CLIPS from ontology ontology.ttl
-;;; :Date 12/12/2024 16:46:59
+;;; :Date 16/12/2024 18:10:50
 
 (defclass Epoca "Esta clase representa una época"
     (is-a USER)
@@ -51,9 +51,6 @@
     (slot tiene_estilo
         (type INSTANCE)
         (create-accessor read-write))
-    (multislot topObjectProperty
-        (type INSTANCE)
-        (create-accessor read-write))
     (slot año_de_creacion
         (type INTEGER)
         (create-accessor read-write))
@@ -80,11 +77,11 @@
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Una obra de arte o un pintor tienen una cierta época
-    (multislot tiene_epoca
+    (slot tiene_epoca
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Una obra de arte o un pintor tienen una cierto estilo
-    (multislot tiene_estilo
+    (slot tiene_estilo
         (type INSTANCE)
         (create-accessor read-write))
     (slot nacionalidad
@@ -104,7 +101,7 @@
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Dos salas son contiguas
-    (multislot contiguas
+    (slot contiguas
         (type INSTANCE)
         (create-accessor read-write))
     (slot nombre
@@ -149,7 +146,7 @@
     (role concrete)
     (pattern-match reactive)
     ;;; Un usuario tiene preferencia por un Pintor u Obras de Arte
-    (multislot prefiere
+    (slot prefiere
         (type INSTANCE)
         (create-accessor read-write))
     ;;; Un visitante realiza una visita
