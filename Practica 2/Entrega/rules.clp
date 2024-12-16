@@ -1,3 +1,7 @@
+;;; ---------------------------------------------------------
+;;;                     Clases Auxiliares
+;;; ---------------------------------------------------------
+
 (defclass Recomendacion 
 	(is-a USER)
 	(role concrete)
@@ -26,19 +30,8 @@
         (default FALSE))
 )
 
-(defclass Dia
-	(is-a USER)
-	(role concrete)
-	(multislot recomendaciones
-		(type INSTANCE)
-		(create-accessor read-write))
-	(slot tiempo-maximo
-		(type INTEGER)
-		(create-accessor read-write))
-)
-
 ;;; ---------------------------------------------------------
-;;;                     MAIN
+;;;                     MODULES
 ;;; ---------------------------------------------------------
 
 (defmodule MAIN (export ?ALL))
@@ -63,12 +56,12 @@
 	(export ?ALL)
 )
 
-(defmodule generacion_soluciones
+(defmodule generacion-soluciones
 	(import MAIN ?ALL)
 	(export ?ALL)
 )
 
-(defmodule resultados_al_grupo
+(defmodule resultados-al-grupo
 	(import MAIN ?ALL)
 	(export ?ALL)
 )
@@ -82,7 +75,6 @@
 	(slot nivel (type INTEGER)(default 5)) ;conocimiento
     (slot dias (type INTEGER)(default -1)) ;nº dias en visitar el museo
     (slot horasdia (type INTEGER)(default -1)) ;nº horas/dia
-    (slot tiempo (type INTEGER)(default -1)) ;total de tiempo
 )
 
 ;;; Template para las preferencias del usuario o grupo
@@ -226,15 +218,6 @@
     (modify ?g (dias ?dias))
 )
 
-(defrule recopilacion-usuario::establecer-tiempo-total
-    ?g <- (datos_grupo(tiempo ?tiempo))
-    (datos_grupo (dias ?dias) (horasdia ?horasdia))
-    (test (< 0 ?dias)) (test (< 0 ?horasdia))
-    =>
-    (bind ?tiempo (* ?dias ?horasdia))
-    (modify ?g (tiempo ?tiempo))
-)
-
 (defrule recopilacion-usuario::establecer-nivel-conocimiento
     ?g <- (datos_grupo (nivel ?nivel))
     (test (eq ?nivel 5))
@@ -369,6 +352,7 @@
     (datos_grupo (nivel ?nivel))
     (datos_grupo (tamanyo ?tamanyo))
     (preferencias_grupo (autor_favorito ?autor))
+    (preferencias_grupo (obra_favorita ?obra))
     (preferencias_grupo (epoca_favorita ?epoca))
     (preferencias_grupo (estilo_favorito ?estilo))
     (preferencias_grupo (tematica_favorita ?tematica))
@@ -410,7 +394,7 @@
     (if (eq ?complejidad "Muy Alta")
         then (bind ?com 10)
     )
-    (if (< ?nivel ?com)
+    (if (and (< ?nivel ?com) not(eq ?conta ?obra))
         then (unmake-instance ?rec)
     )
     (if (>= ?nivel ?com)
@@ -466,11 +450,11 @@
     ?hecho <- (pasar_generacion nil)
     =>
     (retract ?hecho)
-    (focus generacion_soluciones)
+    (focus generacion-soluciones)
 )
 
 ;;; MODULO DE SELECCION DE OBRAS
-(deffacts generacion_soluciones::hechos-iniciales
+(deffacts generacion-soluciones::hechos-iniciales
     (obras-seleccionadas nil)
     (obras-ordenadas-puntuacion nil)
     (obras-ordenadas-salas nil)
@@ -480,7 +464,7 @@
     (lista-rec-salas)
 )
 
-(defrule generacion_soluciones::seleccionar-obras
+(defrule generacion-soluciones::seleccionar-obras
     (declare (salience 10))
     ?hecho <- (obras-seleccionadas nil)
     =>
@@ -490,7 +474,7 @@
     (retract ?hecho)
 )
 
-(defrule generacion_soluciones::crea-lista-ordenada "Se crea una lista ordenada de contenido"
+(defrule generacion-soluciones::crea-lista-ordenada "Se crea una lista ordenada de contenido"
     (declare (salience 5))
     (not (lista-rec-ordenada))
 	(lista-obras-visita (recomendaciones $?lista))
@@ -510,7 +494,7 @@
     (retract ?hecho)
 )
 
-(defrule generacion_soluciones::selccionar-mejores-obras
+(defrule generacion-soluciones::selccionar-mejores-obras
     (declare (salience 4))
     ?hecho <- (obras-seleccionadas-tiempo nil)
     (lista-rec-ordenada (recomendaciones $?lista))
@@ -536,7 +520,7 @@
 )
 
 
-(defrule generacion_soluciones::ordenar-salas
+(defrule generacion-soluciones::ordenar-salas
     (declare (salience 3))
     (lista-rec-mejores (recomendaciones $?lista))
     ?hecho <- (obras-ordenadas-salas nil)
@@ -559,7 +543,7 @@
 
 )
 
-(defrule generacion_soluciones::anadir-tiempo
+(defrule generacion-soluciones::anadir-tiempo
     (declare (salience 2))
     ?g <- (datos_grupo (dias ?dias) (horasdia ?horasdia))
     ?hecho <- (anadidr-tiempo nil)
@@ -581,17 +565,17 @@
         (send ?curr-obj put-dia ?dia)
     )
     (retract ?hecho)
-    (focus resultados_al_grupo)
+    (focus resultados-al-grupo)
 )
 
 ;;; MODULO DE IMPRESION DE RESULTADOS
 
-(deffacts resultados_al_grupo::hechos-iniciales
+(deffacts resultados-al-grupo::hechos-iniciales
     (mostrar_resultados nil)
 )
 
 
-(defrule resultados_al_grupo::imprimir-resultados
+(defrule resultados-al-grupo::imprimir-resultados
     (lista-rec-salas (recomendaciones $?lista))
     ?hecho <- (mostrar_resultados nil)
     =>
