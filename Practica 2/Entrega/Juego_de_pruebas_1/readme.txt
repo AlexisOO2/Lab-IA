@@ -1,3 +1,28 @@
-Para ejecutar el script, se puede hacer desde el entorno grafico CLIPSIDE, en evironment > load batch > execute.bat
-En linux se puede ejecutar el comando #clipside -f execute.bat 
-En windows se puede ejecutar el archivo windows.bat, hace falta tener el ejecutable del programa clipdos en la lista de path de windows
+Instrucciones para ejecutar el script
+=====================================
+
+Requisitos:
+- Tener CLIPS configurado.
+- En Windows, agregar "clipdos" al PATH.
+
+Ejecución en CLIPSIDE (Gráfico):
+-----------------------------
+1. Abre "CLIPSIDE".
+2. Ve a "Environment" > "Load Batch".
+3. Carga "execute.bat".
+
+Ejecución en Linux:
+-------------------
+1. Abre terminal.
+2. Navega a la carpeta con "execute.bat".
+3. Ejecuta:
+
+   clipside -f execute.bat
+
+Ejecución en Windows:
+---------------------
+1. Navega a la carpeta con "windows.bat".
+2. Haz doble clic en "windows.bat".
+
+Nota:
+-  "clipdos" tiene que estar en el PATH de Windows para ejecutar el script "windows.bat".
