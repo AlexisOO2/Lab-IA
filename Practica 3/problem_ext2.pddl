@@ -1,9 +1,31 @@
 (define (problem p1) (:domain redflix)
 (:objects 
 Capitan_America_El_Primer_Vengador Capitana_Marvel Iron_Man Iron_Man_2 Thor Los_Vengadores Iron_Man_3 Thor_El_Mundo_Oscuro Capitan_America_El_Soldado_de_Invierno Guardianes_de_la_Galaxia Guardianes_de_la_Galaxia_Vol_2 Los_Vengadores_La_Era_de_Ultron Ant-Man Capitan_America_Civil_War Spiderman_Homecoming Doctor_Strange Black_Panther Thor_Ragnarok Ant-Man_and_the_Wasp Los_Vengadores_Infinity_War Los_Vengadores_Endgame - contenido
+Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15 Dia16 Dia17 Dia18 Dia19 Dia20 - dia
+
 )
 
 (:init
+    (diaAnterior Dia1 Dia2)
+    (diaAnterior Dia2 Dia3)
+    (diaAnterior Dia3 Dia4)
+    (diaAnterior Dia4 Dia5)
+    (diaAnterior Dia5 Dia6)
+    (diaAnterior Dia6 Dia7)
+    (diaAnterior Dia7 Dia8)
+    (diaAnterior Dia8 Dia9)
+    (diaAnterior Dia9 Dia10)
+    (diaAnterior Dia10 Dia11)
+    (diaAnterior Dia11 Dia12)
+    (diaAnterior Dia12 Dia13)
+    (diaAnterior Dia13 Dia14)
+    (diaAnterior Dia14 Dia15)
+    (diaAnterior Dia15 Dia16)
+    (diaAnterior Dia16 Dia17)
+    (diaAnterior Dia17 Dia18)
+    (diaAnterior Dia18 Dia19)
+    (diaAnterior Dia19 Dia20)
+
     (contenidoDisponible Capitan_America_El_Primer_Vengador)
     (contenidoDisponible Capitana_Marvel)
     (contenidoDisponible Iron_Man)
@@ -55,6 +77,6 @@ Capitan_America_El_Primer_Vengador Capitana_Marvel Iron_Man Iron_Man_2 Thor Los_
     (predecesor Los_Vengadores_Infinity_War Los_Vengadores_Endgame)
 )
 
-(:goal (contenidoVisto Los_Vengadores_Endgame))
+(:goal (and (contenidoVisto Los_Vengadores_Endgame) (enDia Los_Vengadores_Endgame Dia6)))
 
 )

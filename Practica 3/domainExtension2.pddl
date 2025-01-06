@@ -1,5 +1,5 @@
 (define (domain redflix)
-  (:requirements :strips :typing :negative-preconditions :forall :existential-preconditions)
+  (:requirements :strips :typing :negative-preconditions :existential-preconditions)
 
   (:types
     contenido - object
