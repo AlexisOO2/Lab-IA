@@ -1,5 +1,5 @@
 (define (domain redflix)
-  (:requirements :strips :typing :negative-preconditions :forall)
+  (:requirements :strips :typing :negative-preconditions :forall :existential-preconditions)
 
   (:types
     contenido - object
@@ -12,6 +12,7 @@
     (contenidoPorVer ?c - contenido)                ; Este contenido ya está planeado para que el usuario vea
     (enDia ?c - contenido ?d - object)              ; El contenido ?c está planeado para el día ?d
     (diaAnterior ?d1 ?d2 - object)                  ; ?d1 es anterior a ?d2
+    (paralelo ?c1 - contenido ?c2 - contenido)      ; ?c1 es paralelo a ?c2
   )
 
   (:action verContenido
@@ -32,6 +33,19 @@
             )
           )
         )
+      )
+      (forall (?c2 - contenido)
+         (imply (paralelo ?c ?c2)
+            (and
+              (contenidoVisto ?c2)
+              (exists (?d2 - object)
+                 (or
+                   (enDia ?c2 ?d)
+                   (diaAnterior ?d2 ?d)
+                 )
+              )
+            )
+         )
       )
     )
     :effect (and
