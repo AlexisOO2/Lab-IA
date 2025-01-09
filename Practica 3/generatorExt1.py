@@ -66,7 +66,7 @@ def generar_problema(seed_val, num_peliculas, num_dias):
         predecesores.append((peliculas_ordenadas[i], peliculas_ordenadas[i+1]))  # Película i es predecesora de i+1
     
     # Generar el archivo PDDL
-    with open("problemRedflix.pddl", "w", encoding="utf-8") as f:
+    with open("genProblemExt1.pddl", "w", encoding="utf-8") as f:
         f.write("(define (problem p1) (:domain redflix)\n")
         
         f.write("(:objects \n")
