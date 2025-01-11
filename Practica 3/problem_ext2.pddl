@@ -1,7 +1,7 @@
-(define (problem p1) (:domain redflix)
+(define (problem p2) (:domain redflix_ext2)
 (:objects 
 Capitan_America_El_Primer_Vengador Capitana_Marvel Iron_Man Iron_Man_2 Thor Los_Vengadores Iron_Man_3 Thor_El_Mundo_Oscuro Capitan_America_El_Soldado_de_Invierno Guardianes_de_la_Galaxia Guardianes_de_la_Galaxia_Vol_2 Los_Vengadores_La_Era_de_Ultron Ant-Man Capitan_America_Civil_War Spiderman_Homecoming Doctor_Strange Black_Panther Thor_Ragnarok Ant-Man_and_the_Wasp Los_Vengadores_Infinity_War Los_Vengadores_Endgame - contenido
-Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15 Dia16 Dia17 Dia18 Dia19 Dia20 - dia
+Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15 Dia16 Dia17 Dia18 Dia19 Dia20 Dia21 Dia22 Dia23 Dia24 Dia25 Dia26 Dia27 Dia28 Dia29 Dia30 - dia
 
 )
 
@@ -25,6 +25,16 @@ Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15
     (diaAnterior Dia17 Dia18)
     (diaAnterior Dia18 Dia19)
     (diaAnterior Dia19 Dia20)
+    (diaAnterior Dia20 Dia21)
+    (diaAnterior Dia21 Dia22)
+    (diaAnterior Dia22 Dia23)
+    (diaAnterior Dia23 Dia24)
+    (diaAnterior Dia24 Dia25)
+    (diaAnterior Dia25 Dia26)
+    (diaAnterior Dia26 Dia27)
+    (diaAnterior Dia27 Dia28)
+    (diaAnterior Dia28 Dia29)
+    (diaAnterior Dia29 Dia30)
 
     (contenidoDisponible Capitan_America_El_Primer_Vengador)
     (contenidoDisponible Capitana_Marvel)
@@ -48,6 +58,24 @@ Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15
     (contenidoDisponible Los_Vengadores_Infinity_War)
     (contenidoDisponible Los_Vengadores_Endgame)
 
+    (paralelo Capitan_America_El_Primer_Vengador Los_Vengadores_Endgame)
+    (paralelo Capitana_Marvel Los_Vengadores_Endgame)
+    (paralelo Iron_Man Los_Vengadores_Endgame)
+    (paralelo Iron_Man_2 Los_Vengadores_Endgame)
+    (paralelo Thor Los_Vengadores_Endgame)
+    (paralelo Iron_Man_3 Los_Vengadores_Endgame)
+    (paralelo Thor_El_Mundo_Oscuro Los_Vengadores_Endgame)
+    (paralelo Capitan_America_El_Soldado_de_Invierno Los_Vengadores_Endgame)
+    (paralelo Guardianes_de_la_Galaxia Los_Vengadores_Endgame)
+    (paralelo Guardianes_de_la_Galaxia_Vol_2 Los_Vengadores_Endgame)
+    (paralelo Ant-Man Los_Vengadores_Endgame)
+    (paralelo Capitan_America_Civil_War Los_Vengadores_Endgame)
+    (paralelo Spiderman_Homecoming Los_Vengadores_Endgame)
+    (paralelo Doctor_Strange Los_Vengadores_Endgame)
+    (paralelo Black_Panther Los_Vengadores_Endgame)
+    (paralelo Thor_Ragnarok Los_Vengadores_Endgame)
+    (paralelo Ant-Man_and_the_Wasp Los_Vengadores_Endgame)
+
     (predecesor Iron_Man Iron_Man_2)
     (predecesor Iron_Man_2 Iron_Man_3)
     (predecesor Thor Thor_El_Mundo_Oscuro)
@@ -60,23 +88,8 @@ Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15
     (predecesor Los_Vengadores_La_Era_de_Ultron Los_Vengadores_Infinity_War)
     (predecesor Los_Vengadores_Infinity_War Los_Vengadores_Endgame)
 
-    (predecesor Thor Los_Vengadores)
-    (predecesor Iron_Man_2 Los_Vengadores)
-    (predecesor Capitan_America_El_Primer_Vengador Los_Vengadores)
-    (predecesor Capitana_Marvel Los_Vengadores)
-    (predecesor Guardianes_de_la_Galaxia_Vol_2 Los_Vengadores_La_Era_de_Ultron)
-    (predecesor Capitan_America_El_Soldado_de_Invierno Los_Vengadores_La_Era_de_Ultron)
-    (predecesor Thor_El_Mundo_Oscuro Los_Vengadores_La_Era_de_Ultron)
-    (predecesor Iron_Man_3 Los_Vengadores_La_Era_de_Ultron)
-    (predecesor Ant-Man_and_the_Wasp Los_Vengadores_Infinity_War)
-    (predecesor Black_Panther Los_Vengadores_Infinity_War)
-    (predecesor Doctor_Strange Los_Vengadores_Infinity_War)
-    (predecesor Spiderman_Homecoming Los_Vengadores_Infinity_War)
-    (predecesor Capitan_America_Civil_War Los_Vengadores_Infinity_War)
-    (predecesor Thor_Ragnarok Los_Vengadores_Infinity_War)
-    (predecesor Los_Vengadores_Infinity_War Los_Vengadores_Endgame)
 )
 
-(:goal (and (contenidoVisto Los_Vengadores_Endgame) (enDia Los_Vengadores_Endgame Dia6)))
+(:goal (and (contenidoVisto Los_Vengadores_Endgame) (enDia Los_Vengadores_Endgame Dia30)))
 
 )

@@ -1,5 +1,5 @@
-(define (domain redflix)
-  (:requirements :strips :typing :negative-preconditions)
+(define (domain redflix_ext1)
+  (:requirements :strips :typing :negative-preconditions :disjunctive-preconditions)
 
   (:types
     contenido - object
