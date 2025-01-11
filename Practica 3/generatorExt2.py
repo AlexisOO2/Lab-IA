@@ -77,7 +77,7 @@ def generar_problema(seed_val, num_peliculas, num_dias):
     
     # Generar el archivo PDDL
     with open("genProblemExt2.pddl", "w", encoding="utf-8") as f:
-        f.write("(define (problem p1) (:domain redflix)\n")
+        f.write("(define (problem p1) (:domain redflix_ext2)\n")
         
         f.write("(:objects \n")
         for pelicula in peliculas_seleccionadas:

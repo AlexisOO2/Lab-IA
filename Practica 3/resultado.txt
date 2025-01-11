@@ -1,0 +1,39 @@
+
+ff: parsing domain file
+domain 'REDFLIX_EXT3' defined
+ ... done.
+ff: parsing problem file
+problem 'P2' defined
+ ... done.
+
+
+
+Cueing down from goal distance:   15 into depth [1]
+                                   8            [1]
+                                   6            [1]
+                                   5            [1]
+                                   4            [1]
+                                   3            [1]
+                                   2            [1]
+                                   1            [1]
+                                   0            
+
+ff: found legal plan as follows
+
+step    0: VERCONTENIDO LOS_VENGADORES DIA1
+        1: VERCONTENIDO CAPITAN_AMERICA_EL_PRIMER_VENGADOR DIA1
+        2: VERCONTENIDO IRON_MAN DIA1
+        3: VERCONTENIDO LOS_VENGADORES_LA_ERA_DE_ULTRON DIA2
+        4: VERCONTENIDO LOS_VENGADORES_INFINITY_WAR DIA3
+        5: VERCONTENIDO ANT-MAN DIA3
+        6: VERCONTENIDO LOS_VENGADORES_ENDGAME DIA4
+        7: VERCONTENIDO CAPITAN_AMERICA_EL_SOLDADO_DE_INVIERNO DIA2
+     
+
+time spent:    0.16 seconds instantiating 0 easy, 219 hard action templates
+               0.00 seconds reachability analysis, yielding 168 facts and 180 actions
+               0.00 seconds creating final representation with 168 relevant facts
+               0.00 seconds building connectivity graph
+               0.00 seconds searching, evaluating 9 states, to a max depth of 1
+               0.16 seconds total time
+
