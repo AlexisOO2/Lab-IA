@@ -23,30 +23,31 @@
       (not (contenidoVisto ?c))
       (not (contenidoPorVer ?c))
       (forall (?c1 - contenido)
-        (imply (predecesor ?c1 ?c)
-          (and
-            (contenidoVisto ?c1)        ; Predecesor debe estar visto
-            (exists (?d1 - dia)
-              (and
-                (enDia ?c1 ?d1)
-                (diaAnterior ?d1 ?d)    ; Predecesor en día anterior
+        (and
+          (imply (predecesor ?c1 ?c)
+            (and
+              (contenidoVisto ?c1)        ; Predecesor debe estar visto
+              (exists (?d1 - dia)
+                (and
+                  (enDia ?c1 ?d1)
+                  (diaAnterior ?d1 ?d)    ; Predecesor en día anterior
+                )
               )
             )
           )
-        )
-      )
-      (forall (?c2 - contenido)
-         (imply (paralelo ?c ?c2)
-            (and
-              (contenidoVisto ?c2)
-              (exists (?d2 - dia)
-                 (or
-                   (enDia ?c2 ?d)
-                   (diaAnterior ?d2 ?d)
-                 )
+          (imply (paralelo ?c1 ?c)
+              (and
+                (contenidoVisto ?c1)
+                (exists (?d2 - dia)
+                  (or
+                    (enDia ?c1 ?d)
+                    (diaAnterior ?d2 ?d)
+                    (diaAnterior ?d ?d2)
+                  )
+                )
               )
-            )
-         )
+          )
+        )
       )
     )
     :effect (and
