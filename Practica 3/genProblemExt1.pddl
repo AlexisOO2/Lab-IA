@@ -1,9 +1,29 @@
 (define (problem p1) (:domain redflix_ext1)
-(:objects 
+(:objects
 Iron_Man_3 Los_Vengadores_Infinity_War Spiderman_No_Way_Home Black_Panther_Wakanda_Forever Spiderman_Homecoming Guardianes_de_la_Galaxia Capitana_Marvel Thor Shang_Chi_y_la_Legenda_de_los_Diez_Anillos Black_Panther - contenido
 Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15 Dia16 Dia17 Dia18 Dia19 Dia20 - dia
 )
 (:init
+  (diaAnterior Dia1 Dia2)
+  (diaAnterior Dia2 Dia3)
+  (diaAnterior Dia3 Dia4)
+  (diaAnterior Dia4 Dia5)
+  (diaAnterior Dia5 Dia6)
+  (diaAnterior Dia6 Dia7)
+  (diaAnterior Dia7 Dia8)
+  (diaAnterior Dia8 Dia9)
+  (diaAnterior Dia9 Dia10)
+  (diaAnterior Dia10 Dia11)
+  (diaAnterior Dia11 Dia12)
+  (diaAnterior Dia12 Dia13)
+  (diaAnterior Dia13 Dia14)
+  (diaAnterior Dia14 Dia15)
+  (diaAnterior Dia15 Dia16)
+  (diaAnterior Dia16 Dia17)
+  (diaAnterior Dia17 Dia18)
+  (diaAnterior Dia18 Dia19)
+  (diaAnterior Dia19 Dia20)
+
   (contenidoDisponible Iron_Man_3)
   (contenidoDisponible Los_Vengadores_Infinity_War)
   (contenidoDisponible Spiderman_No_Way_Home)
@@ -27,5 +47,5 @@ Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15
   (predecesor Shang_Chi_y_la_Legenda_de_los_Diez_Anillos Black_Panther_Wakanda_Forever)
 
 )
-(:goal (and (contenidoVisto Spiderman_No_Way_Home)))
+(:goal (and (contenidoVisto Spiderman_No_Way_Home) (enDia Spiderman_No_Way_Home Dia17)))
 )
