@@ -1,4 +1,4 @@
-(define (domain redflix_optimized)
+(define (domain redflix_ext4)
   (:requirements :strips :typing :adl :fluents)
 
   (:types
@@ -7,19 +7,18 @@
   )
 
   (:predicates
-    (predecesor ?c1 - contenido ?c2 - contenido)
-    (contenidoDisponible ?c - contenido)
-    (contenidoVisto ?c - contenido)
-    (contenidoPorVer ?c - contenido)
-    (enDia ?c - contenido ?d - dia)
-    (diaAnterior ?d1 ?d2 - dia)
-    (paralelo ?c1 - contenido ?c2 - contenido)
-    (verificacionMinutos ?c - contenido ?d - dia) ; Predicado para verificación de minutos
+    (predecesor ?c1 - contenido ?c2 - contenido)    ; ?c1 es predecesor de ?c2
+    (contenidoDisponible ?c - contenido)           ; El contenido está disponible
+    (contenidoVisto ?c - contenido)                ; El usuario ha visto este contenido
+    (contenidoPorVer ?c - contenido)               ; Contenido planificado para ver
+    (enDia ?c - contenido ?d - dia)                ; Contenido ?c asignado al día ?d
+    (diaAnterior ?d1 ?d2 - dia)                    ; Día anterior a otro día
+    (paralelo ?c1 - contenido ?c2 - contenido)      ; Contenidos paralelos
   )
 
   (:functions
-    (duracion ?c - contenido)
-    (minutosDia ?d - dia)
+    (duracion ?c - contenido)                      ; Duración de contenido en minutos
+    (minutosDia ?d - dia)                          ; Minutos usados en un día
   )
 
   (:action verContenido
@@ -28,17 +27,26 @@
       (contenidoDisponible ?c)
       (not (contenidoVisto ?c))
       (not (contenidoPorVer ?c))
-
-      ; Predecesores vistos en días anteriores
+      (<= (+ (duracion ?c) (minutosDia ?d)) 200)  ; Restricción de minutos diarios
       (forall (?c1 - contenido)
         (imply (predecesor ?c1 ?c)
-          (and 
+          (and
             (contenidoVisto ?c1)
             (exists (?d1 - dia)
               (and
                 (enDia ?c1 ?d1)
                 (diaAnterior ?d1 ?d)
               )
+            )
+          )
+        )
+      )
+      (forall (?c2 - contenido)
+        (imply (paralelo ?c ?c2)
+          (or
+            (enDia ?c2 ?d)
+            (exists (?d2 - dia)
+              (or (diaAnterior ?d ?d2) (diaAnterior ?d2 ?d))
             )
           )
         )
