@@ -7,18 +7,19 @@
   )
 
   (:predicates
-    (predecesor ?c1 - contenido ?c2 - contenido)    ; ?c1 es predecesor de ?c2
-    (contenidoDisponible ?c - contenido)           ; El contenido está disponible
-    (contenidoVisto ?c - contenido)                ; El usuario ha visto este contenido
-    (contenidoPorVer ?c - contenido)               ; Contenido planificado para ver
-    (enDia ?c - contenido ?d - dia)                ; Contenido ?c asignado al día ?d
-    (diaAnterior ?d1 ?d2 - dia)                    ; Día anterior a otro día
-    (paralelo ?c1 - contenido ?c2 - contenido)      ; Contenidos paralelos
+    (predecesor ?c1 - contenido ?c2 - contenido)
+    (contenidoDisponible ?c - contenido)
+    (contenidoVisto ?c - contenido)
+    (contenidoPorVer ?c - contenido)
+    (enDia ?c - contenido ?d - dia)
+    (diaAnterior ?d1 ?d2 - dia)
+    (paralelo ?c1 - contenido ?c2 - contenido)
+    (verificacionMinutos ?c - contenido ?d - dia) ; Predicado para verificación de minutos
   )
 
   (:functions
-    (duracion ?c - contenido)                      ; Duración de contenido en minutos
-    (minutosDia ?d - dia)                          ; Minutos usados en un día
+    (duracion ?c - contenido)
+    (minutosDia ?d - dia)
   )
 
   (:action verContenido
@@ -27,31 +28,18 @@
       (contenidoDisponible ?c)
       (not (contenidoVisto ?c))
       (not (contenidoPorVer ?c))
-      (<= (+ (duracion ?c) (minutosDia ?d)) 200)  ; Restricción de minutos diarios
+
+      ; Predecesores vistos en días anteriores
       (forall (?c1 - contenido)
-        (and
-          (imply (predecesor ?c1 ?c)
-            (and
-              (contenidoVisto ?c1)        ; Predecesor debe estar visto
-              (exists (?d1 - dia)
-                (and
-                  (enDia ?c1 ?d1)
-                  (diaAnterior ?d1 ?d)    ; Predecesor en día anterior
-                )
+        (imply (predecesor ?c1 ?c)
+          (and 
+            (contenidoVisto ?c1)
+            (exists (?d1 - dia)
+              (and
+                (enDia ?c1 ?d1)
+                (diaAnterior ?d1 ?d)
               )
             )
-          )
-          (imply (paralelo ?c1 ?c)
-              (and
-                (contenidoVisto ?c1)
-                (exists (?d2 - dia)
-                  (or
-                    (enDia ?c1 ?d)
-                    (diaAnterior ?d2 ?d)
-                    (diaAnterior ?d ?d2)
-                  )
-                )
-              )
           )
         )
       )
