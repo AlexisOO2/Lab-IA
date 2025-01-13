@@ -67,7 +67,7 @@ def generar_problema(seed_val, num_peliculas, num_dias):
     
     # Generar el archivo PDDL
     with open("genProblemExt1.pddl", "w", encoding="utf-8") as f:
-        f.write("(define (problem p1) (:domain redflix)\n")
+        f.write("(define (problem p1) (:domain redflix_ext1)\n")
         
         f.write("(:objects \n")
         for pelicula in peliculas_seleccionadas:
@@ -100,4 +100,4 @@ def generar_problema(seed_val, num_peliculas, num_dias):
 
 if __name__ == "__main__":
     # Parámetros: semilla, número de películas y número de días
-    generar_problema(20, 10, 20)
+    generar_problema(21, 10, 20)

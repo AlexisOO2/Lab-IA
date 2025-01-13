@@ -1,9 +1,10 @@
-(define (problem p1) (:domain redflix_ext1)
+(define (problem p1) (:domain redflix_basic)
 (:objects 
 Iron_Man_3 Los_Vengadores_Infinity_War Spiderman_No_Way_Home Black_Panther_Wakanda_Forever Spiderman_Homecoming Guardianes_de_la_Galaxia Capitana_Marvel Thor Shang_Chi_y_la_Legenda_de_los_Diez_Anillos Black_Panther - contenido
 Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15 Dia16 Dia17 Dia18 Dia19 Dia20 - dia
 )
 (:init
+
   (contenidoDisponible Iron_Man_3)
   (contenidoDisponible Los_Vengadores_Infinity_War)
   (contenidoDisponible Spiderman_No_Way_Home)
@@ -15,13 +16,13 @@ Dia1 Dia2 Dia3 Dia4 Dia5 Dia6 Dia7 Dia8 Dia9 Dia10 Dia11 Dia12 Dia13 Dia14 Dia15
   (contenidoDisponible Shang_Chi_y_la_Legenda_de_los_Diez_Anillos)
   (contenidoDisponible Black_Panther)
 
-  (predecesor Spiderman_Homecoming Spiderman_No_Way_Home)
-  (predecesor Iron_Man_3 Thor)
-  (predecesor Thor Guardianes_de_la_Galaxia)
-  (predecesor Guardianes_de_la_Galaxia Los_Vengadores_Infinity_War)
-  (predecesor Los_Vengadores_Infinity_War Capitana_Marvel)
-  (predecesor Capitana_Marvel Black_Panther)
   (predecesor Black_Panther Spiderman_Homecoming)
+  (predecesor Iron_Man_3 Thor)
+  (predecesor Iron_Man_3 Guardianes_de_la_Galaxia)
+  (predecesor Guardianes_de_la_Galaxia Los_Vengadores_Infinity_War)
+  (predecesor Guardianes_de_la_Galaxia Capitana_Marvel)
+  (predecesor Capitana_Marvel Iron_Man_3)
+  (predecesor Guardianes_de_la_Galaxia Spiderman_Homecoming)
   (predecesor Spiderman_Homecoming Spiderman_No_Way_Home)
   (predecesor Spiderman_No_Way_Home Shang_Chi_y_la_Legenda_de_los_Diez_Anillos)
   (predecesor Shang_Chi_y_la_Legenda_de_los_Diez_Anillos Black_Panther_Wakanda_Forever)

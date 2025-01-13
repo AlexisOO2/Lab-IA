@@ -1,5 +1,4 @@
 import random
-import time
 
 # Lista de sagas (cada saga es una lista de películas)
 sagas = [
@@ -60,23 +59,15 @@ def generar_problema(seed_val, num_peliculas, num_dias):
         for i in range(len(peliculas_saga) - 1):
             predecesores.append((peliculas_saga[i], peliculas_saga[i+1]))  # Película i es predecesora de i+1
     
-    # Generar relaciones de predecesores por cronología
+    # Generar relaciones de predecesores por cronologia
     peliculas_ordenadas = [p for p in orden_cronologico if p in peliculas_seleccionadas]
     
     for i in range(len(peliculas_ordenadas) - 1):
         predecesores.append((peliculas_ordenadas[i], peliculas_ordenadas[i+1]))  # Película i es predecesora de i+1
     
-    # Generar paralelismos aleatorios con un 10% de probabilidad
-    paralelos = []
-    for i in range(len(peliculas_seleccionadas)):
-        for j in range(i + 1, len(peliculas_seleccionadas)):
-            if random.random() < 0.01:  #probabilidad
-                paralelos.append((peliculas_seleccionadas[i], peliculas_seleccionadas[j]))
-                #paralelos.append((peliculas_seleccionadas[j], peliculas_seleccionadas[i]))  # Paralelo bidireccional
-    
     # Generar el archivo PDDL
-    with open("genProblemExt2.pddl", "w", encoding="utf-8") as f:
-        f.write("(define (problem p1) (:domain redflix_ext2)\n")
+    with open("genProblemBasic.pddl", "w", encoding="utf-8") as f:
+        f.write("(define (problem p1) (:domain redflix_basic)\n")
         
         f.write("(:objects \n")
         for pelicula in peliculas_seleccionadas:
@@ -88,9 +79,6 @@ def generar_problema(seed_val, num_peliculas, num_dias):
         f.write(")\n")
         
         f.write("(:init\n")
-        for i in range(1, num_dias):
-            f.write(f"  (diaAnterior Dia{i} Dia{i+1})\n")
-        f.write("\n")
         
         for pelicula in peliculas_seleccionadas:
             f.write(f"  (contenidoDisponible {pelicula})\n")
@@ -100,22 +88,13 @@ def generar_problema(seed_val, num_peliculas, num_dias):
             f.write(f"  (predecesor {p1} {p2})\n")
         f.write("\n")
         
-        for p1, p2 in paralelos:
-            f.write(f"  (paralelo {p1} {p2})\n")
-        f.write("\n")
-        
-        # Generar el goal con entre 1 y 3 películas aleatorias
-        num_objetivos = random.randint(1, 3)  # Elegir entre 1, 2 o 3 películas
-        peliculas_objetivo = random.sample(peliculas_seleccionadas, num_objetivos)
+        pelicula_objetivo = random.choice(peliculas_seleccionadas)
+        dia_objetivo = random.choice(dias[:num_dias])
         
         f.write(")\n")
-        f.write(f"(:goal (and ")
-        for pelicula in peliculas_objetivo:
-            f.write(f"(contenidoVisto {pelicula}) ")
-        f.write("))\n")
+        f.write(f"(:goal (and (contenidoVisto {pelicula_objetivo})))\n")
         f.write(")\n")
 
 if __name__ == "__main__":
     # Parámetros: semilla, número de películas y número de días
-    seed_value = int(time.time() * 1000)
-    generar_problema(seed_value, 10, 20)
+    generar_problema(21, 10, 20)

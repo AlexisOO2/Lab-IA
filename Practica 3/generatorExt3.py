@@ -52,6 +52,11 @@ def generar_problema(seed_val, num_peliculas, num_dias):
     # Elegir un número aleatorio de películas
     peliculas_seleccionadas = random.sample(todas_las_peliculas, num_peliculas)
     
+    # Generar el número de días: mayor que num_peliculas/3 y menor o igual a num_peliculas
+    min_dias = (num_peliculas // 2) + 1
+    max_dias = num_peliculas + (num_peliculas // 2)
+    dias_seleccionados = random.randint(min_dias, max_dias)
+    
     # Generar las relaciones de predecesores por saga
     predecesores = []
     for saga in sagas:
@@ -70,25 +75,25 @@ def generar_problema(seed_val, num_peliculas, num_dias):
     paralelos = []
     for i in range(len(peliculas_seleccionadas)):
         for j in range(i + 1, len(peliculas_seleccionadas)):
-            if random.random() < 0.01:  #probabilidad
+            if random.random() < 0.10:  #probabilidad
                 paralelos.append((peliculas_seleccionadas[i], peliculas_seleccionadas[j]))
                 #paralelos.append((peliculas_seleccionadas[j], peliculas_seleccionadas[i]))  # Paralelo bidireccional
     
     # Generar el archivo PDDL
-    with open("genProblemExt2.pddl", "w", encoding="utf-8") as f:
-        f.write("(define (problem p1) (:domain redflix_ext2)\n")
+    with open("genProblemExt3.pddl", "w", encoding="utf-8") as f:
+        f.write("(define (problem p1) (:domain redflix_ext3)\n")
         
         f.write("(:objects \n")
         for pelicula in peliculas_seleccionadas:
             f.write(f"{pelicula} ")
         f.write("- contenido\n")
-        for dia in dias[:num_dias]:
+        for dia in dias[:dias_seleccionados]:  # Usar el número de días seleccionado
             f.write(f"{dia} ")
         f.write(f"- dia\n")
         f.write(")\n")
         
         f.write("(:init\n")
-        for i in range(1, num_dias):
+        for i in range(1, dias_seleccionados):  # Generar la relación de días anteriores hasta el número de días seleccionado
             f.write(f"  (diaAnterior Dia{i} Dia{i+1})\n")
         f.write("\n")
         
