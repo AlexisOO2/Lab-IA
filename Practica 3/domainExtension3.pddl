@@ -49,6 +49,7 @@
               (or
                 (enDia ?c2 ?d)
                 (diaAnterior ?d2 ?d)
+                (diaAnterior ?d ?d2)
               )
             )
           )
