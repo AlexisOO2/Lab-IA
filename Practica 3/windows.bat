@@ -3,8 +3,8 @@ REM Script para ejecutar ff
 
 REM Rutas de archivos
 set FF_EXEC=..\..\FFv2.3-exe\ff.exe
-set DOMAIN_FILE=domainBasico.pddl
-set PROBLEM_FILE=problem_basic.pddl
+set DOMAIN_FILE=domainExtension4.pddl
+set PROBLEM_FILE=problem_ext4.pddl
 set OUTPUT_FILE=resultado.txt
 
 REM Ejecución

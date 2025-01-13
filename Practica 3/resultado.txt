@@ -1,11 +1,2 @@
 
 ff: parsing domain file
-domain 'REDFLIX_BASIC' defined
- ... done.
-ff: parsing problem file
-problem 'P1' defined
- ... done.
-
-
-ff: goal can be simplified to FALSE. No plan will solve it
-
